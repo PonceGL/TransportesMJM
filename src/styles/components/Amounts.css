@@ -1,0 +1,49 @@
+.concept-And-Amount {
+  width: 27%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0;
+  border: 0.1rem solid var(--secundary);
+}
+
+.amount-container,
+.concept-container {
+  width: 98%;
+  padding: 0.3rem;
+  outline: none;
+}
+
+.concept-And-Amount h4 {
+  font-size: 1.6rem;
+  color: var(--secundary);
+  text-align: center;
+}
+
+.concept-And-Amount p {
+  margin: 0.5em 0;
+  font-size: 1.4rem;
+  color: var(--secundary);
+  text-align: right;
+}
+
+.concept-container input {
+  padding: 0.2em;
+  font-size: 1.4rem;
+  color: var(--secundary);
+  border: none;
+  border-bottom: 0.1rem solid var(--secundary);
+  outline: none;
+}
+
+.concept-container p {
+  margin: 0;
+  padding: 0.2em;
+  text-align: left;
+  border-bottom: 0.1rem solid var(--secundary);
+}
+
+.totalFinish {
+  font-size: 1.5rem;
+  font-weight: 700;
+}

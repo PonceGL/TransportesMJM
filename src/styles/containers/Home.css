@@ -1,0 +1,61 @@
+.Home-header {
+  width: 100%;
+  height: 50vh;
+  padding: 5rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: var(--primary);
+  border-radius: 0 0 50% 50%;
+}
+
+.img {
+  width: 15rem;
+  height: 10rem;
+  border: 0.1rem solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img p {
+  font-size: 5rem;
+  font-weight: 100;
+}
+
+/* ---------------------------Who-we-are-and-what-we-do--------------------------- */
+
+.Who-we-are-and-what-we-do {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.Who-we-are-and-what-we-do h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--secundary);
+}
+
+.Who-we-are-and-what-we-do p {
+  margin-top: 1rem;
+}
+
+/* ---------------------------We-container-button--------------------------- */
+
+.We-container-button {
+  width: fit-content;
+  margin: 1rem auto;
+  border-radius: 1rem;
+}
+
+.We-container-button a {
+  padding: 1rem;
+  text-align: center;
+  color: var(--secundary);
+  border-radius: 1rem;
+  border: 0.1rem solid var(--secundary);
+  cursor: pointer;
+}

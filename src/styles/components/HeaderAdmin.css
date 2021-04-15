@@ -1,0 +1,27 @@
+.HeaderAdmin {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--secundary);
+}
+
+.time-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.NewShipping-title {
+  color: var(--secundary);
+}
+
+.time {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.date {
+  font-size: 1.6rem;
+}

@@ -1,0 +1,32 @@
+.package-tracking-container {
+  padding: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.package-tracking-input {
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  border-radius: 1rem 0 0 1rem;
+  border: 0.1rem solid var(--secundary);
+  outline: none;
+}
+
+.package-tracking-input::placeholder {
+  font-size: 1.1rem;
+}
+
+.package-tracking-button {
+  padding: 0.5rem;
+  font-size: 1.1rem;
+  border-radius: 0 1rem 1rem 0;
+  border: 0.1rem solid var(--secundary);
+  background-color: var(--secundary);
+  outline: none;
+}
+
+.package-tracking-button a {
+  color: #fff;
+}

@@ -1,0 +1,197 @@
+.NewShipping-title {
+  font-size: 3rem;
+}
+
+.NewShipping form {
+  width: 80%;
+  margin: 2rem auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.NewShipping form .NewShipping-origin,
+.NewShipping form .NewShipping-destination {
+  width: 49%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 0.1rem solid var(--secundary);
+  border-bottom: none;
+}
+
+.NewShipping form .input-form {
+  width: 100%;
+  padding: 0.3rem;
+  font-size: 1.4rem;
+
+  border: none;
+  border-bottom: 0.1rem solid var(--secundary);
+  outline: none;
+}
+
+.NewShipping .NewShipping-unit-value {
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.NewShipping-unit-value_description {
+  font-size: 1.4rem;
+  color: var(--secundary);
+}
+
+.NewShipping-unit-value_description {
+  width: 100%;
+  margin: 2rem auto 1rem;
+  text-align: center;
+}
+
+.NewShipping .NewShipping-unit-value .input-unit-value {
+  width: 49%;
+  height: 3rem;
+  padding: 0.3rem;
+  font-size: 1.4rem;
+
+  border: 0.1rem solid var(--secundary);
+  outline: none;
+}
+
+.NewShipping .NewShipping-more-information {
+  width: 100%;
+  margin: 2rem auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.NewShipping .NewShipping-more-information .Agreed-container,
+.NewShipping .NewShipping-more-information .weightAndVolume-conatiner {
+  width: 25%;
+  height: 8rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.NewShipping .NewShipping-more-information .Agreed-container .Bultos {
+  width: 100%;
+}
+
+.NewShipping
+  .NewShipping-more-information
+  .Agreed-container
+  .input-more-information {
+  width: 50%;
+}
+
+.NewShipping .NewShipping-more-information input {
+  padding: 0.3rem;
+  font-size: 1.4rem;
+  border: 0.1rem solid var(--secundary);
+  outline: none;
+}
+
+.NewShipping .NewShipping-more-information textarea {
+  width: 47%;
+  height: 8rem;
+  padding: 0.5rem;
+  font-size: 1.6rem;
+  color: var(--secundary);
+  resize: none;
+  border: 0.1rem solid var(--secundary);
+  outline: none;
+}
+
+.NewShipping
+  .NewShipping-more-information
+  .weightAndVolume-conatiner
+  .input-peso {
+  width: 100%;
+}
+
+.NewShipping
+  .NewShipping-more-information
+  .weightAndVolume-conatiner
+  .input-weightAndVolume {
+  width: 50%;
+}
+
+.shipment {
+  width: 72%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-shipment,
+.drove-container {
+  width: 49%;
+  padding: 0.3rem;
+  font-size: 1.4rem;
+
+  border: 0.1rem solid var(--secundary);
+  outline: none;
+}
+
+.drove-container {
+  border-top: none;
+}
+
+.drove-container .input-drove:first-child {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.drove-container .input-drove {
+  width: 50%;
+  border: none;
+  outline: none;
+}
+
+.shipment textarea {
+  width: 100%;
+  height: 8rem;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  font-size: 1.6rem;
+  color: var(--secundary);
+  resize: none;
+  border: 0.1rem solid var(--secundary);
+  outline: none;
+}
+
+.shipment .input-totalInLetters {
+  width: 100%;
+  padding: 0.3rem;
+  font-size: 1.4rem;
+  color: var(--secundary);
+  border: 0.1rem solid var(--secundary);
+  border-top: none;
+  outline: none;
+}
+
+.NewShipping .Botton-submit {
+  width: 20rem;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--secundary);
+  border-radius: 1rem;
+  border: 0.1rem solid var(--secundary);
+  outline: none;
+  cursor: pointer;
+}

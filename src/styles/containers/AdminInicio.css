@@ -1,0 +1,7 @@
+.Admin-Inicio {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}

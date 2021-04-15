@@ -1,0 +1,74 @@
+.Tracking {
+  min-height: calc(100vh - 10.9rem);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.Tracking-title {
+  color: var(--secundary);
+}
+
+.Tracking-status-container {
+  width: 100%;
+  margin: 2rem auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.Tracking-status {
+  margin-top: 2rem;
+  padding-left: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  border-bottom: 0.1rem solid var(--secundary);
+  position: relative;
+}
+
+.Tracking-status h4 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--secundary);
+}
+
+.Tracking-status p {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+
+.Tracking-status .status-line {
+  height: 160%;
+  width: 0.1rem;
+  background-color: var(--secundary);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.Tracking-status .status-dot {
+  height: 1.4rem;
+  width: 1.4rem;
+  background-color: var(--secundary);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0.5rem;
+  left: -0.7rem;
+}
+
+.Tracking-info {
+  width: 100%;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.Tracking-info p {
+  margin-top: 0.5rem;
+}
