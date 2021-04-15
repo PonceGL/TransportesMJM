@@ -16,7 +16,6 @@ const Tracking = () => {
     month: "long",
     day: "numeric",
   };
-  console.log(query);
 
   useEffect(() => {
     shipping(track);

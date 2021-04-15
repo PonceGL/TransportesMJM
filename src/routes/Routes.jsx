@@ -6,6 +6,7 @@ import Layout from "@components/Layout";
 import Tracking from "@containers/Tracking";
 import NewShipping from "@containers/NewShipping";
 import AdminInicio from "@containers/AdminInicio";
+import ShippingDetails from "@containers/ShippingDetails";
 
 import AppContext from "../context/AppContext";
 import FirebaseApp from "@utils/FirebaseApp";
@@ -18,8 +19,13 @@ const Routes = () => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/admin/nuevo-envio" component={NewShipping} />
           <Route exact path="/admin/inicio" component={AdminInicio} />
+          <Route exact path="/admin/nuevo-envio" component={NewShipping} />
+          <Route
+            exact
+            path="/admin/detalles-envio/:id"
+            component={ShippingDetails}
+          />
           <Layout>
             <Route exact path="/tracking/:id" component={Tracking} />
           </Layout>

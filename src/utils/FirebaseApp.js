@@ -2,7 +2,9 @@ import { useState } from "react";
 
 const FirebaseApp = () => {
   const [query, setQuery] = useState("");
-  const [shippings, setShippings] = useState([]);
+  const [allShippingsNumbers, setAllShippingsNumbers] = useState([]);
+  const [unique, setUnique] = useState(true);
+  const [currentFolioCount, setCurrentFolioCount] = useState("");
 
   const firebaseConfig = {
     apiKey: process.env.API_KEY,
@@ -19,7 +21,7 @@ const FirebaseApp = () => {
     firebase.initializeApp(firebaseConfig);
   }
 
-  //Rastrear un envío
+  //Rastrear toda la información deun envío
   const shipping = (num) => {
     firebase
       .firestore()
@@ -29,7 +31,6 @@ const FirebaseApp = () => {
       .then((doc) => {
         if (doc.exists) {
           setQuery(doc.data());
-          //console.log(doc.data());
         } else {
           console.log("No existe tal documento!");
         }
@@ -39,12 +40,32 @@ const FirebaseApp = () => {
       });
   };
 
+  //Registrar nuevo envio
+
   const newShipping = (shipping) => {
     firebase.firestore().collection("envios").add({
       envio: shipping,
       statusRecibido: true,
       statusRecibidoHora: firebase.firestore.FieldValue.serverTimestamp(),
     });
+  };
+
+  //obtener el numero de un envio
+
+  const checkIfUnique = (num) => {
+    firebase
+      .firestore()
+      .collection("envios")
+      .where("envio.trackingNumber", "==", num)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          setUnique(false);
+        });
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
   };
 
   //Todos los envios
@@ -55,11 +76,56 @@ const FirebaseApp = () => {
       .collection("envios")
       .get()
       .then((querySnapshot) => {
-        setShippings([]);
+        setAllShippingsNumbers([]);
         querySnapshot.forEach((doc) => {
-          setShippings((shippings) => [...shippings, doc.id]);
-          //console.log(doc.id);
+          setAllShippingsNumbers((allShippingsNumbers) => [
+            ...allShippingsNumbers,
+            doc.id,
+          ]);
         });
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  };
+
+  //Ver la numeracion de los folios
+  const folio = () => {
+    firebase
+      .firestore()
+      .collection("foliosNumbers")
+      .doc("folio")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          //console.log(doc.data());
+          setCurrentFolioCount(doc.data());
+        } else {
+          console.log("No existe tal documento!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error al obtener el documento:", error);
+      });
+  };
+
+  //Actualizar la numeracion de los folios
+  const updateFolio = (newFolio) => {
+    console.log("Se ejecuta updateFolio");
+    console.log("newFolio", newFolio);
+    firebase
+      .firestore()
+      .collection("foliosNumbers")
+      .doc("folio")
+      .update({
+        account: newFolio,
+      })
+      .then(() => {
+        console.log("Document successfully updated!");
+      })
+      .catch((error) => {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
       });
   };
 
@@ -68,7 +134,12 @@ const FirebaseApp = () => {
     shipping,
     newShipping,
     allShipping,
-    shippings,
+    allShippingsNumbers,
+    unique,
+    checkIfUnique,
+    folio,
+    currentFolioCount,
+    updateFolio,
   };
 };
 

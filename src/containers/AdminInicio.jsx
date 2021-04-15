@@ -5,7 +5,7 @@ import HeaderAdmin from "@components/HeaderAdmin";
 import "@styles/containers/AdminInicio.css";
 
 const AdminInicio = () => {
-  const { shippings, allShipping } = useContext(AppContext);
+  const { allShippingsNumbers, allShipping } = useContext(AppContext);
 
   useEffect(() => {
     allShipping();
@@ -15,9 +15,11 @@ const AdminInicio = () => {
     <>
       <HeaderAdmin title="Admin Inicio" />
       <main className="Admin-Inicio">
-        <section className="list-shippings">
-          {shippings.map((shipping) => (
-            <p key={shipping}>{shipping}</p>
+        <section className="list-allShippingsNumbers">
+          {allShippingsNumbers.map((shipping) => (
+            <Link to={`/admin/detalles-envio/${shipping}`} key={shipping}>
+              {shipping}
+            </Link>
           ))}
         </section>
         <section>

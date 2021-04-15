@@ -2,16 +2,23 @@ import React, { useContext, useRef } from "react";
 import AppContext from "../context/AppContext";
 import HeaderAdmin from "@components/HeaderAdmin";
 import Amounts from "@components/Amounts";
+import TrackingNumber from "@components/TrackingNumber";
+import FolioNumber from "@components/FolioNumber";
 import "@styles/containers/NewShipping.css";
 
 const NewShipping = () => {
-  const { newShipping } = useContext(AppContext);
+  const { newShipping, updateFolio, currentFolioCount } = useContext(
+    AppContext
+  );
   const form = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formShipping = new FormData(form.current);
     const shipping = {
+      trackingNumber: formShipping.get("trackingNumber"),
+      folioNumber: formShipping.get("folioNumber"),
+
       origin: formShipping.get("origin"),
       remitente: formShipping.get("remitente"),
       rfcRemitente: formShipping.get("rfcRemitente"),
@@ -60,9 +67,9 @@ const NewShipping = () => {
       ivaRetained: formShipping.get("ivaRetained"),
       total: formShipping.get("total"),
     };
-    console.log(shipping);
-
+    //console.log(shipping);
     newShipping(shipping);
+    updateFolio(currentFolioCount.account + 1);
   };
 
   return (
@@ -70,6 +77,10 @@ const NewShipping = () => {
       <HeaderAdmin title="Nuevo envío" />
       <main className="NewShipping">
         <form ref={form} onSubmit={handleSubmit}>
+          <section className="NewShipping-numbers">
+            <h3>Numero de rastreo: {<TrackingNumber />}</h3>
+            <h3>Nº{<FolioNumber />}</h3>
+          </section>
           <section className="NewShipping-origin">
             <input
               type="text"

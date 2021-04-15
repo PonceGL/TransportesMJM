@@ -1,0 +1,30 @@
+.Details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.Details-info {
+  border: 1px solid indigo;
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.Details-remitente,
+.Details-destination {
+  width: 50%;
+  margin-bottom: 2rem;
+}
+
+.Details-remitente p,
+.Details-destination p {
+  margin-top: 0.5rem;
+}
+
+.Details-status {
+  width: 28%;
+  border: 1px solid lawngreen;
+}
