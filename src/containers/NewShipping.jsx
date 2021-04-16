@@ -1,16 +1,19 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import AppContext from "../context/AppContext";
-import HeaderAdmin from "@components/HeaderAdmin";
 import Amounts from "@components/Amounts";
 import TrackingNumber from "@components/TrackingNumber";
 import FolioNumber from "@components/FolioNumber";
+import Loader from "@components/Loader";
 import "@styles/containers/NewShipping.css";
 
 const NewShipping = () => {
   const { newShipping, updateFolio, currentFolioCount } = useContext(
     AppContext
   );
+  const [ready, setReady] = useState(false);
   const form = useRef(null);
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -70,210 +73,223 @@ const NewShipping = () => {
     //console.log(shipping);
     newShipping(shipping);
     updateFolio(currentFolioCount.account + 1);
+    setReady(true);
+    setTimeout(() => {
+      history.push(`/admin/detalles-envio/${shipping.trackingNumber}`);
+    }, 1500);
   };
 
   return (
     <>
-      <HeaderAdmin title="Nuevo envío" />
       <main className="NewShipping">
-        <form ref={form} onSubmit={handleSubmit}>
-          <section className="NewShipping-numbers">
-            <h3>Numero de rastreo: {<TrackingNumber />}</h3>
-            <h3>Nº{<FolioNumber />}</h3>
-          </section>
-          <section className="NewShipping-origin">
-            <input
-              type="text"
-              className="input-form"
-              placeholder="Origen"
-              name="origin"
-            />
-            <input
-              type="text"
-              className="input-form"
-              placeholder="Remitente"
-              name="remitente"
-            />
-            <input
-              type="text"
-              className="input-form"
-              placeholder="R.F.C."
-              name="rfcRemitente"
-            />
-            <input
-              type="text"
-              className="input-form"
-              placeholder="Domicilio"
-              name="addressRemitente"
-            />
-            <input
-              type="text"
-              className="input-form"
-              placeholder="Se recogera en"
-              name="collectedIn"
-            />
-          </section>
-          <section className="NewShipping-destination">
-            <input
-              type="text"
-              className="input-form"
-              placeholder="Destino"
-              name="destination"
-            />
-            <input
-              type="text"
-              className="input-form"
-              placeholder="Destinatario"
-              name="addresseeRecipient"
-            />
-            <input
-              type="text"
-              className="input-form"
-              placeholder="R.F.C."
-              name="rfcRecipient"
-            />
-            <input
-              type="text"
-              className="input-form"
-              placeholder="Domicilio"
-              name="addressRecipient"
-            />
-            <input
-              type="text"
-              className="input-form"
-              placeholder="Se entregará en"
-              name="toBeDeliveredIn"
-            />
-          </section>
-          <section className="NewShipping-unit-value">
-            <p className="NewShipping-unit-value_description">
-              Valor unitario, cuota convenida por tonelada o carga fraccionada
-            </p>
-            <input
-              type="text"
-              className="input-unit-value"
-              placeholder="Valor declarado"
-              name="declaredValue"
-            />
-            <input
-              type="text"
-              className="input-unit-value"
-              placeholder="Condiciones de pago"
-              name="paymentTerms"
-            />
-          </section>
-          <section className="NewShipping-more-information">
-            <div className="Agreed-container">
+        {ready ? (
+          <div className="loader-container">
+            <Loader />
+          </div>
+        ) : (
+          <form ref={form} onSubmit={handleSubmit}>
+            <section className="NewShipping-numbers">
+              <h3>Numero de rastreo: {<TrackingNumber />}</h3>
+              <h3>Nº{<FolioNumber />}</h3>
+            </section>
+            <section className="NewShipping-origin">
               <input
                 type="text"
-                className="Bultos"
-                placeholder="Bultos"
-                name="bulge"
-              />
-              <input
-                type="number"
-                className="input-more-information"
-                placeholder="Numero"
-                name="num"
+                className="input-form"
+                placeholder="Origen"
+                name="origin"
+                required
               />
               <input
                 type="text"
-                className="input-more-information"
-                placeholder="Embalaje"
-                name="packaging"
-              />
-            </div>
-            <textarea
-              name="claimsToContain"
-              placeholder="Que el remitende dice contiene"
-            ></textarea>
-            <div className="weightAndVolume-conatiner">
-              <input
-                type="number"
-                className="input-peso"
-                placeholder="Peso"
-                name="weight"
+                className="input-form"
+                placeholder="Remitente"
+                name="remitente"
+                required
               />
               <input
                 type="text"
-                className="input-weightAndVolume"
-                placeholder="M3"
-                name="m3"
+                className="input-form"
+                placeholder="R.F.C."
+                name="rfcRemitente"
               />
               <input
                 type="text"
-                className="input-weightAndVolume"
-                placeholder="Peso estimado"
-                name="estimatedWeight"
-              />
-            </div>
-          </section>
-          <section className="shipment">
-            <input
-              type="text"
-              className="input-shipment"
-              placeholder="Reembarco"
-              name="reshipment"
-            />
-            <input
-              type="text"
-              className="input-shipment"
-              placeholder="Reembarcarse con"
-              name="reembarkWith"
-            />
-            <div className="drove-container">
-              <input
-                type="text"
-                className="input-drove"
-                placeholder="Condujo"
-                name="drove"
+                className="input-form"
+                placeholder="Domicilio"
+                name="addressRemitente"
               />
               <input
                 type="text"
-                className="input-drove"
-                placeholder="De"
-                name="droveFrom"
+                className="input-form"
+                placeholder="Se recogera en"
+                name="collectedIn"
+              />
+            </section>
+            <section className="NewShipping-destination">
+              <input
+                type="text"
+                className="input-form"
+                placeholder="Destino"
+                name="destination"
+                required
               />
               <input
                 type="text"
-                className="input-drove"
-                placeholder="A"
-                name="droveTo"
-              />
-            </div>
-            <div className="drove-container">
-              <input
-                type="text"
-                className="input-drove"
-                placeholder="Conducirá"
-                name="heWillDrive"
+                className="input-form"
+                placeholder="Destinatario"
+                name="addresseeRecipient"
+                required
               />
               <input
                 type="text"
-                className="input-drove"
-                placeholder="De"
-                name="heWillDriveFrom"
+                className="input-form"
+                placeholder="R.F.C."
+                name="rfcRecipient"
               />
               <input
                 type="text"
-                className="input-drove"
-                placeholder="A"
-                name="heWillDriveTo"
+                className="input-form"
+                placeholder="Domicilio"
+                name="addressRecipient"
               />
-            </div>
-            <textarea name="remarks" placeholder="Observaciones"></textarea>
-            <input
-              type="text"
-              className="input-totalInLetters"
-              placeholder="Importe total en letra"
-              name="totalInLetters"
-            />
-          </section>
-          <Amounts />
-          <button type="submit" className="Botton-submit">
-            Enviar
-          </button>
-        </form>
+              <input
+                type="text"
+                className="input-form"
+                placeholder="Se entregará en"
+                name="toBeDeliveredIn"
+              />
+            </section>
+            <section className="NewShipping-unit-value">
+              <p className="NewShipping-unit-value_description">
+                Valor unitario, cuota convenida por tonelada o carga fraccionada
+              </p>
+              <input
+                type="text"
+                className="input-unit-value"
+                placeholder="Valor declarado"
+                name="declaredValue"
+              />
+              <input
+                type="text"
+                className="input-unit-value"
+                placeholder="Condiciones de pago"
+                name="paymentTerms"
+              />
+            </section>
+            <section className="NewShipping-more-information">
+              <div className="Agreed-container">
+                <input
+                  type="text"
+                  className="Bultos"
+                  placeholder="Bultos"
+                  name="bulge"
+                />
+                <input
+                  type="number"
+                  className="input-more-information"
+                  placeholder="Numero"
+                  name="num"
+                />
+                <input
+                  type="text"
+                  className="input-more-information"
+                  placeholder="Embalaje"
+                  name="packaging"
+                />
+              </div>
+              <textarea
+                name="claimsToContain"
+                placeholder="Que el remitende dice contiene"
+              ></textarea>
+              <div className="weightAndVolume-conatiner">
+                <input
+                  type="number"
+                  className="input-peso"
+                  placeholder="Peso"
+                  name="weight"
+                />
+                <input
+                  type="text"
+                  className="input-weightAndVolume"
+                  placeholder="M3"
+                  name="m3"
+                />
+                <input
+                  type="text"
+                  className="input-weightAndVolume"
+                  placeholder="Peso estimado"
+                  name="estimatedWeight"
+                />
+              </div>
+            </section>
+            <section className="shipment">
+              <input
+                type="text"
+                className="input-shipment"
+                placeholder="Reembarco"
+                name="reshipment"
+              />
+              <input
+                type="text"
+                className="input-shipment"
+                placeholder="Reembarcarse con"
+                name="reembarkWith"
+              />
+              <div className="drove-container">
+                <input
+                  type="text"
+                  className="input-drove"
+                  placeholder="Condujo"
+                  name="drove"
+                />
+                <input
+                  type="text"
+                  className="input-drove"
+                  placeholder="De"
+                  name="droveFrom"
+                />
+                <input
+                  type="text"
+                  className="input-drove"
+                  placeholder="A"
+                  name="droveTo"
+                />
+              </div>
+              <div className="drove-container">
+                <input
+                  type="text"
+                  className="input-drove"
+                  placeholder="Conducirá"
+                  name="heWillDrive"
+                />
+                <input
+                  type="text"
+                  className="input-drove"
+                  placeholder="De"
+                  name="heWillDriveFrom"
+                />
+                <input
+                  type="text"
+                  className="input-drove"
+                  placeholder="A"
+                  name="heWillDriveTo"
+                />
+              </div>
+              <textarea name="remarks" placeholder="Observaciones"></textarea>
+              <input
+                type="text"
+                className="input-totalInLetters"
+                placeholder="Importe total en letra"
+                name="totalInLetters"
+              />
+            </section>
+            <Amounts />
+            <button type="submit" className="Botton-submit">
+              Guardar
+            </button>
+          </form>
+        )}
       </main>
     </>
   );

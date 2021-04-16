@@ -2,14 +2,74 @@
   width: 100%;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-start;
 }
 
-.list-allShippingsNumbers {
-  width: 35%;
+.list-allShippings {
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+}
+
+.list-allShippings h3 {
+  padding: 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--secundary);
+}
+
+.list-allShippings a {
+  width: 100%;
+  padding: 0.5rem;
+  color: #000;
+  font-weight: 400;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  transition: ease-in-out 0.2s all;
+}
+
+.list-allShippings a:hover {
+  background-color: var(--secundary);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.list-allShippings a p {
+  width: 50%;
+  font-size: 1.4rem;
+  text-align: left;
+}
+
+.list-allShippings a p:first-child {
+  margin-right: 0.5rem;
+  padding-right: 0.5rem;
+  border-right: 0.2rem solid var(--secundary);
+}
+
+.Admin-Actions {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.Admin-Actions a {
+  width: 50%;
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--secundary);
+  cursor: pointer;
+  transition: ease-in-out 0.2s all;
+}
+
+.Admin-Actions a:hover {
+  background-color: var(--secundary);
+  color: var(--primary);
 }

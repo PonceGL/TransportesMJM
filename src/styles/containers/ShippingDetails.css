@@ -1,3 +1,7 @@
+:root {
+  --PrintPrimary: #1d3557;
+}
+
 .Details {
   display: flex;
   justify-content: space-between;
@@ -5,8 +9,54 @@
 }
 
 .Details-info {
-  border: 1px solid indigo;
-  width: 70%;
+  width: 75%;
+}
+
+.Details-status {
+  width: 25%;
+  padding: 0 2rem;
+}
+
+.Details-info,
+.Details-remitente,
+.Details-destination,
+.Details-PaymentTermsAndValue,
+.Details-bulge-num-packaging,
+.Details-description-for-client,
+.Details-weight-m3-estimatedWeight,
+.Details-reshipment-reembarkWith,
+.Details-drive,
+.Details-totalInLetters,
+.Details-freight {
+  border: 0.1rem solid var(--PrintPrimary);
+}
+
+.Details-PaymentTermsAndValue,
+.Details-reshipment-reembarkWith,
+.Details-drive,
+.Details-totalInLetters {
+  border-left: none;
+  border-right: none;
+}
+
+.Details-bulge-num-packaging {
+  border-left: none;
+}
+
+.Details-weight-m3-estimatedWeight {
+  border-right: none;
+}
+
+.Details-Print-header,
+.Details-trackingNumber,
+.Details-document,
+.Details-accordance {
+  display: none;
+}
+
+.Details-info,
+.Details-more-info {
+  border: 1px solid var(--PrintPrimary);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -16,15 +66,467 @@
 .Details-remitente,
 .Details-destination {
   width: 50%;
-  margin-bottom: 2rem;
 }
 
-.Details-remitente p,
-.Details-destination p {
-  margin-top: 0.5rem;
+.Details-more-info {
+  width: 75%;
+  margin: 2rem 0;
 }
 
-.Details-status {
-  width: 28%;
-  border: 1px solid lawngreen;
+.Details-PaymentTermsAndValue {
+  width: 100%;
+  margin: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Details-bulge-num-packaging {
+  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.Details-bulge-num-packaging p {
+  width: 50%;
+  text-align: center;
+}
+
+.Details-bulge-num-packaging p:first-child {
+  width: 100%;
+}
+
+.Details-description-for-client {
+  width: 40%;
+  text-align: left;
+}
+
+.Details-weight-m3-estimatedWeight {
+  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.Details-weight-m3-estimatedWeight p {
+  width: 50%;
+  text-align: center;
+}
+
+.Details-weight-m3-estimatedWeight p:first-child {
+  width: 100%;
+}
+
+.Details-reshipment-reembarkWith {
+  width: 100%;
+  margin: 2rem 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Details-reshipment-reembarkWith p {
+  width: 50%;
+  text-align: left;
+}
+
+.Details-drive {
+  width: 100%;
+  margin: 2rem 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Details-drive div {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Details-drive div p {
+  width: 50%;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.Details-drive div p:first-child {
+  width: 100%;
+}
+
+.Details-totalInLetters {
+  width: 100%;
+  text-align: right;
+}
+
+.Details-freight {
+  width: 25%;
+  margin: 2rem 0;
+  padding: 4rem 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.Details-freight div {
+  width: 50%;
+  padding: 0 0.5rem;
+}
+
+.details-freight-concept {
+  text-align: right;
+}
+
+.details-freight-amount {
+  text-align: left;
+}
+
+.Details-freight p {
+  margin: 1rem 0;
+}
+
+.Details-last-information {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.Details-last-information div {
+  padding: 1rem;
+  text-align: center;
+}
+
+.Details-last-information div p {
+  margin: 1rem auto;
+}
+
+.Button-print {
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  color: var(--secunday);
+  border: 0.1rem solid var(--secundary);
+  border-radius: 0.5rem;
+  outline: none;
+  cursor: pointer;
+}
+
+@media print {
+  .HeaderAdmin,
+  .Button-print,
+  .Details-status {
+    display: none;
+  }
+
+  .Details {
+    width: 95%;
+    margin: 0 auto;
+    display: block;
+    border: 0.2rem solid var(--PrintPrimary);
+    text-transform: uppercase;
+  }
+
+  .Details-info {
+    width: 100%;
+  }
+
+  .Details-info h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+
+  .Details-more-info,
+  .Details-freight,
+  .Details-PaymentTermsAndValue {
+    margin: 0;
+  }
+
+  .Details-bulge-num-packaging,
+  .Details-description-for-client,
+  .Details-weight-m3-estimatedWeight {
+    border: none;
+  }
+  .Details-info,
+  .Details-remitente,
+  .Details-destination,
+  .Details-PaymentTermsAndValue,
+  .Details-bulge-num-packaging,
+  .Details-description-for-client,
+  .Details-weight-m3-estimatedWeight,
+  .Details-reshipment-reembarkWith,
+  .Details-drive,
+  .Details-totalInLetters,
+  .Details-freight {
+    border: 0.1rem solid var(--PrintPrimary);
+  }
+
+  .Details-PaymentTermsAndValue,
+  .Details-reshipment-reembarkWith,
+  .Details-drive,
+  .Details-totalInLetters {
+    border-left: none;
+    border-right: none;
+  }
+
+  .Details-bulge-num-packaging {
+    border-left: none;
+  }
+
+  .Details-weight-m3-estimatedWeight {
+    border-right: none;
+  }
+
+  .Details-Print-header {
+    width: 100%;
+    padding: 0.5rem;
+    color: var(--PrintPrimary);
+    background-color: #fff;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .Details-Print-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .Details-Print-header h4 {
+    font-size: 1rem;
+  }
+
+  .Details-Print-header p {
+    font-size: 0.8rem;
+  }
+
+  .Details-Print-header .Details-Print-logo {
+    width: 15%;
+    object-fit: cover;
+  }
+
+  .Details-Print-header .Details-Print-centerarea {
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Details-Print-data,
+  .Details-Print-addresses {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .Details-Print-addresses {
+    margin-top: 1rem;
+  }
+
+  .Details-Print-office,
+  .Details-Print-folio {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Details-Print-folio .Details-Print-folio-number {
+    color: red;
+  }
+
+  .Details-info,
+  .Details-more-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .Details-remitente,
+  .Details-destination {
+    width: 50%;
+  }
+
+  .Details-more-info {
+    width: 70%;
+    margin: 2rem 0;
+  }
+
+  .Details-PaymentTermsAndValue {
+    width: 100%;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Details-bulge-num-packaging {
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .Details-bulge-num-packaging p {
+    width: 50%;
+    text-align: center;
+  }
+
+  .Details-bulge-num-packaging p:first-child {
+    width: 100%;
+  }
+
+  .Details-description-for-client {
+    width: 40%;
+    padding: 0.8rem;
+    text-align: left;
+  }
+
+  .Details-weight-m3-estimatedWeight {
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .Details-weight-m3-estimatedWeight p {
+    width: 50%;
+    text-align: center;
+  }
+
+  .Details-weight-m3-estimatedWeight p:first-child {
+    width: 100%;
+  }
+
+  .Details-reshipment-reembarkWith {
+    width: 100%;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .Details-reshipment-reembarkWith p {
+    width: 50%;
+    text-align: left;
+  }
+
+  .Details-drive {
+    width: 100%;
+    margin: 2rem 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Details-drive div {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .Details-drive div p {
+    width: 50%;
+    margin: 1rem 0;
+    text-align: left;
+  }
+
+  .Details-drive div p:first-child {
+    width: 100%;
+  }
+
+  .Details-totalInLetters {
+    width: 100%;
+    text-align: right;
+  }
+
+  .Details-freight {
+    width: 30%;
+    margin: 2rem 0;
+    padding: 4rem 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .Details-freight div {
+    width: 50%;
+    padding: 0 0.5rem;
+  }
+
+  .details-freight-concept {
+    text-align: right;
+  }
+
+  .details-freight-amount {
+    text-align: left;
+  }
+
+  .Details-freight p {
+    margin: 1rem 0;
+  }
+
+  .Tracking-status-container {
+    display: none;
+  }
+
+  .Details-last-information {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .Details-last-information div {
+    border: 0.1rem solid var(--PrintPrimary);
+    width: 25%;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .Details-last-information div p {
+    max-width: 90%;
+  }
+
+  .Details-last-information div span {
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .Details-last-information .Details-accordance .line {
+    width: 80%;
+    border-top: 1px solid var(--PrintPrimary);
+
+    position: absolute;
+    bottom: 1.5rem;
+  }
+
+  .Details-last-information .Details-trackingNumber p {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--PrintPrimary);
+  }
 }

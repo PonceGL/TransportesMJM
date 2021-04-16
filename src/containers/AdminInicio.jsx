@@ -5,25 +5,30 @@ import HeaderAdmin from "@components/HeaderAdmin";
 import "@styles/containers/AdminInicio.css";
 
 const AdminInicio = () => {
-  const { allShippingsNumbers, allShipping } = useContext(AppContext);
+  const { allShippings, allShippingQuery, query } = useContext(AppContext);
 
   useEffect(() => {
-    allShipping();
+    allShippingQuery();
   }, []);
 
   return (
     <>
-      <HeaderAdmin title="Admin Inicio" />
       <main className="Admin-Inicio">
-        <section className="list-allShippingsNumbers">
-          {allShippingsNumbers.map((shipping) => (
-            <Link to={`/admin/detalles-envio/${shipping}`} key={shipping}>
-              {shipping}
+        <section className="list-allShippings">
+          <h3>Envíos</h3>
+          {allShippings.map((shipping) => (
+            <Link
+              to={`/admin/detalles-envio/${shipping.envio.trackingNumber}`}
+              key={shipping.envio.trackingNumber}
+            >
+              <p>{shipping.envio.trackingNumber}</p>
+              <p>{shipping.envio.remitente}</p>
             </Link>
           ))}
         </section>
-        <section>
+        <section className="Admin-Actions">
           <Link to="/admin/nuevo-envio">Crear uevo envío</Link>
+          <Link to="#">Crear uevo camión</Link>
         </section>
       </main>
     </>

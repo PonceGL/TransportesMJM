@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Logo from "@images/MJM_logo.svg";
 import "@styles/components/Header.css";
 
 const Header = () => {
   return (
     <header>
-      <Link to="/">
-        <h1 className="Header-logo">
-          M<span className="Header-logo-J">J</span>M
-        </h1>
+      <Link to="/" className="Header-logo">
+        <img src={Logo} alt="" />
       </Link>
     </header>
   );

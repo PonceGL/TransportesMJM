@@ -12,18 +12,9 @@
   border-radius: 0 0 50% 50%;
 }
 
-.img {
-  width: 15rem;
-  height: 10rem;
-  border: 0.1rem solid #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.img p {
-  font-size: 5rem;
-  font-weight: 100;
+.Homw-logo img {
+  height: 15rem;
+  object-fit: cover;
 }
 
 /* ---------------------------Who-we-are-and-what-we-do--------------------------- */

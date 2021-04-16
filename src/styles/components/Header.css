@@ -8,13 +8,7 @@ header {
   align-items: center;
 }
 
-.Header-logo {
-  font-size: 2.5rem;
-  font-weight: 400;
-  color: #1478d6;
-  cursor: pointer;
-}
-
-.Header-logo-J {
-  color: #ff0000;
+.Header-logo img {
+  height: 10rem;
+  object-fit: contain;
 }

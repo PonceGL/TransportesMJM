@@ -6,15 +6,16 @@ import Argument from "@components/Argument";
 import Services from "@components/Services";
 import Footer from "@components/Footer";
 import Helpline from "@components/Helpline";
+import Logo from "@images/MJM_logo.svg";
 import "@styles/containers/Home.css";
 
 const Home = () => {
   return (
     <>
       <div className="Home-header">
-        <div className="img">
-          <p>MJM</p>
-        </div>
+        <Link to="/" className="Homw-logo">
+          <img src={Logo} alt="Logotipo de Transportes MJM" />
+        </Link>
         <TrackingElement />
       </div>
       <main>

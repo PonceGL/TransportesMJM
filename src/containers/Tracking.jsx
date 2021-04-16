@@ -2,14 +2,14 @@ import React, { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import AppContext from "../context/AppContext";
 import Helpline from "@components/Helpline";
+import Loader from "@components/Loader";
 import "@styles/containers/Tracking.css";
-
-//kRLdzpltxqxT1t4quzE5
-//IU5YwojLBs473zofTnlr
 
 const Tracking = () => {
   const { shipping, query } = useContext(AppContext);
   const track = useLocation().pathname.slice(10);
+  const details = query.envio;
+
   const options = {
     weekday: "long",
     year: "numeric",
@@ -21,10 +21,18 @@ const Tracking = () => {
     shipping(track);
   }, []);
 
+  console.log(query);
+
   return (
     <main className="Tracking">
       <h2 className="Tracking-title">
-        {query ? "Detalles del envío" : "Buscando..."}
+        {query ? (
+          "Detalles del envío"
+        ) : (
+          <div className="loader-container">
+            <Loader />
+          </div>
+        )}
       </h2>
       <section className="Tracking-status-container">
         {query.statusEntregado && (
@@ -81,8 +89,8 @@ const Tracking = () => {
         )}
       </section>
       <section className="Tracking-info">
-        {query.remitente && <p>Remitente {query.remitente}</p>}
-        {query.destinatario && <p>Destinatario {query.destinatario}</p>}
+        {details && <p>Remitente {details.remitente}</p>}
+        {details && <p>Destinatario {details.addresseeRecipient}</p>}
       </section>
       <Helpline />
     </main>

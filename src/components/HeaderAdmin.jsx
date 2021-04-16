@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "@images/MJM_logo.svg";
 import "@styles/components/HeaderAdmin.css";
 
-const HeaderAdmin = ({ title }) => {
+const HeaderAdmin = () => {
   const [time, setTime] = useState("");
   useEffect(() => {
     const hour = setInterval(() => {
@@ -28,8 +29,8 @@ const HeaderAdmin = ({ title }) => {
 
   return (
     <header className="HeaderAdmin">
-      <Link to="/admin/inicio">
-        <h1 className="NewShipping-title">{title}</h1>
+      <Link to="/admin/inicio" className="NewShipping-logo">
+        <img src={Logo} alt="" />
       </Link>
       <div className="time-container">
         <p className="time">{time}</p>

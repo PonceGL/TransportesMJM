@@ -6,6 +6,17 @@
   color: var(--secundary);
 }
 
+.NewShipping-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.NewShipping-logo img {
+  height: 10rem;
+  object-fit: contain;
+}
+
 .time-container {
   display: flex;
   flex-direction: column;
