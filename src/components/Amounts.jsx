@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "@styles/components/Amounts.css";
 
-const Amounts = () => {
+const Amounts = ({
+  freightEdit = "",
+  insuranceEdit = "",
+  shuntingEdit = "",
+  othersEdit = "",
+  subtotalEdit = "",
+  ivaTransferEdit = "",
+  ivaRetainedEdit = "",
+  totalEdit = "",
+}) => {
   const [freight, setFreight] = useState(0);
   const [insurance, setInsurance] = useState(0);
   const [shunting, setShunting] = useState(0);
@@ -30,7 +39,7 @@ const Amounts = () => {
       e.includes("9") ||
       e.includes("0")
     ) {
-      func(parseInt(e));
+      func(e);
     } else if (e.includes("")) {
       func(0);
     }
@@ -70,50 +79,50 @@ const Amounts = () => {
         <input
           type="text"
           name="freight"
-          value={freight}
+          value={freight ? freight : freightEdit}
           onChange={(e) => onlyNumbers(e.target.value, setFreight)}
         />
         <input
           type="text"
           name="insurance"
-          value={insurance}
+          value={insurance ? insurance : insuranceEdit}
           onChange={(e) => onlyNumbers(e.target.value, setInsurance)}
         />
         <input
           type="text"
           name="shunting"
-          value={shunting}
+          value={shunting ? shunting : shuntingEdit}
           onChange={(e) => onlyNumbers(e.target.value, setShunting)}
         />
         <input
           type="text"
           name="others"
-          value={others}
+          value={others ? others : othersEdit}
           onChange={(e) => onlyNumbers(e.target.value, setOthers)}
         />
         <input
           type="text"
           name="subtotal"
           readOnly
-          value={formatter.format(subtotal)}
+          value={subtotal ? formatter.format(subtotal) : subtotalEdit}
         />
         <input
           type="text"
           name="ivaTransfer"
           readOnly
-          value={formatter.format(ivaTransfer)}
+          value={ivaTransfer ? formatter.format(ivaTransfer) : ivaTransferEdit}
         />
         <input
           type="text"
           name="ivaRetained"
           readOnly
-          value={formatter.format(ivaRetained)}
+          value={ivaRetained ? formatter.format(ivaRetained) : ivaRetainedEdit}
         />
         <input
           type="text"
           name="total"
           readOnly
-          value={formatter.format(total)}
+          value={total ? formatter.format(total) : totalEdit}
         />
       </div>
     </section>

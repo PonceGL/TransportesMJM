@@ -199,3 +199,17 @@
   outline: none;
   cursor: pointer;
 }
+
+.Botton-guardar {
+  width: 20rem;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  color: red;
+  border-radius: 1rem;
+  border: 0.1rem solid red;
+  outline: none;
+  cursor: pointer;
+}

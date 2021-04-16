@@ -8,6 +8,8 @@ import NewShipping from "@containers/NewShipping";
 import AdminInicio from "@containers/AdminInicio";
 import ShippingDetails from "@containers/ShippingDetails";
 import LayoutAdmin from "@components/LayoutAdmin";
+import ShippingEdit from "@containers/ShippingEdit";
+import Newtruck from "@containers/Newtruck";
 
 import AppContext from "../context/AppContext";
 import FirebaseApp from "@utils/FirebaseApp";
@@ -25,6 +27,8 @@ const Routes = () => {
               "/admin/inicio",
               "/admin/nuevo-envio",
               "/admin/detalles-envio/:id",
+              "/admin/editar-envio/:id",
+              "/admin/crear-camion",
             ]}
           >
             <LayoutAdmin>
@@ -35,6 +39,12 @@ const Routes = () => {
                 path="/admin/detalles-envio/:id"
                 component={ShippingDetails}
               />
+              <Route
+                exact
+                path="/admin/editar-envio/:id"
+                component={ShippingEdit}
+              />
+              <Route exact path="/admin/crear-camion" component={Newtruck} />
             </LayoutAdmin>
           </Route>
           <Route path={["/tracking/:id"]}>

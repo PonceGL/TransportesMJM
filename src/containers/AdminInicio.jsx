@@ -1,11 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AppContext from "../context/AppContext";
-import HeaderAdmin from "@components/HeaderAdmin";
 import "@styles/containers/AdminInicio.css";
 
 const AdminInicio = () => {
-  const { allShippings, allShippingQuery, query } = useContext(AppContext);
+  const { allShippings, allShippingQuery } = useContext(AppContext);
 
   useEffect(() => {
     allShippingQuery();
@@ -28,7 +27,7 @@ const AdminInicio = () => {
         </section>
         <section className="Admin-Actions">
           <Link to="/admin/nuevo-envio">Crear uevo envío</Link>
-          <Link to="#">Crear uevo camión</Link>
+          <Link to="/admin/crear-camion/">Crear uevo camión</Link>
         </section>
       </main>
     </>

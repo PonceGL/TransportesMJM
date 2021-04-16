@@ -24,8 +24,6 @@ const ShippingDetails = () => {
     window.print();
   };
 
-  console.log(details);
-
   return (
     <>
       {details && (
@@ -71,6 +69,14 @@ const ShippingDetails = () => {
           </section>
 
           <section className="Details-info">
+            <div className="Details-date-origin">
+              <p>{details.origin}</p>
+              <p>
+                {query.statusRecibidoHora
+                  .toDate()
+                  .toLocaleDateString("es-ES", options)}{" "}
+              </p>
+            </div>
             <div className="Details-remitente">
               <h3>Remitente {details.remitente}</h3>
               <p>Origen: {details.origin}</p>
@@ -80,7 +86,7 @@ const ShippingDetails = () => {
             </div>
             <div className="Details-destination">
               <h3>Destinatario {details.addresseeRecipient}</h3>
-              <p>Origen: {details.destination}</p>
+              <p>Destino: {details.destination}</p>
               <p>R.F.C.: {details.rfcRecipient}</p>
               <p>Domicilio: {details.addressRecipient}</p>
               <p>Se entregarán en: {details.toBeDeliveredIn}</p>
@@ -94,18 +100,20 @@ const ShippingDetails = () => {
                 <p>Valor declarado: {details.declaredValue}</p>
                 <p>Condiciones de pago: {details.paymentTerms}</p>
               </div>
-              <div className="Details-bulge-num-packaging">
-                <p>{details.bulge}</p>
-                <p>Numero: {details.num}</p>
-                <p>Embalaje: {details.packaging}</p>
-              </div>
-              <p className="Details-description-for-client">
-                Que el remitente dice contienen: {details.claimsToContain}
-              </p>
-              <div className="Details-weight-m3-estimatedWeight">
-                <p>Peso: {details.weight}</p>
-                <p>Volumen m3: {details.m3}</p>
-                <p>Peso estimado: {details.estimatedWeight}</p>
+              <div className="Details-bulge-claims-weight-container">
+                <div className="Details-bulge-num-packaging">
+                  <p>{details.bulge}</p>
+                  <p>Numero: {details.num}</p>
+                  <p>Embalaje: {details.packaging}</p>
+                </div>
+                <p className="Details-description-for-client">
+                  Que el remitente dice contienen: {details.claimsToContain}
+                </p>
+                <div className="Details-weight-m3-estimatedWeight">
+                  <p>Peso: {details.weight}</p>
+                  <p>Volumen m3: {details.m3}</p>
+                  <p>Peso estimado: {details.estimatedWeight}</p>
+                </div>
               </div>
               <div className="Details-reshipment-reembarkWith">
                 <p>Reembarco: {details.reshipment}</p>
@@ -167,6 +175,9 @@ const ShippingDetails = () => {
                 <p>{details.remarks}</p>
               </div>
             </div>
+            <p className="Details-thanks">
+              GRACIAS POR HABERNOS BRINDADO LA PÒRTUNIDAD DE SERVIRLE
+            </p>
           </section>
           <section className="Details-status">
             <h3>
@@ -234,14 +245,22 @@ const ShippingDetails = () => {
                 </div>
               )}
             </div>
-            <button
-              className="Button-print"
-              onClick={() => {
-                handlePrint();
-              }}
-            >
-              Imprimir
-            </button>
+            <div className="Details-buttons-container">
+              <button
+                className="Details-buttons Button-print"
+                onClick={() => {
+                  handlePrint();
+                }}
+              >
+                Imprimir
+              </button>
+              <Link
+                to={`/admin/editar-envio/${details.trackingNumber}`}
+                className="Details-buttons Button-edit"
+              >
+                Editar
+              </Link>
+            </div>
           </section>
         </main>
       )}

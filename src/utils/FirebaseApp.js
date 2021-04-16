@@ -66,6 +66,28 @@ const FirebaseApp = () => {
     });
   };
 
+  //Actualizar datos de envio
+
+  const updateShipping = (shipping, num) => {
+    firebase
+      .firestore()
+      .collection("envios")
+      .where("envio.trackingNumber", "==", num)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          firebase.firestore().collection("envios").doc(doc.id).set({
+            envio: shipping,
+            statusRecibido: true,
+            statusRecibidoHora: firebase.firestore.FieldValue.serverTimestamp(),
+          });
+        });
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  };
+
   //obtener el numero de un envio
 
   const checkIfUnique = (num) => {
@@ -119,6 +141,46 @@ const FirebaseApp = () => {
       });
   };
 
+  //Registrar nuevo camion
+
+  const newTruck = (truck, shippings) => {
+    console.log(truck);
+    console.log(shippings);
+    firebase.firestore().collection("trucks").add({
+      truck: truck,
+      shippings: shippings,
+    });
+  };
+
+  //Actualizar datos de envio
+
+  const updateTruck = (shipping, num) => {
+    console.log("llega shipping: ", shipping);
+    console.log("llega num: ", num);
+    firebase
+      .firestore()
+      .collection("envios")
+      .where("envio.carNumber", "==", num)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          firebase
+            .firestore()
+            .collection("envios")
+            .doc(doc.id)
+            .set(
+              {
+                shippings: [shipping],
+              },
+              { merge: true }
+            );
+        });
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  };
+
   return {
     query,
     shipping,
@@ -130,6 +192,9 @@ const FirebaseApp = () => {
     folio,
     currentFolioCount,
     updateFolio,
+    updateShipping,
+    newTruck,
+    updateTruck,
   };
 };
 
