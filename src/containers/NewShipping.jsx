@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import AppContext from "../context/AppContext";
 import Amounts from "@components/Amounts";
@@ -8,12 +8,21 @@ import Loader from "@components/Loader";
 import "@styles/containers/NewShipping.css";
 
 const NewShipping = () => {
-  const { newShipping, updateFolio, currentFolioCount } = useContext(
-    AppContext
-  );
+  const {
+    registeredUser,
+    newShipping,
+    updateFolio,
+    currentFolioCount,
+  } = useContext(AppContext);
   const [ready, setReady] = useState(false);
   const form = useRef(null);
   const history = useHistory();
+
+  useEffect(() => {
+    if (registeredUser === null) {
+      history.push("/admin");
+    }
+  }, [registeredUser]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -70,9 +79,9 @@ const NewShipping = () => {
       ivaRetained: formShipping.get("ivaRetained"),
       total: formShipping.get("total"),
     };
-    //console.log(shipping);
+
     newShipping(shipping);
-    updateFolio(currentFolioCount.account + 1);
+    updateFolio("foliosNumbers", currentFolioCount.account + 1);
     setReady(true);
     setTimeout(() => {
       history.push(`/admin/detalles-envio/${shipping.trackingNumber}`);
@@ -90,7 +99,7 @@ const NewShipping = () => {
           <form ref={form} onSubmit={handleSubmit}>
             <section className="NewShipping-numbers">
               <h3>Numero de rastreo: {<TrackingNumber />}</h3>
-              <h3>Nº{<FolioNumber />}</h3>
+              <h3>Nº{<FolioNumber folioType="foliosNumbers" />}</h3>
             </section>
             <section className="NewShipping-origin">
               <input

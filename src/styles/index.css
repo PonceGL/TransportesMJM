@@ -1,6 +1,9 @@
 :root {
-  --primary: #d3e0ea;
-  --secundary: #1687a7;
+  --orange: #ff8303;
+  --blue: #005490;
+  --white: #ffffff;
+  --soft-orange: #ffc288;
+  --secundary: #005490;
 }
 
 html {
@@ -24,14 +27,220 @@ li {
 }
 
 body {
-  min-height: 100vh;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--white);
+  color: var(--blue);
   font-family: "Roboto", sans-serif;
   font-size: 1.4rem;
   font-weight: 400;
 }
 
-main {
-  padding: 2rem;
+/* ----------LOGO-------- */
+
+/* .LogoTransportesMJM:hover .st0 {
+  stroke: #222221;
 }
+.LogoTransportesMJM:hover .st1 {
+  fill: #f1faee;
+}
+.LogoTransportesMJM:hover .st2 {
+  stroke: #1d3557;
+}
+.LogoTransportesMJM:hover .st3 {
+  fill: #e63946;
+}
+.LogoTransportesMJM:hover .st4 {
+  fill: #a8dadc;
+}
+.LogoTransportesMJM:hover .st5 {
+  fill: #457b9d;
+}
+.LogoTransportesMJM:hover .st6 {
+  fill: #1d3557;
+}
+.LogoTransportesMJM:hover .st7 {
+  fill: #2a2c2e;
+}
+.LogoTransportesMJM:hover .st8 {
+  fill: #2a3857;
+}
+.LogoTransportesMJM:hover .st9 {
+  fill: none;
+}
+.LogoTransportesMJM:hover .st10 {
+  fill: #c63c47;
+}
+.LogoTransportesMJM:hover .st11 {
+  fill: #ffffff;
+}
+.LogoTransportesMJM:hover .st12 {
+  fill: #d88a0e;
+}
+.LogoTransportesMJM:hover .st13 {
+  fill: #591099;
+}
+.LogoTransportesMJM:hover .st14 {
+  stroke: #2a3857;
+}
+.LogoTransportesMJM:hover .st15 {
+  stroke: #c63c47;
+} */
+
+.st0 {
+  transition: ease-in-out 0.3s all;
+  fill: none;
+  stroke: #222221;
+  stroke-width: 0.3068;
+  stroke-miterlimit: 10;
+}
+.st1 {
+  transition: ease-in-out 0.3s all;
+  fill: #f1faee;
+}
+.st2 {
+  transition: ease-in-out 0.3s all;
+  fill: none;
+  stroke: #1d3557;
+  stroke-miterlimit: 10;
+}
+.st3 {
+  transition: ease-in-out 0.3s all;
+  fill: #e63946;
+}
+.st4 {
+  transition: ease-in-out 0.3s all;
+  fill: #a8dadc;
+}
+.st5 {
+  transition: ease-in-out 0.3s all;
+  fill: #457b9d;
+}
+.st6 {
+  transition: ease-in-out 0.3s all;
+  fill: #1d3557;
+}
+.st7 {
+  transition: ease-in-out 0.3s all;
+  fill: #2a2c2e;
+}
+.st8 {
+  transition: ease-in-out 0.3s all;
+  fill: #2a2c2e;
+}
+.st9 {
+  transition: ease-in-out 0.3s all;
+  fill: none;
+}
+.st10 {
+  transition: ease-in-out 0.3s all;
+  fill: #c63c47;
+}
+.st11 {
+  transition: ease-in-out 0.3s all;
+  fill: #ffffff;
+}
+.st12 {
+  transition: ease-in-out 0.3s all;
+  fill: #d88a0e;
+}
+.st13 {
+  transition: ease-in-out 0.3s all;
+  fill: #591099;
+}
+.st14 {
+  transition: ease-in-out 0.3s all;
+  fill: none;
+  stroke: #2a3857;
+  stroke-width: 0.7799;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+.st15 {
+  transition: ease-in-out 0.3s all;
+  fill: none;
+  stroke: #c63c47;
+  stroke-width: 0.7799;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+
+/* .st0 {
+  transition: ease-in-out 0.3s all;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.3068;
+  stroke-miterlimit: 10;
+}
+.st1 {
+  transition: ease-in-out 0.3s all;
+  fill: #fff;
+}
+.st2 {
+  transition: ease-in-out 0.3s all;
+  fill: none;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+}
+.st3 {
+  transition: ease-in-out 0.3s all;
+  fill: #fff;
+}
+.st4 {
+  transition: ease-in-out 0.3s all;
+  fill: #fff;
+}
+.st5 {
+  transition: ease-in-out 0.3s all;
+  fill: #fff;
+}
+.st6 {
+  transition: ease-in-out 0.3s all;
+  fill: #fff;
+}
+.st7 {
+  transition: ease-in-out 0.3s all;
+  fill: #fff;
+}
+.st8 {
+  transition: ease-in-out 0.3s all;
+  fill: #fff;
+}
+.st9 {
+  transition: ease-in-out 0.3s all;
+  fill: none;
+}
+.st10 {
+  transition: ease-in-out 0.3s all;
+  fill: #fff;
+}
+.st11 {
+  transition: ease-in-out 0.3s all;
+  fill: #fff;
+}
+.st12 {
+  transition: ease-in-out 0.3s all;
+  fill: #fff;
+}
+.st13 {
+  transition: ease-in-out 0.3s all;
+  fill: #fff;
+}
+.st14 {
+  transition: ease-in-out 0.3s all;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.7799;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+.st15 {
+  transition: ease-in-out 0.3s all;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.7799;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+} */

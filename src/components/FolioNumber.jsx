@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import AppContext from "../context/AppContext";
 
-const FolioNumber = () => {
+const FolioNumber = ({ folioType }) => {
   const { folio, currentFolioCount } = useContext(AppContext);
   const [folioNumber, setFolioNumber] = useState(0);
 
@@ -10,7 +10,7 @@ const FolioNumber = () => {
   };
 
   useEffect(() => {
-    folio();
+    folio(folioType);
   }, []);
 
   useEffect(() => {

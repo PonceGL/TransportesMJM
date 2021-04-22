@@ -1,30 +1,48 @@
 .Newtruck {
+  padding: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-.Newtruck .list-allShippings {
-  width: 30%;
+.Newtruck .list-allShippings-for-truck {
+  width: 25%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
 
-.Newtruck .list-allShippings h3 {
+.Newtruck .list-allShippings-for-truck h3 {
   padding: 0.5rem;
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--secundary);
 }
 
-.Newtruck .list-allShippings button {
+.Newtruck .list-allShippings-for-truck .Newtruck-list-folio-remitente-titles {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Newtruck
+  .list-allShippings-for-truck
+  .Newtruck-list-folio-remitente-titles
+  p:first-child {
+  width: 20%;
+}
+
+.Newtruck .list-allShippings-for-truck button {
   width: 100%;
   margin: 0.1rem 0;
   padding: 0.5rem;
-  color: #000;
-  background-color: var(--primary);
+  color: var(--blue);
+  background-color: var(--soft-orange);
   font-weight: 400;
   display: flex;
   justify-content: flex-start;
@@ -35,17 +53,17 @@
   transition: ease-in-out 0.2s all;
 }
 
-.Newtruck .list-allShippings button:hover {
+.Newtruck .list-allShippings-for-truck button:hover {
   background-color: var(--secundary);
-  color: var(--primary);
+  color: var(--soft-orange);
   font-weight: 700;
 }
 
-.Newtruck .list-allShippings button p {
+.Newtruck .list-allShippings-for-truck button p {
   padding: 0 0.5rem;
 }
 
-.Newtruck .list-allShippings button p:first-child {
+.Newtruck .list-allShippings-for-truck button p:first-child {
   width: 20%;
   font-size: 1.4rem;
   text-align: left;
@@ -53,12 +71,17 @@
 }
 
 .Newtruck form {
-  width: 70%;
+  width: 75%;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
+}
+
+.Newtruck-shipping-folio {
+  width: 4%;
+  font-weight: 700;
 }
 
 .Newtruck-info-container,
@@ -76,22 +99,64 @@
   padding: 0.3rem;
   font-size: 1.4rem;
   text-align: left;
-  border: 0.1rem solid var(--secundary);
+  color: var(--blue);
+  border: 0.1rem solid var(--blue);
   outline: none;
 }
 
 .Newtruck form .Newtruck-shippings {
-  border: 0.1rem solid var(--secundary);
+  border: 0.1rem solid var(--blue);
 }
 
 .Newtruck form .Newtruck-shippings .Newtruck-shipping-info {
   width: 100%;
-  padding: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 0.1rem solid var(--secundary);
+
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 0.5fr 2fr 0.5fr 1fr 2fr 1fr 1.5fr 0.5fr;
 }
+
+.Newtruck form .Newtruck-shippings .Newtruck-shipping-info:nth-child(2n) {
+  background-color: var(--soft-orange);
+}
+
+.Newtruck-shipping-info .Newtruck-shipping-num,
+.Newtruck-shipping-info .Newtruck-shipping-weight,
+.Newtruck-shipping-info .Newtruck-shipping-freight,
+.Newtruck-shipping-info .Newtruck-shipping-delete {
+  text-align: center;
+}
+
+.Newtruck-shipping-info .Newtruck-shipping-folio {
+  width: 100%;
+  text-align: center;
+  grid-column: 1 / span 1;
+}
+
+.Newtruck-shipping-info p {
+  padding: 0.5rem 0.3rem;
+}
+
+.Newtruck-shipping-info p:not(:first-of-type) {
+  border-left: 0.1rem solid var(--secundary);
+}
+
+.Newtruck-shipping-info p:last-of-type {
+  border-right: 0.1rem solid var(--secundary);
+}
+
+.Newtruck-shipping-delete {
+  width: 2rem;
+  height: 2rem;
+  margin: auto auto;
+  font-size: 1.4rem;
+  border: 0.1rem solid red;
+  border-radius: 0.3rem;
+  background-color: transparent;
+  color: red;
+  cursor: pointer;
+  outline: none;
+}
+
 .Newtruck form .Botton-submit {
   width: 20rem;
   margin-top: 2rem;
@@ -99,9 +164,15 @@
   font-size: 1.8rem;
   font-weight: 700;
   text-align: center;
-  color: var(--secundary);
+  color: var(--blue);
   border-radius: 1rem;
-  border: 0.1rem solid var(--secundary);
+  border: 0.1rem solid var(--blue);
   outline: none;
   cursor: pointer;
+  transition: ease-in-out 0.2s all;
+}
+
+.Newtruck form .Botton-submit:hover {
+  color: var(--orange);
+  border: 0.1rem solid var(--orange);
 }

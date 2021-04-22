@@ -16,6 +16,9 @@ const TrackingElement = () => {
         className="package-tracking-input"
         type="text"
         placeholder="Numero de rastreo"
+        required
+        minLength="10"
+        maxLength="10"
         onChange={(e) => {
           setNumber(e.target.value);
         }}

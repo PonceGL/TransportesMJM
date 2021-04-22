@@ -1,3 +1,7 @@
+.NewShipping {
+  padding: 2rem;
+}
+
 .NewShipping form {
   width: 80%;
   margin: 2rem auto;
@@ -34,7 +38,8 @@
   font-size: 1.4rem;
 
   border: none;
-  border-bottom: 0.1rem solid var(--secundary);
+  color: var(--blue);
+  border-bottom: 0.1rem solid var(--blue);
   outline: none;
 }
 
@@ -193,23 +198,37 @@
   font-size: 1.8rem;
   font-weight: 700;
   text-align: center;
-  color: var(--secundary);
+  color: var(--blue);
   border-radius: 1rem;
-  border: 0.1rem solid var(--secundary);
+  border: 0.1rem solid var(--blue);
   outline: none;
   cursor: pointer;
+  transition: ease-in-out 0.2s all;
 }
 
-.Botton-guardar {
+.NewShipping .Botton-guardar {
   width: 20rem;
   margin-top: 2rem;
   padding: 0.5rem;
   font-size: 1.8rem;
   font-weight: 700;
   text-align: center;
-  color: red;
+  color: var(--orange);
+  border: 0.1rem solid var(--orange);
+  background-color: var(--white);
   border-radius: 1rem;
-  border: 0.1rem solid red;
   outline: none;
   cursor: pointer;
+  transition: ease-in-out 0.2s all;
+}
+
+.NewShipping .Botton-submit:hover,
+.NewShipping .Botton-guardar:hover {
+  color: var(--orange);
+  border: 0.1rem solid var(--orange);
+}
+
+.NewShipping .Botton-guardar:hover {
+  color: red;
+  border: 0.1rem solid red;
 }

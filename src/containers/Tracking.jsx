@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import AppContext from "../context/AppContext";
 import Helpline from "@components/Helpline";
 import Loader from "@components/Loader";
@@ -18,23 +18,39 @@ const Tracking = () => {
   };
 
   useEffect(() => {
-    shipping(track);
+    shipping("envios", "envio.trackingNumber", track);
   }, []);
-
-  console.log(query);
 
   return (
     <main className="Tracking">
       <h2 className="Tracking-title">
-        {query ? (
-          "Detalles del envío"
-        ) : (
+        {query === "" && (
           <div className="loader-container">
             <Loader />
           </div>
         )}
+        {query != "" && query === "No existe"
+          ? "No se encontro ningun envío"
+          : "Detalles del envío"}
       </h2>
       <section className="Tracking-status-container">
+        {query === "DoesNotExist" && (
+          <>
+            <p className="DoesNotExist">
+              Verifica que el numero de rastreo este escrito correctamente
+            </p>
+            <p className="DoesNotExist">
+              El numero distingue entre minúsculas y mayúsculas
+            </p>
+            <p className="DoesNotExist">
+              Si acaba de realizar su envío, esperere unos minutos aún no se ve
+              en el sistema
+            </p>
+            <Link to="/" className="DoesNotExist-link">
+              Regresar
+            </Link>
+          </>
+        )}
         {query.statusEntregado && (
           <div className="Tracking-status">
             <h4>Entregado</h4>
@@ -89,8 +105,16 @@ const Tracking = () => {
         )}
       </section>
       <section className="Tracking-info">
-        {details && <p>Remitente {details.remitente}</p>}
-        {details && <p>Destinatario {details.addresseeRecipient}</p>}
+        {details && (
+          <p>
+            Remitente <span>{details.remitente}</span>
+          </p>
+        )}
+        {details && (
+          <p>
+            Destinatario <span>{details.addresseeRecipient}</span>
+          </p>
+        )}
       </section>
       <Helpline />
     </main>

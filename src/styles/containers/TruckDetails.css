@@ -1,0 +1,211 @@
+.TruckDetails {
+  width: 100%;
+  padding: 2rem;
+}
+
+.TruckDetails-actions {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 0.5rem;
+}
+
+.button-finish {
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+}
+
+.TruckDetails-header {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.TruckDetails-header .logo,
+.TruckDetails-header h4 {
+  display: none;
+}
+
+.TruckDetails-header h2 {
+  width: 100%;
+  text-align: right;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.TruckDetails-header h3 {
+  width: 100%;
+  text-align: left;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.TruckDetails-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: scroll;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.TruckDetails-body::-webkit-scrollbar {
+  display: none;
+}
+
+.TruckDetails-shipping-names,
+.TruckDetails-shipping-container,
+.TruckDetails-shipping-totals {
+  width: 80rem;
+  margin: 0.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr 2fr 1fr 1fr 1.5fr 1.5fr 1fr;
+}
+
+.TruckDetails-shipping-names p {
+  width: 100%;
+  padding: 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: left;
+  color: var(--blue);
+  border: 0.1rem solid var(--orange);
+}
+
+.TruckDetails-shipping-container p {
+  width: 100%;
+  padding: 0.3rem;
+  font-size: 1.2rem;
+  text-align: left;
+  border: 0.1rem solid var(--blue);
+}
+
+.TruckDetails-shipping-totals {
+  padding: 0.5rem 0;
+  margin: 1rem 0;
+  color: var(--white);
+  background-color: var(--blue);
+}
+
+.TruckDetails-shipping-totals p {
+  font-weight: 600;
+  text-align: center;
+}
+
+.TruckDetails-shipping-totals .totals-talones {
+  grid-column: 1 / span 1;
+}
+
+.TruckDetails-shipping-totals .totals-bultos {
+  grid-column: 4 / span 1;
+}
+
+.TruckDetails-shipping-totals .totals-seguro {
+  grid-column: 7 / span 1;
+}
+
+.TruckDetails-shipping-totals .totals-flete {
+  grid-column: 9 / span 1;
+}
+
+@media print {
+  .TruckDetails {
+    min-height: 100vh;
+    padding: 2rem;
+    border: 2px solid #000;
+    text-transform: uppercase;
+  }
+
+  main {
+    padding: 0;
+  }
+
+  .TruckDetails-actions .Details-buttons,
+  .TruckDetails-actions .Details-statusShippings {
+    display: none;
+  }
+
+  .TruckDetails-header .logo {
+    display: block;
+    width: 15%;
+    object-fit: cover;
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+  }
+
+  .TruckDetails-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .TruckDetails-actions .Details-buttons {
+    margin-left: 1rem;
+  }
+
+  .TruckDetails-actions .Details-statusShippings {
+    margin-left: 1rem;
+    padding: 0.5rem;
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--secundary);
+    border: 0.1rem solid var(--secundary);
+    background-color: transparent;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: ease-in-out 0.3s all;
+  }
+
+  .TruckDetails-header {
+    width: 100%;
+    margin: 2rem 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .TruckDetails-header div {
+    margin: 1rem 0;
+  }
+
+  .TruckDetails-header h4 {
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    font-weight: 300;
+    text-align: center;
+    display: block;
+  }
+
+  .TruckDetails-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .TruckDetails-header h3 {
+    width: 50%;
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .TruckDetails-body {
+    margin: 1rem 0;
+  }
+
+  .TruckDetails-shipping-names p,
+  .TruckDetails-shipping-container p,
+  .TruckDetails-shipping-totals p {
+    font-size: 1rem;
+  }
+
+  .TruckDetails-shipping-totals {
+    color: #000;
+  }
+}

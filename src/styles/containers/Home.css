@@ -1,52 +1,254 @@
-.Home-header {
-  width: 100%;
-  height: 50vh;
-  padding: 5rem 2rem;
-
+.Home {
+  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-
-  background-color: var(--primary);
-  border-radius: 0 0 50% 50%;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
-.Homw-logo img {
-  height: 15rem;
-  object-fit: cover;
+.Tracking-secction {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("@images/Logistics-truck.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.Tracking-container {
+  width: 70%;
+  margin: 12rem auto;
+  display: flex;
+  color: var(--blue);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+}
+
+.Tracking-container h2 {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.Tracking-container p {
+  margin: 0.5rem auto 1rem;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.Tracking-secction .orange-filter {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, #fff 0%, var(--orange) 100%);
+  opacity: 80%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.Tracking-secction img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 
 /* ---------------------------Who-we-are-and-what-we-do--------------------------- */
 
 .Who-we-are-and-what-we-do {
-  width: 100%;
-  margin-top: 2rem;
+  width: 95%;
+  margin-top: 1rem;
+  padding: 3.5rem 2rem;
+  border-radius: 0 2rem 2rem 0;
+  color: var(--white);
+  background-color: var(--blue);
 }
 
-.Who-we-are-and-what-we-do h2 {
+.Who-we-are-and-what-we-do h4 {
   font-size: 1.6rem;
+  font-weight: 400;
+  text-align: left;
+}
+
+.Who-we-are-and-what-we-do h4 span {
   font-weight: 600;
-  color: var(--secundary);
 }
 
 .Who-we-are-and-what-we-do p {
   margin-top: 1rem;
+  font-size: 1.4rem;
+}
+
+.Who-we-are-and-what-we-do p span {
+  font-weight: 600;
+  color: var(--orange);
+}
+
+/* ---------------------------Arguments--------------------------- */
+.Arguments {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.argument {
+  width: 50%;
+  margin: 1rem;
+  padding: 1rem;
+  margin: 1rem auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.argument-icon-container {
+  width: 6rem;
+  height: 6rem;
+  margin: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  border: 0.1rem solid var(--orange);
+}
+
+.argument-icon-container svg {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+}
+
+.argument p {
+  text-align: center;
+  color: var(--blue);
 }
 
 /* ---------------------------We-container-button--------------------------- */
 
 .We-container-button {
-  width: fit-content;
-  margin: 1rem auto;
-  border-radius: 1rem;
+  width: 100%;
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .We-container-button a {
   padding: 1rem;
+  font-size: 1.6rem;
   text-align: center;
-  color: var(--secundary);
-  border-radius: 1rem;
-  border: 0.1rem solid var(--secundary);
+  color: var(--orange);
+  border-radius: 1.5rem;
+  border: 0.1rem solid var(--blue);
   cursor: pointer;
+}
+
+/* ---------------------------call-or-message--------------------------- */
+
+.call-or-message {
+  width: 100%;
+  padding: 1rem 4rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.call,
+.message {
+  width: 50%;
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--blue);
+}
+
+.call a,
+.message a {
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.whatsapp-number {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.whatsapp-number svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .Home {
+    padding-bottom: 4rem;
+  }
+  .Tracking-container {
+    margin: 18rem auto;
+  }
+
+  .Services {
+    grid-template-columns: repeat(3, minmax(75%, 1fr));
+  }
+
+  .Service {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .Service-title {
+    transform: translate(2rem, -5.8rem);
+  }
+  .Service-description {
+    color: var(--white);
+    transform: translate(2rem, -5rem);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .Tracking-container h2 {
+    font-size: 3.5rem;
+  }
+
+  .Tracking-container p {
+    font-size: 2rem;
+  }
+
+  .package-tracking-input,
+  .package-tracking-button {
+    font-size: 1.5rem;
+  }
+
+  .package-tracking-input::placeholder {
+    font-size: 1.5rem;
+  }
+
+  .argument {
+    width: 25%;
+  }
+
+  .Services {
+    width: 98%;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

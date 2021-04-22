@@ -1,8 +1,9 @@
 :root {
-  --PrintPrimary: #1d3557;
+  --Printsoft-orange: #1d3557;
 }
 
 .Details {
+  padding: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -23,7 +24,7 @@
 .Details-totalInLetters,
 .Details-more-info,
 .Details-last-information {
-  border: 0.1rem solid var(--PrintPrimary);
+  border: 0.1rem solid var(--Printsoft-orange);
 }
 
 .Details-PaymentTermsAndValue,
@@ -228,8 +229,9 @@
   margin: 1rem auto;
 }
 
-.Details-buttons-container {
-  width: 100%;
+.Details-status .Details-buttons-container {
+  width: 78%;
+  margin: 2rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -249,7 +251,7 @@
 
 .Details-buttons:hover {
   background-color: var(--secundary);
-  color: var(--primary);
+  color: var(--soft-orange);
 }
 
 .Details-thanks {
@@ -257,7 +259,12 @@
 }
 
 @media print {
+  :root {
+    --blue: #1d3557;
+  }
+
   .HeaderAdmin,
+  header,
   .Button-print,
   .Details-status {
     display: none;
@@ -267,7 +274,7 @@
     width: 95%;
     margin: 0 auto;
     display: block;
-    border: 2px solid var(--PrintPrimary);
+    border: 2px solid var(--Printsoft-orange);
     text-transform: uppercase;
   }
 
@@ -276,7 +283,7 @@
   }
 
   .Details-info h3 {
-    font-size: 1.4rem;
+    font-size: 1rem;
     font-weight: 400;
   }
 
@@ -288,7 +295,7 @@
   .Details-PaymentTermsAndValue,
   .Details-reshipment-reembarkWith,
   .Details-totalInLetters {
-    border: 1px solid var(--PrintPrimary);
+    border: 1px solid var(--Printsoft-orange);
   }
 
   .Details-PaymentTermsAndValue,
@@ -302,7 +309,7 @@
   .Details-Print-header {
     width: 100%;
     padding: 0.5rem;
-    color: var(--PrintPrimary);
+    color: var(--Printsoft-orange);
     background-color: #fff;
 
     display: flex;
@@ -361,8 +368,19 @@
     color: red;
   }
 
+  .Details-Print-office .Details-Print-WhatsApp span {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .Details-Print-office .Details-Print-WhatsApp span svg {
+    width: 1rem;
+    height: 1rem;
+    color: var(--Printsoft-orange);
+  }
+
   .Details-info {
-    border: 2px solid var(--PrintPrimary);
+    border: 2px solid var(--Printsoft-orange);
   }
 
   .Details-info,
@@ -380,14 +398,14 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-bottom: 0.1rem solid var(--PrintPrimary);
+    border-bottom: 0.1rem solid var(--Printsoft-orange);
   }
 
   .Details-remitente,
   .Details-destination {
     width: 50%;
     margin: 0;
-    border-bottom: 0.1rem solid var(--PrintPrimary);
+    border-bottom: 0.1rem solid var(--Printsoft-orange);
   }
 
   .Details-more-info {
@@ -507,7 +525,7 @@
 
   .details-freight-concept {
     text-align: right;
-    border-right: 0.1rem solid var(--PrintPrimary);
+    border-right: 0.1rem solid var(--Printsoft-orange);
   }
 
   .details-freight-amount {
@@ -516,7 +534,7 @@
 
   .Details-freight p {
     margin: 1rem 0;
-    border-bottom: 0.1rem solid var(--PrintPrimary);
+    border-bottom: 0.1rem solid var(--Printsoft-orange);
   }
 
   .details-freight-amount p {
@@ -542,7 +560,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    border: 0.1rem solid var(--PrintPrimary);
+    border: 0.1rem solid var(--Printsoft-orange);
     border-bottom: none;
   }
 
@@ -570,7 +588,7 @@
 
   .Details-last-information .Details-accordance .line {
     width: 80%;
-    border-top: 0.1rem solid var(--PrintPrimary);
+    border-top: 0.1rem solid var(--Printsoft-orange);
 
     position: absolute;
     bottom: 1.5rem;
@@ -579,7 +597,8 @@
   .Details-last-information .Details-trackingNumber p {
     font-size: 2.2rem;
     font-weight: 700;
-    color: var(--PrintPrimary);
+    color: var(--Printsoft-orange);
+    text-transform: none;
   }
 
   .Details-thanks {
@@ -589,6 +608,6 @@
     font-size: 0.8rem;
     font-weight: 700;
     display: block;
-    border-top: 0.1rem solid var(--PrintPrimary);
+    border-top: 0.1rem solid var(--Printsoft-orange);
   }
 }

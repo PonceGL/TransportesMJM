@@ -18,7 +18,7 @@
   position: absolute;
   left: 0.8rem;
   width: 1rem;
-  background: var(--secundary);
+  background: var(--blue);
   border-radius: 0.5rem;
   animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
@@ -38,10 +38,14 @@
   0% {
     top: 0.8rem;
     height: 6.4rem;
+    background: var(--blue);
   }
-  50%,
+  50% {
+    background: var(--orange);
+  }
   100% {
     top: 24px;
     height: 3.2rem;
+    background: var(--blue);
   }
 }

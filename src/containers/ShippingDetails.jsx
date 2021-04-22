@@ -1,13 +1,17 @@
 import React, { useContext, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import AppContext from "../context/AppContext";
 import Logo from "@images/MJM_logo.svg";
+import IconWhatsapp from "@components/IconWhatsapp";
 import "@styles/containers/ShippingDetails.css";
 
 const ShippingDetails = () => {
-  const { shipping, query } = useContext(AppContext);
+  const { registeredUser, shipping, query, updateStatus } = useContext(
+    AppContext
+  );
   const location = useLocation().pathname;
   const details = query.envio;
+  const history = useHistory();
   const options = {
     weekday: "long",
     year: "numeric",
@@ -16,13 +20,24 @@ const ShippingDetails = () => {
   };
 
   useEffect(() => {
-    shipping(location.slice(22));
+    if (registeredUser === null) {
+      history.push("/admin");
+    }
+  }, [registeredUser]);
+
+  useEffect(() => {
+    shipping("envios", "envio.trackingNumber", location.slice(22));
   }, []);
 
   const handlePrint = () => {
-    console.log("Imprimir");
     window.print();
   };
+
+  const maintainShipmentStatus = (status) => {
+    updateStatus(details.trackingNumber, status);
+  };
+
+  console.log(query);
 
   return (
     <>
@@ -53,10 +68,16 @@ const ShippingDetails = () => {
                   <p>TEL./FAX. 55 55 52 85 11</p>
                 </div>
                 <div className="Details-Print-office veracruzOffice">
-                  <h4>OFICINAS DE VERACRUZ</h4>
-                  <p>BLVD FIDEL VELAZQUEZ No. 110</p>
-                  <p>COL. PLAYA LINDA C.P. 91810</p>
-                  <p>TEL. 22 92 17 81 51</p>
+                  <h4>OFICINAS DE XALAPA</h4>
+                  <p>CALLE CIRILO CELIS PASTRANA</p>
+                  <p>No. 4 COL. RAFAEL LUCIO C.P. 91110</p>
+                  <p>XALAPA, VER. TEL.: 228 1338 418</p>
+                  <p className="Details-Print-WhatsApp">
+                    <span>
+                      <IconWhatsapp />
+                    </span>{" "}
+                    WhatsApp: 228 1402 833
+                  </p>
                 </div>
               </div>
             </div>
@@ -78,14 +99,14 @@ const ShippingDetails = () => {
               </p>
             </div>
             <div className="Details-remitente">
-              <h3>Remitente {details.remitente}</h3>
+              <h3>Remitente: {details.remitente}</h3>
               <p>Origen: {details.origin}</p>
               <p>R.F.C.: {details.rfcRemitente}</p>
               <p>Domicilio: {details.addressRemitente}</p>
               <p>Se recogerá en: {details.collectedIn}</p>
             </div>
             <div className="Details-destination">
-              <h3>Destinatario {details.addresseeRecipient}</h3>
+              <h3>Destinatario: {details.addresseeRecipient}</h3>
               <p>Destino: {details.destination}</p>
               <p>R.F.C.: {details.rfcRecipient}</p>
               <p>Domicilio: {details.addressRecipient}</p>
@@ -246,6 +267,12 @@ const ShippingDetails = () => {
               )}
             </div>
             <div className="Details-buttons-container">
+              <Link
+                to={`/admin/editar-envio/${details.trackingNumber}`}
+                className="Details-buttons Button-edit"
+              >
+                Editar
+              </Link>
               <button
                 className="Details-buttons Button-print"
                 onClick={() => {
@@ -254,13 +281,18 @@ const ShippingDetails = () => {
               >
                 Imprimir
               </button>
-              <Link
-                to={`/admin/editar-envio/${details.trackingNumber}`}
-                className="Details-buttons Button-edit"
-              >
-                Editar
-              </Link>
             </div>
+            {query.statusEnDomicilio && (
+              <button
+                type="button"
+                className="Details-buttons"
+                onClick={() => {
+                  maintainShipmentStatus("entregado");
+                }}
+              >
+                Actualizar status de envio: Entregado
+              </button>
+            )}
           </section>
         </main>
       )}

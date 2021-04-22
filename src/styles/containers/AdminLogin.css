@@ -1,0 +1,74 @@
+.Admin-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Admin-login-logo {
+  width: 30rem;
+}
+
+.Admin-login form {
+  width: 50rem;
+  padding: 4rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem;
+  border: 0.2rem solid var(--secundary);
+}
+
+.Admin-login form .input-label,
+.Admin-login form .input-login {
+  padding: 0.5rem;
+  text-align: left;
+  color: var(--secundary);
+}
+.Admin-login form .input-label {
+  transform: translate(-15rem, -4.4rem);
+  background-color: #fff;
+  transition: ease-in-out 0.3s all;
+}
+
+.Admin-login form .input-label:nth-last-of-type(1) {
+  transform: translate(-14rem, -4.4rem);
+}
+
+.Admin-login form .input-login {
+  margin-top: 1rem;
+  width: 80%;
+  font-size: 1.4rem;
+  border-radius: 0.4rem;
+  border: 0.1rem solid var(--secundary);
+  outline: none;
+}
+
+.Admin-login form .input-login:focus {
+  border: 0.2rem solid var(--secundary);
+}
+
+.Admin-login form .input-login:focus + .input-label {
+  font-weight: 700;
+  transform: translate(-15rem, -6rem);
+}
+
+.Admin-login .Botton-submit {
+  width: 50%;
+  padding: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--secundary);
+  background-color: #fff;
+  border: 0.2rem solid var(--secundary);
+  border-radius: 1rem;
+  outline: none;
+  cursor: pointer;
+  transition: ease-in-out 0.3s all;
+}
+
+.Admin-login .Botton-submit:hover {
+  background-color: var(--primary);
+}

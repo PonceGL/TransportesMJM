@@ -1,27 +1,142 @@
 .HeaderAdmin {
+  width: 100%;
   padding: 2rem;
+  color: var(--blue);
+
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
-  color: var(--secundary);
+  align-items: flex-start;
+  position: relative;
 }
 
-.NewShipping-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.HeaderAdmin-logo {
+  width: 25%;
 }
 
-.NewShipping-logo img {
-  height: 10rem;
+.HeaderAdmin-logo img {
+  width: 100%;
   object-fit: contain;
 }
 
 .time-container {
+  width: 50%;
+  margin-bottom: 2rem;
+  text-align: right;
+}
+
+.time-container .time {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.name-and-button-user {
+  width: 66%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name-and-button-user .name {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.name-and-button-user button {
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  font-size: 1.4rem;
+  color: var(--orange);
+  border: 0.1rem solid var(--orange);
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.button-website {
+  width: 33%;
+  text-align: center;
+  font-weight: 600;
+  padding: 0.5rem;
+  color: var(--blue);
+  border: 0.1rem solid var(--blue);
+  border-radius: 0.5rem;
+}
+
+/* .HeaderAdmin {
+  width: 100%;
+
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--blue);
+  position: relative;
+}
+
+.HeaderAdmin-logo {
+  display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+}
+
+.HeaderAdmin-logo img {
+  height: 6rem;
+  object-fit: contain;
+}
+
+.button-website {
+  padding: 1.5rem 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  position: absolute;
+  top: 15%;
+  right: 0;
+  border-radius: 1rem 0 0 1rem;
+  color: var(--blue);
+  background-color: var(--orange);
+  transition: ease-in-out 0.3s all;
+}
+
+.button-website:hover {
+  padding-top: 2rem;
+}
+
+.time-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.HeaderAdmin .time-container .name-and-button-user {
+  min-width: 15rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.HeaderAdmin .time-container .name-and-button-user button {
+  padding: 0.3rem;
+  color: var(--blue);
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--blue);
+  outline: none;
+  cursor: pointer;
+  transition: ease-in-out 0.3s all;
+}
+
+.HeaderAdmin .time-container .name-and-button-user button:hover {
+  font-weight: 600;
+  color: red;
+  border: 0.1rem solid red;
 }
 
 .NewShipping-title {
@@ -35,4 +150,71 @@
 
 .date {
   font-size: 1.6rem;
+} */
+
+@media print {
+  .HeaderAdmin,
+  header {
+    display: none;
+  }
 }
+
+/* @media screen and (min-width: 750px) {
+  .NewShipping-logo img {
+    height: 10rem;
+  }
+
+  .button-website {
+    padding: 0.5rem;
+    top: 0;
+    right: 20%;
+    border-radius: 0 0 1rem 1rem;
+  }
+
+  .time-container {
+    width: 25%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .time-container .time,
+  .time-container .date,
+  .time-container .name-and-button-user {
+    width: 50%;
+  }
+
+  .time-container .time {
+    font-size: 3rem;
+  }
+
+  .Admin-Inicio {
+    flex-direction: column-reverse;
+  }
+
+  .Admin-Inicio section {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .Admin-Actions {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Admin-Actions a {
+    width: 48%;
+    text-align: center;
+  }
+
+  .list-allShippings,
+  .list-allTrucks,
+  .Admin-Actions {
+    border: 0.2rem solid var(--orange);
+  }
+
+  .view-list {
+    border: 0.2rem solid var(--secundary);
+  }
+} */

@@ -1,14 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "@images/MJM_logo.svg";
+import Logo from "@components/Logo";
 import "@styles/components/Header.css";
 
 const Header = () => {
   return (
-    <header>
+    <header className="Header">
       <Link to="/" className="Header-logo">
-        <img src={Logo} alt="" />
+        <Logo />
       </Link>
+      <nav className="Header-menu-nav">
+        <li>
+          <a href="#">Servicios</a>
+        </li>
+        <li>
+          <a href="#">Nosotros</a>
+        </li>
+      </nav>
     </header>
   );
 };

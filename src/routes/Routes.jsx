@@ -5,10 +5,13 @@ import Home from "@containers/Home";
 import Layout from "@components/Layout";
 import Tracking from "@containers/Tracking";
 import NewShipping from "@containers/NewShipping";
+import Admin from "@containers/Admin";
+import RegisteredUser from "@containers/RegisteredUser";
 import AdminInicio from "@containers/AdminInicio";
 import ShippingDetails from "@containers/ShippingDetails";
 import LayoutAdmin from "@components/LayoutAdmin";
 import ShippingEdit from "@containers/ShippingEdit";
+import TruckDetails from "@containers/TruckDetails";
 import Newtruck from "@containers/Newtruck";
 
 import AppContext from "../context/AppContext";
@@ -21,12 +24,14 @@ const Routes = () => {
     <AppContext.Provider value={Firebase}>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/admin" component={Admin} />
+          <Route exact path="/registro" component={RegisteredUser} />
           <Route
             path={[
               "/admin/inicio",
               "/admin/nuevo-envio",
               "/admin/detalles-envio/:id",
+              "/admin/detalles-camion/:id",
               "/admin/editar-envio/:id",
               "/admin/crear-camion",
             ]}
@@ -41,14 +46,20 @@ const Routes = () => {
               />
               <Route
                 exact
+                path="/admin/detalles-camion/:id"
+                component={TruckDetails}
+              />
+              <Route
+                exact
                 path="/admin/editar-envio/:id"
                 component={ShippingEdit}
               />
               <Route exact path="/admin/crear-camion" component={Newtruck} />
             </LayoutAdmin>
           </Route>
-          <Route path={["/tracking/:id"]}>
+          <Route path={["/", "/tracking/:id"]}>
             <Layout>
+              <Route exact path="/" component={Home} />
               <Route exact path="/tracking/:id" component={Tracking} />
             </Layout>
           </Route>

@@ -9,21 +9,23 @@
 .package-tracking-input {
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
+  color: var(--blue);
   border-radius: 1rem 0 0 1rem;
-  border: 0.1rem solid var(--secundary);
+  border: 0.1rem solid var(--blue);
   outline: none;
 }
 
 .package-tracking-input::placeholder {
   font-size: 1.1rem;
+  color: var(--blue);
 }
 
 .package-tracking-button {
   padding: 0.5rem;
   font-size: 1.1rem;
   border-radius: 0 1rem 1rem 0;
-  border: 0.1rem solid var(--secundary);
-  background-color: var(--secundary);
+  border: 0.1rem solid var(--blue);
+  background-color: var(--blue);
   outline: none;
 }
 

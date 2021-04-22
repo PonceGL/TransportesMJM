@@ -1,14 +1,54 @@
-header {
+.Header {
   width: 100%;
-  padding: 2rem;
-  background-color: var(--primary);
+  padding: 0 2rem;
+  background-color: var(--white);
 
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 }
 
-.Header-logo img {
-  height: 10rem;
-  object-fit: contain;
+.Header-logo {
+  width: 25%;
+  /* border: 0.2rem solid rgba(255, 129, 3, 1); */
+  transition: ease-in-out 0.6s all;
+}
+
+.Header-logo:hover {
+  background-color: rgba(255, 129, 3, 0.2);
+}
+
+.Header-menu-nav {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Header-menu-nav li a {
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  color: var(--blue);
+  border: 0.1rem solid transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: ease-in-out 0.3s all;
+}
+
+.Header-menu-nav li a:hover {
+  border: 0.1rem solid var(--orange);
+}
+
+@media screen and (min-width: 1000px) {
+  .Header-logo {
+    width: 15%;
+  }
+
+  .Header-menu-nav {
+    justify-content: flex-end;
+  }
+
+  .Header-menu-nav li {
+    margin: 1rem 2rem;
+  }
 }

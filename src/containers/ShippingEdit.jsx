@@ -36,7 +36,9 @@ const ShippingEdit = () => {
   const [remarksEdit, setRemarksEdit] = useState("");
   const [totalInLettersEdit, setTotalInLettersEdit] = useState("");
 
-  const { query, shipping, updateShipping } = useContext(AppContext);
+  const { registeredUser, query, shipping, updateShipping } = useContext(
+    AppContext
+  );
   const [ready, setReady] = useState(false);
   const location = useLocation().pathname;
   const details = query.envio;
@@ -45,7 +47,13 @@ const ShippingEdit = () => {
   const history = useHistory();
 
   useEffect(() => {
-    shipping(location.slice(20));
+    if (registeredUser === null) {
+      history.push("/admin");
+    }
+  }, [registeredUser]);
+
+  useEffect(() => {
+    shipping("envios", "envio.trackingNumber", location.slice(20));
   }, []);
 
   const handleChange = (value, func, lengthy) => {
