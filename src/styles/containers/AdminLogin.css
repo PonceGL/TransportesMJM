@@ -10,7 +10,8 @@
 }
 
 .Admin-login form {
-  width: 50rem;
+  width: 90%;
+  max-width: 50rem;
   padding: 4rem 2rem 2rem;
   display: flex;
   flex-direction: column;
@@ -20,7 +21,7 @@
   border: 0.2rem solid var(--secundary);
 }
 
-.Admin-login form .input-label,
+/* .Admin-login form .input-label,
 .Admin-login form .input-login {
   padding: 0.5rem;
   text-align: left;
@@ -34,6 +35,21 @@
 
 .Admin-login form .input-label:nth-last-of-type(1) {
   transform: translate(-14rem, -4.4rem);
+} */
+.Admin-login form .input-label,
+.Admin-login form .input-login {
+  padding: 0.5rem;
+  text-align: left;
+  color: var(--secundary);
+}
+.Admin-login form .input-label {
+  transform: translate(-150%, -4.4rem);
+  background-color: #fff;
+  transition: ease-in-out 0.3s all;
+}
+
+.Admin-login form .input-label:nth-last-of-type(1) {
+  transform: translate(-100%, -4.4rem);
 }
 
 .Admin-login form .input-login {
@@ -49,9 +65,14 @@
   border: 0.2rem solid var(--secundary);
 }
 
-.Admin-login form .input-login:focus + .input-label {
+.Admin-login form .input-login:first-of-type:focus + .input-label {
   font-weight: 700;
-  transform: translate(-15rem, -6rem);
+  transform: translate(-150%, -6rem);
+}
+
+.Admin-login form .input-login:nth-of-type(2):focus + .input-label {
+  font-weight: 700;
+  transform: translate(-100%, -6rem);
 }
 
 .Admin-login .Botton-submit {
@@ -71,4 +92,30 @@
 
 .Admin-login .Botton-submit:hover {
   background-color: var(--primary);
+}
+
+.errorMessage {
+  padding: 1rem 1rem 4rem;
+  font-size: 1.6rem;
+  color: var(--white);
+  background-color: red;
+  position: absolute;
+  bottom: 0;
+  border-radius: 1rem 1rem 0 0;
+}
+
+@media screen and (min-width: 750px) {
+  .Admin-login form .input-label {
+    transform: translate(-260%, -4.4rem);
+  }
+  .Admin-login form .input-label:nth-last-of-type(1) {
+    transform: translate(-180%, -4.4rem);
+  }
+  .Admin-login form .input-login:first-of-type:focus + .input-label {
+    transform: translate(-260%, -6rem);
+  }
+
+  .Admin-login form .input-login:nth-of-type(2):focus + .input-label {
+    transform: translate(-180%, -6rem);
+  }
 }

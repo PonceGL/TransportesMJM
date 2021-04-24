@@ -19,11 +19,11 @@ const Newtruck = () => {
   const form = useRef(null);
   const history = useHistory();
 
-  useEffect(() => {
-    if (registeredUser === null) {
-      history.push("/admin");
-    }
-  }, [registeredUser]);
+  // useEffect(() => {
+  //   if (registeredUser === null) {
+  //     history.push("/admin");
+  //   }
+  // }, [registeredUser]);
 
   useEffect(() => {
     allShippingQuery("envios", "envio.folioNumber", "asc");
@@ -65,7 +65,7 @@ const Newtruck = () => {
           </div>
         ) : (
           <>
-            <section className="list-allShippings-for-truck">
+            <section className="list-allShippings-for-truck column-tp-left">
               <h3>Envíos disponibles</h3>
               <div className="Newtruck-list-folio-remitente-titles">
                 <p>Folio</p>
@@ -121,7 +121,7 @@ const Newtruck = () => {
                   }}
                 />
               </section>
-              <section className="Newtruck-shippings">
+              <section className="Newtruck-shippings column-tp-left">
                 {shippings.map((shipping) => (
                   <div
                     className="Newtruck-shipping-info"

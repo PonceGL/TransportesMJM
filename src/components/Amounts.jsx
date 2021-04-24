@@ -79,48 +79,56 @@ const Amounts = ({
         <input
           type="text"
           name="freight"
+          className="bolt"
           value={freight ? freight : freightEdit}
           onChange={(e) => onlyNumbers(e.target.value, setFreight)}
         />
         <input
           type="text"
           name="insurance"
+          className="bolt"
           value={insurance ? insurance : insuranceEdit}
           onChange={(e) => onlyNumbers(e.target.value, setInsurance)}
         />
         <input
           type="text"
           name="shunting"
+          className="bolt"
           value={shunting ? shunting : shuntingEdit}
           onChange={(e) => onlyNumbers(e.target.value, setShunting)}
         />
         <input
           type="text"
           name="others"
+          className="bolt"
           value={others ? others : othersEdit}
           onChange={(e) => onlyNumbers(e.target.value, setOthers)}
         />
         <input
           type="text"
           name="subtotal"
+          className="bolt"
           readOnly
           value={subtotal ? formatter.format(subtotal) : subtotalEdit}
         />
         <input
           type="text"
           name="ivaTransfer"
+          className="bolt"
           readOnly
           value={ivaTransfer ? formatter.format(ivaTransfer) : ivaTransferEdit}
         />
         <input
           type="text"
           name="ivaRetained"
+          className="bolt"
           readOnly
           value={ivaRetained ? formatter.format(ivaRetained) : ivaRetainedEdit}
         />
         <input
           type="text"
           name="total"
+          className="bolt"
           readOnly
           value={total ? formatter.format(total) : totalEdit}
         />

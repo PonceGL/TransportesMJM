@@ -1,234 +1,280 @@
 .NewShipping {
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .NewShipping form {
-  width: 80%;
-  margin: 2rem auto;
-
+  width: 100%;
+  margin: 1rem 0;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
 }
 
 .NewShipping-numbers {
   width: 100%;
-  margin: 2rem 0;
+  margin: 1rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.NewShipping form .NewShipping-origin,
-.NewShipping form .NewShipping-destination {
-  width: 49%;
+.NewShipping-numbers h3:first-child {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
 
+.NewShipping-numbers h3:last-child {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.NewShipping-numbers h3,
+.NewShipping-numbers .trackingNumber-input {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--blue);
+  border: none;
+  outline: none;
+}
+
+.NewShipping-numbers h3:first-child .trackingNumber-input {
+  margin-top: 0.5rem;
+}
+
+.NewShipping-numbers h3:last-child .trackingNumber-input {
+  width: 20%;
+}
+
+.NewShipping-origin,
+.NewShipping-destination {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  border: 0.1rem solid var(--secundary);
-  border-bottom: none;
-}
-
-.NewShipping form .input-form {
-  width: 100%;
-  padding: 0.3rem;
-  font-size: 1.4rem;
-
-  border: none;
-  color: var(--blue);
-  border-bottom: 0.1rem solid var(--blue);
-  outline: none;
-}
-
-.NewShipping .NewShipping-unit-value {
-  width: 100%;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.NewShipping-unit-value_description {
-  font-size: 1.4rem;
-  color: var(--secundary);
-}
-
-.NewShipping-unit-value_description {
-  width: 100%;
-  margin: 2rem auto 1rem;
-  text-align: center;
-}
-
-.NewShipping .NewShipping-unit-value .input-unit-value {
-  width: 49%;
-  height: 3rem;
-  padding: 0.3rem;
-  font-size: 1.4rem;
-
-  border: 0.1rem solid var(--secundary);
-  outline: none;
-}
-
-.NewShipping .NewShipping-more-information {
-  width: 100%;
-  margin: 2rem auto;
-
-  display: flex;
-  justify-content: space-between;
   align-items: flex-start;
 }
 
-.NewShipping .NewShipping-more-information .Agreed-container,
-.NewShipping .NewShipping-more-information .weightAndVolume-conatiner {
-  width: 25%;
-  height: 8rem;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.NewShipping .NewShipping-more-information .Agreed-container .Bultos {
-  width: 100%;
-}
-
-.NewShipping
-  .NewShipping-more-information
-  .Agreed-container
-  .input-more-information {
-  width: 50%;
-}
-
-.NewShipping .NewShipping-more-information input {
-  padding: 0.3rem;
-  font-size: 1.4rem;
-  border: 0.1rem solid var(--secundary);
-  outline: none;
-}
-
-.NewShipping .NewShipping-more-information textarea {
-  width: 47%;
-  height: 8rem;
-  padding: 0.5rem;
-  font-size: 1.6rem;
-  color: var(--secundary);
-  resize: none;
-  border: 0.1rem solid var(--secundary);
-  outline: none;
-}
-
-.NewShipping
-  .NewShipping-more-information
-  .weightAndVolume-conatiner
-  .input-peso {
-  width: 100%;
-}
-
-.NewShipping
-  .NewShipping-more-information
-  .weightAndVolume-conatiner
-  .input-weightAndVolume {
-  width: 50%;
-}
-
+.NewShipping-origin,
+.NewShipping-destination,
+.NewShipping-unit-value,
+.NewShipping-more-information,
 .shipment {
-  width: 72%;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  width: 100%;
+  margin: 1rem 0;
 }
 
-.input-shipment,
-.drove-container {
-  width: 49%;
-  padding: 0.3rem;
+.NewShipping-origin input,
+.NewShipping-destination input,
+.NewShipping-unit-value input,
+.NewShipping-more-information input,
+.NewShipping-more-information textarea,
+.shipment input,
+.shipment textarea,
+.NewShipping .input-totalInLetters {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.2rem;
   font-size: 1.4rem;
-
-  border: 0.1rem solid var(--secundary);
+  color: var(--blue);
+  border: 0.1rem solid var(--blue);
+  background-color: var(--white);
   outline: none;
 }
 
-.drove-container {
-  border-top: none;
+.NewShipping-origin input::placeholder,
+.NewShipping-destination input::placeholder,
+.NewShipping-unit-value input::placeholder,
+.NewShipping-more-information input::placeholder,
+.NewShipping-more-information textarea::placeholder,
+.shipment input::placeholder,
+.shipment textarea::placeholder,
+.NewShipping .input-totalInLetters::placeholder {
+  font-size: 1.4rem;
+  color: var(--blue);
 }
 
-.drove-container .input-drove:first-child {
-  width: 100%;
+.NewShipping-unit-value p {
   margin-bottom: 1rem;
 }
 
-.drove-container .input-drove {
-  width: 50%;
-  border: none;
-  outline: none;
-}
-
+.NewShipping-more-information textarea,
 .shipment textarea {
-  width: 100%;
   height: 8rem;
-  margin-top: 2rem;
-  padding: 0.5rem;
-  font-size: 1.6rem;
-  color: var(--secundary);
+  margin: 1rem 0;
   resize: none;
-  border: 0.1rem solid var(--secundary);
-  outline: none;
 }
 
-.shipment .input-totalInLetters {
-  width: 100%;
-  padding: 0.3rem;
-  font-size: 1.4rem;
-  color: var(--secundary);
-  border: 0.1rem solid var(--secundary);
-  border-top: none;
-  outline: none;
+.shipment .reembarkWith {
+  margin-bottom: 1.5rem;
+}
+
+.NewShipping .input-totalInLetters {
+  margin: 1rem 0;
 }
 
 .NewShipping .Botton-submit {
-  width: 20rem;
+  width: 100%;
   margin-top: 2rem;
   padding: 0.5rem;
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: 1.4rem;
+  font-weight: 600;
   text-align: center;
   color: var(--blue);
-  border-radius: 1rem;
   border: 0.1rem solid var(--blue);
-  outline: none;
-  cursor: pointer;
-  transition: ease-in-out 0.2s all;
-}
-
-.NewShipping .Botton-guardar {
-  width: 20rem;
-  margin-top: 2rem;
-  padding: 0.5rem;
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-align: center;
-  color: var(--orange);
-  border: 0.1rem solid var(--orange);
   background-color: var(--white);
-  border-radius: 1rem;
   outline: none;
   cursor: pointer;
-  transition: ease-in-out 0.2s all;
 }
 
-.NewShipping .Botton-submit:hover,
-.NewShipping .Botton-guardar:hover {
+.NewShipping .Botton-submit:hover {
   color: var(--orange);
   border: 0.1rem solid var(--orange);
 }
 
-.NewShipping .Botton-guardar:hover {
-  color: red;
-  border: 0.1rem solid red;
+@media screen and (min-width: 1000px) {
+  .NewShipping form {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .NewShipping-numbers {
+    border: 0.1rem solid var(--blue);
+  }
+
+  .NewShipping-origin,
+  .NewShipping-destination {
+    width: 48%;
+  }
+
+  .NewShipping-unit-value {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 0.5rem;
+  }
+
+  .NewShipping-unit-value p {
+    margin: 0;
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+  }
+
+  .NewShipping-more-information {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    justify-items: center;
+    align-items: stretch;
+  }
+
+  .NewShipping-more-information textarea {
+    height: auto;
+    margin: 0.5rem 0;
+  }
+
+  .NewShipping .shipment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, min-content);
+    grid-gap: 1rem;
+  }
+
+  .NewShipping .shipment input {
+    margin: 0;
+  }
+
+  .NewShipping .shipment textarea {
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 1;
+  }
+
+  .concept-And-Amount {
+    width: 40%;
+  }
+
+  .NewShipping .input-totalInLetters {
+    width: 55%;
+  }
+
+  .NewShipping .Botton-submit {
+    width: 55%;
+    transform: translate(81.5%, -20rem);
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  /* .NewShipping {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  } */
+
+  .NewShipping form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(5, min-content);
+    grid-gap: 1rem;
+    justify-content: center;
+    align-items: start;
+  }
+
+  .NewShipping-numbers,
+  .NewShipping-unit-value,
+  .NewShipping-more-information,
+  .shipment {
+    margin: 0;
+    grid-column: 1 / span 2;
+  }
+
+  .NewShipping-numbers {
+    margin: 0;
+  }
+
+  .NewShipping-origin {
+    width: 100%;
+    margin: 0;
+    grid-column: 1 / span 1;
+  }
+
+  .NewShipping-destination {
+    width: 100%;
+    margin: 0;
+    grid-column: 2 / span 1;
+  }
+
+  .concept-And-Amount {
+    width: 100%;
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 3;
+  }
+
+  .NewShipping .input-totalInLetters {
+    width: 100%;
+    grid-column: 3 / span 1;
+    grid-row: 4 / span 1;
+  }
+
+  .NewShipping .Botton-submit {
+    width: 100%;
+    grid-column: 3 / span 1;
+    grid-row: 5 / span 1;
+    transform: initial;
+  }
+
+  .NewShipping .Botton-submit {
+    width: 100%;
+    grid-column: 3 / span 1;
+    grid-row: 5 / span 1;
+    transform: initial;
+  }
 }

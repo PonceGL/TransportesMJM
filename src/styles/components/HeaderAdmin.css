@@ -159,6 +159,48 @@
   }
 }
 
+@media screen and (min-width: 1000px) {
+  .HeaderAdmin-logo {
+    width: 15%;
+  }
+
+  .time-container .time {
+    font-size: 4rem;
+  }
+
+  .button-website {
+    width: fit-content;
+    padding: 0.5rem;
+    position: absolute;
+    top: 0;
+    right: 20%;
+    background-color: var(--orange);
+    border-radius: 0;
+    border: none;
+    transition: ease-in-out 0.3s all;
+  }
+
+  .button-website:hover {
+    padding: 2rem 1rem 1rem;
+  }
+
+  .name-and-button-user {
+    width: 40%;
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .name-and-button-user .name {
+    margin-right: 2rem;
+  }
+
+  .name-and-button-user button {
+    border-radius: 0;
+  }
+}
+
 /* @media screen and (min-width: 750px) {
   .NewShipping-logo img {
     height: 10rem;

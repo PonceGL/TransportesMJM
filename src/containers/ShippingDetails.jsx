@@ -19,11 +19,11 @@ const ShippingDetails = () => {
     day: "numeric",
   };
 
-  useEffect(() => {
-    if (registeredUser === null) {
-      history.push("/admin");
-    }
-  }, [registeredUser]);
+  // useEffect(() => {
+  //   if (registeredUser === null) {
+  //     history.push("/admin");
+  //   }
+  // }, [registeredUser]);
 
   useEffect(() => {
     shipping("envios", "envio.trackingNumber", location.slice(22));
@@ -37,8 +37,6 @@ const ShippingDetails = () => {
     updateStatus(details.trackingNumber, status);
   };
 
-  console.log(query);
-
   return (
     <>
       {details && (
@@ -50,7 +48,7 @@ const ShippingDetails = () => {
               className="Details-Print-logo"
             />
             <div className="Details-Print-centerarea">
-              <h1 className="Details-Print-title">Juan Carlos Gomez Suarez</h1>
+              <h1 className="Details-Print-title">Transportes MJM</h1>
               <p className="Details-Print-subtitle">
                 Servicio de autotransporte público federal de carga
               </p>
@@ -90,7 +88,7 @@ const ShippingDetails = () => {
           </section>
 
           <section className="Details-info">
-            <div className="Details-date-origin">
+            <div className="Details-date-origin space-between-center">
               <p>{details.origin}</p>
               <p>
                 {query.statusRecibidoHora
@@ -113,32 +111,53 @@ const ShippingDetails = () => {
               <p>Se entregarán en: {details.toBeDeliveredIn}</p>
             </div>
             <div className="Details-more-info">
-              <div className="Details-PaymentTermsAndValue">
+              <div className="Details-PaymentTermsAndValue space-between-center">
                 <p>
                   valor unitario, cuota convenida por <br /> tonelada o carga
                   fraccionada
                 </p>
-                <p>Valor declarado: {details.declaredValue}</p>
-                <p>Condiciones de pago: {details.paymentTerms}</p>
+                <p>
+                  Valor: <span>{details.declaredValue}</span>
+                </p>
+                <p>
+                  <span>{details.paymentTerms}</span>
+                </p>
               </div>
               <div className="Details-bulge-claims-weight-container">
                 <div className="Details-bulge-num-packaging">
-                  <p>{details.bulge}</p>
-                  <p>Numero: {details.num}</p>
-                  <p>Embalaje: {details.packaging}</p>
+                  <p className="bolt">{details.bulge}</p>
+                  <p>
+                    Numero: <span className="bolt">{details.num}</span>
+                  </p>
+                  <p>
+                    Embalaje: <span className="bolt">{details.packaging}</span>
+                  </p>
                 </div>
-                <p className="Details-description-for-client">
-                  Que el remitente dice contienen: {details.claimsToContain}
-                </p>
+                <div className="Details-description-for-client">
+                  <p>Que el remitente dice contienen:</p>
+                  <p>{details.claimsToContain}</p>
+                </div>
                 <div className="Details-weight-m3-estimatedWeight">
-                  <p>Peso: {details.weight}</p>
-                  <p>Volumen m3: {details.m3}</p>
-                  <p>Peso estimado: {details.estimatedWeight}</p>
+                  <p>
+                    Peso: <span className="bolt">{details.weight}</span>
+                  </p>
+                  <p>
+                    Volumen m3: <span className="bolt">{details.m3}</span>
+                  </p>
+                  <p>
+                    Peso estimado:{" "}
+                    <span className="bolt">{details.estimatedWeight}</span>
+                  </p>
                 </div>
               </div>
               <div className="Details-reshipment-reembarkWith">
-                <p>Reembarco: {details.reshipment}</p>
-                <p>Reembarcarse con: {details.reembarkWith}</p>
+                <p>
+                  Reembarco: <span className="bolt">{details.reshipment}</span>
+                </p>
+                <p>
+                  Reembarcarse con:{" "}
+                  <span className="bolt">{details.reembarkWith}</span>
+                </p>
               </div>
               <div className="Details-drive">
                 <div>
@@ -168,14 +187,14 @@ const ShippingDetails = () => {
                 <p>Total:</p>
               </div>
               <div className="details-freight-amount">
-                <p>${details.freight}</p>
-                <p>${details.insurance}</p>
-                <p>${details.shunting}</p>
-                <p>${details.others}</p>
-                <p>{details.subtotal}</p>
-                <p>{details.ivaTransfer}</p>
-                <p>{details.ivaRetained}</p>
-                <p>{details.total}</p>
+                <p className="bolt">${details.freight}</p>
+                <p className="bolt">${details.insurance}</p>
+                <p className="bolt">${details.shunting}</p>
+                <p className="bolt">${details.others}</p>
+                <p className="bolt">{details.subtotal}</p>
+                <p className="bolt">{details.ivaTransfer}</p>
+                <p className="bolt">{details.ivaRetained}</p>
+                <p className="bolt">{details.total}</p>
               </div>
             </div>
             <div className="Details-last-information">
@@ -184,16 +203,16 @@ const ShippingDetails = () => {
                 <p>{details.trackingNumber}</p>
               </div>
               <div className="Details-document">
-                <span>Documento</span>
+                <span>Documentó</span>
                 <p>{details.document}</p>
               </div>
               <div className="Details-accordance">
-                <span>Conformidad</span>
+                <span>Recibí de Conformidad</span>
                 <i className="line"></i>
               </div>
               <div className="Details-observations">
                 <span>Observaciones</span>
-                <p>{details.remarks}</p>
+                <p className="bolt">{details.remarks}</p>
               </div>
             </div>
             <p className="Details-thanks">
@@ -201,7 +220,7 @@ const ShippingDetails = () => {
             </p>
           </section>
           <section className="Details-status">
-            <h3>
+            <h3 className="Details-status-trackingNumber">
               Numero de rastreo <span>{details.trackingNumber}</span>
             </h3>
             <div className="Tracking-status-container">
@@ -266,7 +285,7 @@ const ShippingDetails = () => {
                 </div>
               )}
             </div>
-            <div className="Details-buttons-container">
+            <div className="Details-buttons-container space-between-center">
               <Link
                 to={`/admin/editar-envio/${details.trackingNumber}`}
                 className="Details-buttons Button-edit"
@@ -285,7 +304,7 @@ const ShippingDetails = () => {
             {query.statusEnDomicilio && (
               <button
                 type="button"
-                className="Details-buttons"
+                className="Button-delivered"
                 onClick={() => {
                   maintainShipmentStatus("entregado");
                 }}

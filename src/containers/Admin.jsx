@@ -6,7 +6,7 @@ import Loader from "@components/Loader";
 import "@styles/containers/AdminLogin.css";
 
 const Admin = () => {
-  const { loginUser, registeredUser } = useContext(AppContext);
+  const { loginUser, registeredUser, error } = useContext(AppContext);
   const form = useRef(null);
   const history = useHistory();
 
@@ -60,6 +60,12 @@ const Admin = () => {
             Entrar
           </button>
         </form>
+        {error === "auth/user-not-found" && (
+          <p className="errorMessage">El correo no esta registrado</p>
+        )}
+        {error === "auth/wrong-password" && (
+          <p className="errorMessage">Contraseña erronea</p>
+        )}
       </main>
     </>
   );

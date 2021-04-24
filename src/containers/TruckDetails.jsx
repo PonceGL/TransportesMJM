@@ -61,7 +61,7 @@ const TruckDetails = () => {
             {query.statusEnDomicilio && (
               <>
                 {query.statusEntregado ? (
-                  <h4>Terminado</h4>
+                  <h4 className="finished-truck">Terminado</h4>
                 ) : (
                   <button
                     type="button"
@@ -78,7 +78,7 @@ const TruckDetails = () => {
             {query.statusEnRuta ? (
               <>
                 {query.statusEnDomicilio ? (
-                  <div className="Details-statusShippings">
+                  <div className="Details-Domicilio">
                     <h4>En domicilio desde</h4>
                     <p>
                       {query.statusEnDomicilioHora
@@ -92,7 +92,7 @@ const TruckDetails = () => {
                 ) : (
                   <button
                     type="button"
-                    className="Details-buttons"
+                    className="Details-buttons-Domicilio"
                     onClick={() => {
                       maintainShipmentStatus("domicilio");
                     }}
@@ -100,7 +100,7 @@ const TruckDetails = () => {
                     Actualizar status de envios: En Domicilio
                   </button>
                 )}
-                <div className="Details-statusShippings">
+                <div className="Details-statusShippings-ruta">
                   <h4>En ruta desde</h4>
                   <p>
                     {query.statusEnRutaHora
@@ -115,7 +115,7 @@ const TruckDetails = () => {
             ) : (
               <button
                 type="button"
-                className="Details-buttons"
+                className="Details-buttons-ruta"
                 onClick={() => {
                   maintainShipmentStatus("rute");
                 }}
@@ -125,7 +125,7 @@ const TruckDetails = () => {
             )}
             <button
               type="button"
-              className="Details-buttons"
+              className="Details-buttons button-print"
               onClick={handlePrint}
             >
               Imprimir

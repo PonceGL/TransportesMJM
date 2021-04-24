@@ -18,11 +18,11 @@ const NewShipping = () => {
   const form = useRef(null);
   const history = useHistory();
 
-  useEffect(() => {
-    if (registeredUser === null) {
-      history.push("/admin");
-    }
-  }, [registeredUser]);
+  // useEffect(() => {
+  //   if (registeredUser === null) {
+  //     history.push("/admin");
+  //   }
+  // }, [registeredUser]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -99,7 +99,7 @@ const NewShipping = () => {
           <form ref={form} onSubmit={handleSubmit}>
             <section className="NewShipping-numbers">
               <h3>Numero de rastreo: {<TrackingNumber />}</h3>
-              <h3>Nº{<FolioNumber folioType="foliosNumbers" />}</h3>
+              <h3>Folio Nº{<FolioNumber folioType="foliosNumbers" />}</h3>
             </section>
             <section className="NewShipping-origin">
               <input
@@ -170,7 +170,7 @@ const NewShipping = () => {
               />
             </section>
             <section className="NewShipping-unit-value">
-              <p className="NewShipping-unit-value_description">
+              <p className="center-center">
                 Valor unitario, cuota convenida por tonelada o carga fraccionada
               </p>
               <input
@@ -241,7 +241,7 @@ const NewShipping = () => {
               />
               <input
                 type="text"
-                className="input-shipment"
+                className="input-shipment reembarkWith"
                 placeholder="Reembarcarse con"
                 name="reembarkWith"
               />
@@ -286,14 +286,14 @@ const NewShipping = () => {
                 />
               </div>
               <textarea name="remarks" placeholder="Observaciones"></textarea>
-              <input
-                type="text"
-                className="input-totalInLetters"
-                placeholder="Importe total en letra"
-                name="totalInLetters"
-              />
             </section>
             <Amounts />
+            <input
+              type="text"
+              className="input-totalInLetters"
+              placeholder="Importe total en letra"
+              name="totalInLetters"
+            />
             <button type="submit" className="Botton-submit">
               Guardar
             </button>

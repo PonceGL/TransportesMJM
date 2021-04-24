@@ -1,268 +1,332 @@
-:root {
-  --Printsoft-orange: #1d3557;
+.Details-Print-header,
+.Details-totalInLetters,
+.Details-thanks,
+.Details-status-trackingNumber,
+.Details-document,
+.Details-accordance {
+  display: none;
 }
 
 .Details {
   padding: 2rem;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.Details-info {
-  width: 75%;
-}
-
-.Details-status {
-  width: 25%;
-  padding: 0 2rem;
-}
-
-.Details-PaymentTermsAndValue,
-.Details-description-for-client,
-.Details-reshipment-reembarkWith,
-.Details-totalInLetters,
-.Details-more-info,
-.Details-last-information {
-  border: 0.1rem solid var(--Printsoft-orange);
-}
-
-.Details-PaymentTermsAndValue,
-.Details-reshipment-reembarkWith,
-.Details-drive,
-.Details-totalInLetters {
-  border-left: none;
-  border-right: none;
-}
-
-.Details-bulge-num-packaging {
-  border-left: none;
-}
-
-.Details-weight-m3-estimatedWeight {
-  border-right: none;
-}
-
-.Details-Print-header,
-.Details-trackingNumber,
-.Details-document,
-.Details-accordance,
 .Details-date-origin {
-  display: none;
+  margin-bottom: 1rem;
 }
 
-.Details-info,
-.Details-more-info {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
+.Details-date-origin p {
+  font-size: 1.4rem;
 }
 
 .Details-remitente,
 .Details-destination {
-  width: 37%;
-  padding: 0.5rem;
+  width: 100%;
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 0.1rem solid var(--blue);
 }
 
 .Details-destination {
-  margin-right: auto;
+  margin-top: 1rem;
 }
 
-.Details-more-info {
-  width: 75%;
-  margin: 2rem 0;
-  border-top: none;
-  border-bottom: none;
+.Details-remitente h3,
+.Details-destination h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.Details-remitente p,
+.Details-destination p {
+  margin-top: 0.5rem;
 }
 
 .Details-PaymentTermsAndValue {
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.Details-PaymentTermsAndValue p {
+  width: 50%;
+  margin: 0.5rem 0;
+}
+
+.Details-PaymentTermsAndValue p:first-child {
   width: 100%;
-  padding: 0.2rem 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.Details-PaymentTermsAndValue p:last-child {
+  text-align: right;
+}
+
+.Details-PaymentTermsAndValue span {
+  font-weight: 600;
+}
+
+.Details-info {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.Details-more-info {
+  width: 100%;
 }
 
 .Details-bulge-claims-weight-container {
   width: 100%;
-  height: 10rem;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 
-.Details-bulge-num-packaging {
-  width: 30%;
-  height: 100%;
-  padding: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.Details-bulge-num-packaging p {
-  width: 50%;
-  text-align: center;
-}
-
-.Details-bulge-num-packaging p:first-child {
+.Details-bulge-claims-weight-container div {
   width: 100%;
-}
-
-.Details-description-for-client {
-  width: 40%;
-  height: 100%;
-  padding: 0.5rem;
+  margin: 1rem 0;
+  padding: 1rem 0.5rem;
   text-align: left;
-  border-top: none;
-  border-bottom: none;
-}
-
-.Details-weight-m3-estimatedWeight {
-  width: 30%;
-  height: 100%;
-  padding: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.Details-weight-m3-estimatedWeight p {
-  width: 50%;
-  text-align: center;
-}
-
-.Details-weight-m3-estimatedWeight p:first-child {
-  width: 100%;
+  border: 0.1rem solid var(--blue);
 }
 
 .Details-reshipment-reembarkWith {
+  padding: 1rem 0.5rem;
   width: 100%;
-  padding: 0.5rem;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.Details-reshipment-reembarkWith p {
-  width: 50%;
-  text-align: left;
+  margin: 1rem 0;
 }
 
 .Details-drive {
   width: 100%;
-  margin: 2rem 0;
-
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .Details-drive div {
-  width: 50%;
-  padding: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.Details-drive div p {
-  width: 50%;
+  width: 100%;
   margin: 1rem 0;
+  padding: 1rem 0.5rem;
   text-align: left;
-}
-
-.Details-drive div p:first-child {
-  width: 100%;
-}
-
-.Details-totalInLetters {
-  width: 100%;
-  padding: 0.5rem;
-  text-align: left;
+  border: 0.1rem solid var(--blue);
 }
 
 .Details-freight {
-  width: 25%;
-  margin: 2rem 0;
-  padding: 4rem 0;
-
+  width: 100%;
+  margin: 1rem 0;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .Details-freight div {
   width: 50%;
-  padding: 0 0.5rem;
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 0.1rem solid var(--blue);
 }
 
-.details-freight-concept {
-  text-align: right;
+.Details-freight div:first-child {
+  align-items: flex-end;
+  border-right: none;
 }
 
-.details-freight-amount {
-  text-align: left;
-}
-
-.Details-freight p {
-  margin: 1rem 0;
+.Details-freight div p {
+  margin-top: 0.5rem;
+  border-bottom: 0.1rem solid var(--blue);
 }
 
 .Details-last-information {
-  width: 75%;
+  width: 100%;
+  margin: 1rem 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
   align-items: flex-start;
 }
 
 .Details-last-information div {
-  padding: 1rem;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 1rem 0.5rem;
+  border: 0.1rem solid var(--blue);
+}
+
+.Details-trackingNumber p {
+  margin: 1rem 0;
+  font-size: 2rem;
+  font-weight: 600;
   text-align: center;
 }
 
-.Details-last-information div p {
-  margin: 1rem auto;
-}
-
-.Details-status .Details-buttons-container {
-  width: 78%;
-  margin: 2rem 0;
+.Details-status {
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 0.1rem solid var(--blue);
 }
 
-.Details-buttons {
+.Button-edit,
+.Button-print,
+.Button-delivered {
+  width: 48%;
   padding: 0.5rem;
   font-size: 1.4rem;
-  color: var(--secundary);
-  border: 0.1rem solid var(--secundary);
-  background-color: transparent;
-  border-radius: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--blue);
+  border: 0.1rem solid var(--blue);
+  background-color: var(--white);
   outline: none;
   cursor: pointer;
-  transition: ease-in-out 0.2s all;
 }
 
-.Details-buttons:hover {
-  background-color: var(--secundary);
-  color: var(--soft-orange);
+.Button-delivered {
+  margin-top: 0.5rem;
+  width: 100%;
 }
 
-.Details-thanks {
-  display: none;
+@media screen and (min-width: 1000px) {
+  .Details {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 70% 30%;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .Details-info {
+    width: 100%;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .Details-remitente,
+  .Details-destination {
+    width: 50%;
+    margin: 0;
+  }
+
+  .Details-more-info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, min-content);
+  }
+
+  .space-between-center {
+    padding: 0.5rem;
+    margin: 0;
+    border: 0.1rem solid var(--blue);
+    border-bottom: none;
+  }
+
+  .Details-PaymentTermsAndValue {
+    grid-column: 1 / span 4;
+    grid-row: 1 / span 1;
+  }
+
+  .Details-PaymentTermsAndValue p:first-child {
+    width: fit-content;
+  }
+
+  .Details-bulge-claims-weight-container {
+    grid-column: 1 / span 4;
+    grid-row: 2 / span 1;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    justify-items: center;
+    align-items: stretch;
+  }
+
+  .Details-bulge-claims-weight-container div {
+    margin: 0;
+  }
+
+  .Details-reshipment-reembarkWith {
+    grid-column: 1 / span 4;
+    grid-row: 3 / span 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+    border-right: 0.1rem solid var(--blue);
+    border-left: 0.1rem solid var(--blue);
+  }
+
+  .Details-drive {
+    grid-column: 1 / span 4;
+    grid-row: 4 / span 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+  }
+
+  .Details-drive div {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 0.5rem;
+  }
+
+  .Details-drive div p:first-child {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+  }
+
+  .Details-status {
+    width: 30%;
+    margin: 0;
+    position: fixed;
+    right: 0;
+  }
+
+  .Details-status-trackingNumber {
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+
+  .Details-freight {
+    width: 30%;
+    margin: 0;
+    position: fixed;
+    top: 50rem;
+    right: 0;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .Details-freight {
+    top: 55rem;
+  }
 }
 
 @media print {
-  :root {
-    --blue: #1d3557;
-  }
-
   .HeaderAdmin,
   header,
   .Button-print,
@@ -271,45 +335,18 @@
   }
 
   .Details {
-    width: 95%;
-    margin: 0 auto;
+    width: 97%;
+    margin: 2rem auto;
     display: block;
-    border: 2px solid var(--Printsoft-orange);
+    border: 2px solid var(--blue);
     text-transform: uppercase;
-  }
-
-  .Details-info {
-    width: 100%;
-  }
-
-  .Details-info h3 {
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
-  .Details-freight,
-  .Details-PaymentTermsAndValue {
-    margin: 0;
-  }
-
-  .Details-PaymentTermsAndValue,
-  .Details-reshipment-reembarkWith,
-  .Details-totalInLetters {
-    border: 1px solid var(--Printsoft-orange);
-  }
-
-  .Details-PaymentTermsAndValue,
-  .Details-reshipment-reembarkWith,
-  .Details-drive,
-  .Details-totalInLetters {
-    border-left: none;
-    border-right: none;
   }
 
   .Details-Print-header {
     width: 100%;
+    margin-bottom: 2rem;
     padding: 0.5rem;
-    color: var(--Printsoft-orange);
+    color: var(--blue);
     background-color: #fff;
 
     display: flex;
@@ -318,7 +355,7 @@
   }
 
   .Details-Print-header h1 {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
   }
 
   .Details-Print-header h4 {
@@ -326,7 +363,7 @@
   }
 
   .Details-Print-header p {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   .Details-Print-header .Details-Print-logo {
@@ -334,8 +371,8 @@
     object-fit: cover;
   }
 
-  .Details-Print-header .Details-Print-centerarea {
-    width: 50%;
+  .Details-Print-centerarea {
+    width: 60%;
 
     display: flex;
     flex-direction: column;
@@ -380,32 +417,36 @@
   }
 
   .Details-info {
-    border: 2px solid var(--Printsoft-orange);
-  }
-
-  .Details-info,
-  .Details-more-info {
+    width: 100%;
     font-size: 1rem;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
   }
 
   .Details-date-origin {
-    width: 100%;
     padding: 0.5rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-bottom: 0.1rem solid var(--Printsoft-orange);
+    margin: 0;
+    border: 0.1rem solid var(--blue);
+    border-bottom: none;
+  }
+
+  .Details-date-origin p {
+    font-size: 1rem;
   }
 
   .Details-remitente,
   .Details-destination {
     width: 50%;
     margin: 0;
-    border-bottom: 0.1rem solid var(--Printsoft-orange);
+  }
+
+  .Details-remitente h3,
+  .Details-destination h3 {
+    font-size: 1rem;
+    font-weight: 400;
   }
 
   .Details-more-info {
@@ -416,11 +457,22 @@
   }
 
   .Details-PaymentTermsAndValue {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: none;
+    margin: 0;
+    padding: 0.5rem;
+    border-left: 0.1rem solid var(--blue);
+    border-right: 0.1rem solid var(--blue);
+  }
+
+  .Details-PaymentTermsAndValue p,
+  .Details-PaymentTermsAndValue p:first-child {
+    width: auto;
+  }
+
+  .Details-bulge-claims-weight-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    justify-items: center;
+    align-items: stretch;
   }
 
   .Details-bulge-num-packaging {
@@ -431,43 +483,67 @@
     align-items: flex-start;
   }
 
-  .Details-bulge-num-packaging p {
-    width: 50%;
-    text-align: center;
-  }
-
-  .Details-bulge-num-packaging p:first-child {
+  .Details-bulge-claims-weight-container div {
     width: 100%;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
+    justify-items: center;
+    align-items: stretch;
   }
 
-  .Details-description-for-client {
-    width: 40%;
-    padding: 0.8rem;
-    text-align: left;
-  }
-
-  .Details-weight-m3-estimatedWeight {
-    width: 30%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
+  .Details-bulge-num-packaging p,
   .Details-weight-m3-estimatedWeight p {
-    width: 50%;
+    width: 100%;
+    padding: 0.5rem 0;
     text-align: center;
   }
 
-  .Details-weight-m3-estimatedWeight p:first-child {
-    width: 100%;
+  .Details-bulge-num-packaging p:nth-child(1),
+  .Details-weight-m3-estimatedWeight p:nth-child(1) {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+    border-bottom: 0.1rem solid var(--blue);
+  }
+
+  .Details-bulge-num-packaging p:nth-child(2),
+  .Details-weight-m3-estimatedWeight p:nth-child(2) {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+    border-right: 0.1rem solid var(--blue);
+  }
+
+  .Details-bulge-num-packaging p:nth-child(3),
+  .Details-weight-m3-estimatedWeight p:nth-child(3) {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+  }
+
+  .Details-description-for-client p:nth-child(1) {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+  }
+
+  .Details-description-for-client p:nth-child(2) {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+  }
+
+  .Details-bulge-claims-weight-container div:nth-child(2) {
+    border-left: none;
+    border-right: none;
   }
 
   .Details-reshipment-reembarkWith {
     width: 100%;
+    margin: 0;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
+    border-left: 0.1rem solid var(--blue);
+    border-right: 0.1rem solid var(--blue);
   }
 
   .Details-reshipment-reembarkWith p {
@@ -476,26 +552,27 @@
   }
 
   .Details-drive {
-    width: 100%;
-    margin: 2rem 0;
-
-    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 
   .Details-drive div {
     width: 50%;
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .Details-drive div:first-child {
+    border-right: none;
   }
 
   .Details-drive div p {
     width: 50%;
-    margin: 1rem 0;
-    text-align: left;
+    margin-top: 0.5rem;
   }
 
   .Details-drive div p:first-child {
@@ -504,110 +581,76 @@
 
   .Details-totalInLetters {
     width: 100%;
-    text-align: left;
-    border-bottom: none;
+    padding: 0.5rem;
+    display: block;
+    text-align: right;
+    border: 0.1rem solid var(--blue);
+    border-top: none;
   }
 
   .Details-freight {
     width: 30%;
-    margin: 2rem 0 0;
-    padding: 4rem 0;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    height: 217px;
+    margin: 0;
+    border-bottom: 0.1rem solid var(--blue);
+    border-right: 0.1rem solid var(--blue);
   }
 
   .Details-freight div {
-    width: 50%;
-    padding: 0 0.5rem;
-  }
-
-  .details-freight-concept {
-    text-align: right;
-    border-right: 0.1rem solid var(--Printsoft-orange);
-  }
-
-  .details-freight-amount {
-    text-align: left;
-  }
-
-  .Details-freight p {
-    margin: 1rem 0;
-    border-bottom: 0.1rem solid var(--Printsoft-orange);
-  }
-
-  .details-freight-amount p {
-    font-weight: 700;
-  }
-
-  .Tracking-status-container {
-    display: none;
-  }
-
-  .Details-last-information {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    border: none;
-  }
-
-  .Details-last-information div {
-    width: 25%;
-    height: 10rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border: 0.1rem solid var(--Printsoft-orange);
+    border-top: none;
     border-bottom: none;
   }
 
-  .Details-last-information .Details-trackingNumber,
-  .Details-last-information .Details-accordance {
+  .Details-freight div:first-child {
+    border-left: none;
+    width: 60%;
+  }
+
+  .Details-freight div:last-child {
+    width: 40%;
+    border-right: none;
+  }
+
+  .Details-freight div p {
+    margin-top: 1rem;
+  }
+
+  .Details-last-information {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    align-items: stretch;
+  }
+
+  .Details-last-information div {
+    margin: 0;
+    text-align: center;
+    border-top: none;
+  }
+
+  .Details-last-information div:nth-child(2) {
     border-left: none;
     border-right: none;
   }
-
-  .Details-last-information .Details-observations {
-    border-right: none;
+  .Details-last-information div:last-child {
+    border-left: none;
   }
 
-  .Details-last-information div p {
-    max-width: 90%;
-  }
-
-  .Details-last-information div span {
-    position: absolute;
-    top: 1rem;
-    left: 0;
-    right: 0;
-    text-align: center;
-  }
-
-  .Details-last-information .Details-accordance .line {
-    width: 80%;
-    border-top: 0.1rem solid var(--Printsoft-orange);
-
-    position: absolute;
-    bottom: 1.5rem;
-  }
-
-  .Details-last-information .Details-trackingNumber p {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--Printsoft-orange);
-    text-transform: none;
-  }
-
-  .Details-thanks {
-    width: 100%;
-    padding: 0.3rem;
-    text-align: left;
-    font-size: 0.8rem;
-    font-weight: 700;
+  .Details-document,
+  .Details-accordance {
     display: block;
-    border-top: 0.1rem solid var(--Printsoft-orange);
+  }
+
+  .Details-accordance {
+    position: relative;
+  }
+
+  .Details-accordance .line {
+    width: 140px;
+    position: absolute;
+    bottom: 1rem;
+    left: calc(50% - 70px);
+    border-top: 0.1rem solid var(--blue);
   }
 }

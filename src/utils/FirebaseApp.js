@@ -7,6 +7,7 @@ const FirebaseApp = () => {
   const [unique, setUnique] = useState(true);
   const [currentFolioCount, setCurrentFolioCount] = useState("");
   const [registeredUser, setRegisteredUser] = useState(null);
+  const [error, setError] = useState(null);
 
   const firebaseConfig = {
     apiKey: process.env.API_KEY,
@@ -46,8 +47,7 @@ const FirebaseApp = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode);
-        console.log(errorMessage);
+        setError(errorCode);
       });
   };
 
@@ -367,6 +367,7 @@ const FirebaseApp = () => {
     loginUser,
     registerNewUser,
     logaut,
+    error,
     query,
     shipping,
     newShipping,

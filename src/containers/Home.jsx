@@ -21,7 +21,7 @@ const Home = () => {
         <section className="Tracking-secction">
           <div className="Tracking-container">
             <h2>Conoce el estado de tu pedido</h2>
-            <p>Introduce tu nuemero de rastreo a continuación</p>
+            <p>Introduce tu numero de rastreo a continuación</p>
             <TrackingElement />
           </div>
           <div className="orange-filter"></div>
