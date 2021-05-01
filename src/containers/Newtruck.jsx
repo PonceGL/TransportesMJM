@@ -92,29 +92,34 @@ const Newtruck = () => {
                   className="Newtruck-input"
                   placeholder="Conductor"
                   name="driver"
+                  required
                 />
                 <input
                   type="text"
                   className="Newtruck-input"
                   placeholder="Carro Nº"
                   name="carNumber"
+                  required
                 />
                 <input
                   type="text"
                   className="Newtruck-input"
                   placeholder="Origen"
                   name="origin"
+                  required
                 />
                 <input
                   type="text"
                   className="Newtruck-input"
                   placeholder="Destino"
                   name="destiny"
+                  required
                 />
                 <input
                   type="text"
                   name="shippings"
                   readOnly
+                  required
                   value={shippings}
                   style={{
                     display: "none",

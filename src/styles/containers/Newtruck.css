@@ -107,6 +107,10 @@
   justify-items: start;
 }
 
+.Newtruck-list-folio-remitente-titles p {
+  font-size: 1.6rem;
+}
+
 .list-allShippings-for-truck button {
   margin: 0.5rem 0;
   padding: 0.2rem;
@@ -120,8 +124,9 @@
 
 .list-allShippings-for-truck button:hover {
   color: var(--blue);
-  border: 0.1rem solid var(--soft-orange);
-  background-color: var(--soft-orange);
+  border: 0.1rem solid var(--orange);
+  background-color: var(--orange);
+  cursor: pointer;
 }
 
 @media screen and (min-width: 1000px) {

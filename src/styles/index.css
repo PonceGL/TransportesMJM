@@ -4,6 +4,11 @@
   --white: #ffffff;
   --soft-orange: #ffc288;
   --secundary: #005490;
+
+  --admin-blue: #5071fb;
+  --admin-deep-blue: #27387a;
+  --admin-soft: #9baffb;
+  --admin-hover: #1687a7;
 }
 
 html {

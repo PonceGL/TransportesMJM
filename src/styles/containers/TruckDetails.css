@@ -88,7 +88,7 @@
   width: 80rem;
   margin: 0.5rem 0;
   display: grid;
-  grid-template-columns: 1fr 2fr 2fr 1fr 2fr 1fr 1fr 1.5fr 1.5fr 1fr;
+  grid-template-columns: 1fr 2fr 2fr 1fr 2fr 1fr 1fr 1.5fr 1.5fr 1.5fr 1fr;
 }
 
 .TruckDetails-shipping-names p {
@@ -107,6 +107,21 @@
   font-size: 1.2rem;
   text-align: left;
   border: 0.1rem solid var(--blue);
+  transition: ease-in-out 0.3s all;
+}
+
+.TruckDetails-shipping-container a {
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--orange);
+}
+
+.TruckDetails-shipping-container a p:hover {
+  color: var(--white);
+  border: 0.1rem solid var(--orange);
+  background-color: var(--orange);
 }
 
 .TruckDetails-shipping-totals {
@@ -158,6 +173,11 @@
   .Details-buttons-ruta {
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
+  }
+
+  .TruckDetails .TruckDetails-actions .Details-buttons:hover {
+    color: var(--orange);
+    border: 0.1rem solid var(--orange);
   }
 
   .TruckDetails-shipping-names,

@@ -128,9 +128,10 @@ const AdminInicio = () => {
         </section>
         <section className="Admin-Actions">
           <Link to="/admin/nuevo-envio">Crear uevo envío</Link>
-          <Link to="/admin/crear-camion/">Crear uevo camión</Link>
+          <Link to="/admin/crear-camion/">Crear uevo viaje</Link>
         </section>
       </main>
+      <div className="logo-bg"></div>
     </>
   );
 };

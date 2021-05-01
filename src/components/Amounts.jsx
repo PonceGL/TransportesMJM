@@ -52,7 +52,7 @@ const Amounts = ({
       parseInt(shunting) +
       parseInt(others);
     const ivaTransfer = sum * 0.16;
-    const ivaRetained = sum * 0.04;
+    const ivaRetained = parseInt(freight) * 0.04;
     const totalFinish = sum + ivaTransfer - ivaRetained;
 
     setSubtotal(sum);

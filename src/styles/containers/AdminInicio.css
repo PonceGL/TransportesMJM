@@ -22,7 +22,7 @@
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--white);
-  background-color: var(--blue);
+  background-color: var(--admin-blue);
   cursor: pointer;
   transition: ease-in-out 0.3s all;
 }
@@ -50,8 +50,8 @@
   padding: 0.5rem;
   font-size: 1.6rem;
   font-weight: 600;
-  color: var(--blue);
-  background-color: var(--orange);
+  color: var(--white);
+  background-color: var(--admin-blue);
   cursor: pointer;
   position: relative;
   z-index: 99;
@@ -67,7 +67,7 @@
 
 .list-allShippings h3:nth-child(2),
 .list-allTrucks h3:nth-child(2) {
-  color: var(--soft-orange);
+  color: var(--white);
   background-color: var(--secundary);
   position: absolute;
   top: 0;
@@ -79,15 +79,15 @@
 .list-allShippings .list-allShippings-titles .view,
 .list-allTrucks .list-allShippings-titles .view {
   border-radius: 1.5rem 0 0 0;
-  color: var(--blue);
-  background-color: var(--soft-orange);
+  color: var(--white);
+  background-color: var(--orange);
   z-index: 100;
 }
 
 .view-list {
   padding-bottom: 1rem;
   border-radius: 0 0 1rem 1rem;
-  border: 0.2rem solid var(--blue);
+  border: 0.2rem solid var(--orange);
   border-top: none;
 }
 
@@ -98,12 +98,14 @@
 .list-trucks-concep,
 .list-allTrucks a {
   width: 100%;
-  color: var(--blue);
+  padding: 0.5rem;
+  color: var(--admin-deep-blue);
   display: grid;
   grid-template-columns: 1.5fr 1.5fr 1.5fr 0.5fr;
 }
 
 .list-trucks-concep p {
+  font-size: 1.6rem;
   font-weight: 600;
 }
 
@@ -129,11 +131,12 @@
   width: 100%;
   padding: 0.5rem;
   margin-top: 0.5rem;
-  color: var(--blue);
+  color: var(--admin-deep-blue);
   display: flex;
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
+  transition: ease-in-out 0.3s all;
 }
 
 .list-container a p {
@@ -142,12 +145,19 @@
 
 .list-container a p:first-child {
   width: 30%;
-  border-right: 0.2rem solid var(--blue);
+  border-right: 0.2rem solid var(--admin-soft);
 }
 
 .list-container a p:last-child {
   width: 70%;
   padding-left: 0.5rem;
+}
+
+.list-container a:hover,
+.list-allTrucks a:hover {
+  font-weight: 600;
+  color: var(--admin-deep-blue);
+  background-color: var(--admin-soft);
 }
 
 @media screen and (min-width: 1300px) {
@@ -157,6 +167,22 @@
     grid-column-gap: 1rem;
     justify-items: center;
     align-items: start;
+  }
+
+  .logo-bg {
+    width: 100vw;
+    height: calc(100vh - 200px);
+    position: absolute;
+    top: 200px;
+    left: 0;
+
+    background-image: url("../../assets/images/MJM_logo-not-letters.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0.1;
+    z-index: -5;
   }
 
   .list-allShippings,
@@ -173,7 +199,7 @@
   }
 
   .Admin-Actions a:hover {
-    color: var(--orange);
-    background-color: var(--soft-orange);
+    color: var(--admin-deep-blue);
+    background-color: var(--admin-soft);
   }
 }

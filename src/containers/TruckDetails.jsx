@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation, useHistory } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import AppContext from "../context/AppContext";
 import Logo from "@images/MJM_logo.svg";
 import "@styles/containers/TruckDetails.css";
@@ -92,7 +92,7 @@ const TruckDetails = () => {
                 ) : (
                   <button
                     type="button"
-                    className="Details-buttons-Domicilio"
+                    className="Details-buttons Details-buttons-Domicilio"
                     onClick={() => {
                       maintainShipmentStatus("domicilio");
                     }}
@@ -115,7 +115,7 @@ const TruckDetails = () => {
             ) : (
               <button
                 type="button"
-                className="Details-buttons-ruta"
+                className="Details-buttons Details-buttons-ruta"
                 onClick={() => {
                   maintainShipmentStatus("rute");
                 }}
@@ -159,6 +159,7 @@ const TruckDetails = () => {
               <p>Seguro</p>
               <p>Valor</p>
               <p>Flete</p>
+              <p>Costo total</p>
               <p>Cobrar o Pagado</p>
             </div>
             {shippings.map((shipping) => {
@@ -178,7 +179,9 @@ const TruckDetails = () => {
                   className="TruckDetails-shipping-container"
                   key={shipping.trackingNumber}
                 >
-                  <p>{shipping.folioNumber}</p>
+                  <Link to={`/admin/detalles-envio/${shipping.trackingNumber}`}>
+                    <p>{shipping.folioNumber}</p>
+                  </Link>
                   <p>{shipping.remitente}</p>
                   <p>{shipping.addresseeRecipient}</p>
                   <p>{shipping.num}</p>
@@ -191,6 +194,7 @@ const TruckDetails = () => {
                       : "NO DECLARADO"}
                   </p>
                   <p>{formatter.format(shipping.freight)}</p>
+                  <p>{shipping.total}</p>
                   <p>{shipping.paymentTerms}</p>
                 </div>
               );
