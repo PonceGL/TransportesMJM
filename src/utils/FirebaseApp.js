@@ -8,11 +8,11 @@ const FirebaseApp = () => {
   const [currentFolioCount, setCurrentFolioCount] = useState("");
   const [registeredUser, setRegisteredUser] = useState(null);
   const [error, setError] = useState(null);
+  const [allemployees, setAllemployees] = useState([]);
 
   const firebaseConfig = {
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
-    //databaseURL: process.env.DATABASE_URL,
     projectId: process.env.PROJECT_ID,
     storageBucket: process.env.STORAGE_BUCKET,
     messagingSenderId: process.env.MESSAGING_SENDER_ID,
@@ -28,12 +28,69 @@ const FirebaseApp = () => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
-        setRegisteredUser(user);
+        //setRegisteredUser(user);
+        currentUserFireStore(user);
       } else {
         setRegisteredUser(null);
       }
     });
-  }, [registeredUser]);
+  }, []);
+
+  //check employee
+
+  const checkEmployee = (name, handle) => {
+    console.log("handle", handle);
+    firebase
+      .firestore()
+      .collection("employees")
+      .doc(name)
+      .update({
+        emailVerified: handle,
+      })
+      .then(() => {
+        listOfEmployees();
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  };
+
+  //list of employees
+
+  const listOfEmployees = () => {
+    firebase
+      .firestore()
+      .collection("employees")
+      .where("email", "!=", "poncianogl@hotmail.com")
+      .get()
+      .then((querySnapshot) => {
+        setAllemployees([]);
+        querySnapshot.forEach((doc) => {
+          setAllemployees((allemployees) => [...allemployees, doc.data()]);
+        });
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  };
+
+  //
+
+  const currentUserFireStore = (user) => {
+    firebase
+      .firestore()
+      .collection("employees")
+      .where("email", "==", user.email)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          setRegisteredUser(doc.data());
+        });
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  };
 
   //Log in
 
@@ -51,6 +108,25 @@ const FirebaseApp = () => {
       });
   };
 
+  // Add employees data to database
+
+  const createANewUserInDatabase = (user) => {
+    firebase
+      .firestore()
+      .collection("employees")
+      .doc(user.displayName)
+      .set({
+        name: user.displayName,
+        email: user.email,
+        emailVerified: user.emailVerified,
+        uid: user.uid,
+      })
+      .then(() => {})
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+  };
+
   //Update Proflie
 
   const updateProfileCreated = (Name) => {
@@ -59,7 +135,15 @@ const FirebaseApp = () => {
       .updateProfile({
         displayName: Name,
       })
-      .then(() => {})
+      .then(() => {
+        console.log(user);
+      })
+      .then(() => {
+        createANewUserInDatabase(user);
+      })
+      .then(() => {
+        setRegisteredUser(user);
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -84,11 +168,8 @@ const FirebaseApp = () => {
 
   //Rastrear toda la información de documentos
   const shipping = (collection, filter, num) => {
-    firebase
-      .firestore()
-      .collection(collection)
-      .where(filter, "==", num)
-      .get()
+    firebase.firestore().collection(collection);
+    º.get()
       .then((querySnapshot) => {
         if (querySnapshot.docs.length > 0) {
           if (collection === "envios") {
@@ -384,6 +465,9 @@ const FirebaseApp = () => {
     newTruck,
     updateStatus,
     updateStatusTruck,
+    allemployees,
+    listOfEmployees,
+    checkEmployee,
   };
 };
 

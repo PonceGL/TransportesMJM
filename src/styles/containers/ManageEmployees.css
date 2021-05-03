@@ -1,0 +1,81 @@
+.ManageEmployees {
+  width: 100%;
+  padding: 2rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.ManageEmployees h1 {
+  width: 100%;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.list-employee {
+  width: 70%;
+  margin: 1rem 0;
+}
+
+.list-employee_item {
+  width: 100%;
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-column-gap: 0.5rem;
+  justify-items: start;
+  align-items: center;
+}
+
+.employee-name {
+  font-weight: 600;
+}
+
+.list-employee_item button {
+  width: 100%;
+  padding: 0.3rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  color: red;
+  border: 0.1rem solid red;
+  background-color: var(--white);
+  outline: none;
+  cursor: pointer;
+}
+
+.list-employee_item .button-check {
+  color: var(--admin-deep-blue);
+  border: 0.1rem solid var(--admin-deep-blue);
+}
+
+.ManageEmployees-actions {
+  width: 30%;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.ManageEmployees-actions a {
+  width: 80%;
+  padding: 0.3rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--admin-deep-blue);
+  border: 0.1rem solid var(--admin-deep-blue);
+  background-color: var(--white);
+  outline: none;
+  cursor: pointer;
+  transition: ease-in-out 0.3s all;
+}
+
+.ManageEmployees-actions a:hover {
+  color: var(--admin-blue);
+  border: 0.1rem solid var(--admin-blue);
+}

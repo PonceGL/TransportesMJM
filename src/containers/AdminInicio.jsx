@@ -24,6 +24,11 @@ const AdminInicio = () => {
   useEffect(() => {
     if (registeredUser === null) {
       history.push("/admin");
+    } else if (
+      registeredUser != null &&
+      registeredUser.emailVerified === false
+    ) {
+      history.push("/usuario-no-verificado");
     }
   }, [registeredUser]);
 
@@ -129,6 +134,13 @@ const AdminInicio = () => {
         <section className="Admin-Actions">
           <Link to="/admin/nuevo-envio">Crear uevo envío</Link>
           <Link to="/admin/crear-camion/">Crear uevo viaje</Link>
+          {registeredUser != null && (
+            <>
+              {registeredUser.email === "poncianogl@hotmail.com" && (
+                <Link to="/admin/administrar-empleados">Empleados</Link>
+              )}
+            </>
+          )}
         </section>
       </main>
       <div className="logo-bg"></div>

@@ -7,8 +7,10 @@ import Tracking from "@containers/Tracking";
 import NewShipping from "@containers/NewShipping";
 import Admin from "@containers/Admin";
 import RegisteredUser from "@containers/RegisteredUser";
+import UserNotVerified from "@containers/UserNotVerified";
 import AdminInicio from "@containers/AdminInicio";
 import ShippingDetails from "@containers/ShippingDetails";
+import ManageEmployees from "@containers/ManageEmployees";
 import LayoutAdmin from "@components/LayoutAdmin";
 import ShippingEdit from "@containers/ShippingEdit";
 import TruckDetails from "@containers/TruckDetails";
@@ -34,6 +36,8 @@ const Routes = () => {
               "/admin/detalles-camion/:id",
               "/admin/editar-envio/:id",
               "/admin/crear-camion",
+              "/admin/administrar-empleados",
+              "/usuario-no-verificado",
             ]}
           >
             <LayoutAdmin>
@@ -55,6 +59,16 @@ const Routes = () => {
                 component={ShippingEdit}
               />
               <Route exact path="/admin/crear-camion" component={Newtruck} />
+              <Route
+                exact
+                path="/admin/administrar-empleados"
+                component={ManageEmployees}
+              />
+              <Route
+                exact
+                path="/usuario-no-verificado"
+                component={UserNotVerified}
+              />
             </LayoutAdmin>
           </Route>
           <Route path={["/", "/tracking/:id"]}>

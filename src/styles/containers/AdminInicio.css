@@ -17,6 +17,7 @@
 
 .Admin-Actions a {
   width: 48%;
+  margin-bottom: 1rem;
   padding: 1rem 0.5rem;
   text-align: center;
   font-size: 1.4rem;
@@ -193,9 +194,6 @@
   .Admin-Actions {
     flex-direction: column;
     align-items: flex-end;
-  }
-  .Admin-Actions a:last-child {
-    margin-top: 2rem;
   }
 
   .Admin-Actions a:hover {

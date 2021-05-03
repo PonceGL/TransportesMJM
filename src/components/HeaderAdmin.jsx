@@ -52,7 +52,7 @@ const HeaderAdmin = () => {
       </div>
       {registeredUser && (
         <div className="name-and-button-user">
-          <p className="name">{registeredUser.displayName}</p>
+          <p className="name">{registeredUser.name}</p>
           <button
             type="button"
             onClick={(e) => {
