@@ -19,11 +19,11 @@ const ShippingDetails = () => {
     day: "numeric",
   };
 
-  // useEffect(() => {
-  //   if (registeredUser === null) {
-  //     history.push("/admin");
-  //   }
-  // }, [registeredUser]);
+  useEffect(() => {
+    if (registeredUser === null) {
+      history.push("/admin");
+    }
+  }, [registeredUser]);
 
   useEffect(() => {
     shipping("envios", "envio.trackingNumber", location.slice(22));

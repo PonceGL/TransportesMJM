@@ -19,11 +19,11 @@ const Newtruck = () => {
   const form = useRef(null);
   const history = useHistory();
 
-  // useEffect(() => {
-  //   if (registeredUser === null) {
-  //     history.push("/admin");
-  //   }
-  // }, [registeredUser]);
+  useEffect(() => {
+    if (registeredUser === null) {
+      history.push("/admin");
+    }
+  }, [registeredUser]);
 
   useEffect(() => {
     allShippingQuery("envios", "envio.folioNumber", "asc");

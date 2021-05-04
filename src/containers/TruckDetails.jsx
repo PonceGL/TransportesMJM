@@ -32,11 +32,11 @@ const TruckDetails = () => {
     day: "numeric",
   };
 
-  // useEffect(() => {
-  //   if (registeredUser === null) {
-  //     history.push("/admin");
-  //   }
-  // }, [registeredUser]);
+  useEffect(() => {
+    if (registeredUser === null) {
+      history.push("/admin");
+    }
+  }, [registeredUser]);
 
   useEffect(() => {
     shipping("trucks", "truck.folioNumber", location.slice(23));

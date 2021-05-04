@@ -1,26 +1,5 @@
 import React from "react";
 
-{
-  /* <style type="text/css">
-	.st0{fill:none;stroke:#222221;stroke-width:0.3068;stroke-miterlimit:10;}
-	.st1{fill:#F1FAEE;}
-	.st2{fill:none;stroke:#1D3557;stroke-miterlimit:10;}
-	.st3{fill:#E63946;}
-	.st4{fill:#A8DADC;}
-	.st5{fill:#457B9D;}
-	.st6{fill:#1D3557;}
-	.st7{fill:#2A2C2E;}
-	.st8{fill:#2A3857;}
-	.st9{fill:none;}
-	.st10{fill:#C63C47;}
-	.st11{fill:#FFFFFF;}
-	.st12{fill:#D88A0E;}
-	.st13{fill:#591099;}
-	.st14{fill:none;stroke:#2A3857;stroke-width:0.7799;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-	.st15{fill:none;stroke:#C63C47;stroke-width:0.7799;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-</style> */
-}
-
 const Logo = () => {
   return (
     <svg
@@ -31,7 +10,6 @@ const Logo = () => {
       y="0px"
       viewBox="0 0 792 417.07"
       className="LogoTransportesMJM"
-      //style="enable-background:new 0 0 792 417.07;"
     >
       <g>
         <path

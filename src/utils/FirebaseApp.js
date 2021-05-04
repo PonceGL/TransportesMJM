@@ -168,8 +168,11 @@ const FirebaseApp = () => {
 
   //Rastrear toda la información de documentos
   const shipping = (collection, filter, num) => {
-    firebase.firestore().collection(collection);
-    º.get()
+    firebase
+      .firestore()
+      .collection(collection)
+      .where(filter, "==", num)
+      .get()
       .then((querySnapshot) => {
         if (querySnapshot.docs.length > 0) {
           if (collection === "envios") {
@@ -190,7 +193,7 @@ const FirebaseApp = () => {
       });
   };
 
-  //Todos los envios
+  //Todos los shipping
 
   const allShippinsAllTime = (collection, por, order) => {
     firebase

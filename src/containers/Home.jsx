@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SEO from "@components/Seo";
 
 import TrackingElement from "@components/TrackingElement";
-import ilustration from "@images/Logistics-truck.svg";
 import Services from "@components/Services";
 
 import Box from "@components/Box";
@@ -12,11 +12,10 @@ import Location from "@components/Location";
 import IconWhatsapp from "@components/IconWhatsapp";
 import "@styles/containers/Home.css";
 
-//<img src={ilustration} alt="Imagen de un camion y personas con logistica"/>
-
 const Home = () => {
   return (
     <>
+      <SEO page="Inicio" url="https://mjmpaqueteria.com/" />
       <main className="Home">
         <section className="Tracking-secction">
           <div className="Tracking-container">

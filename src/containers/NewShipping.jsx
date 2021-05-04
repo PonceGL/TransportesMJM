@@ -18,11 +18,11 @@ const NewShipping = () => {
   const form = useRef(null);
   const history = useHistory();
 
-  // useEffect(() => {
-  //   if (registeredUser === null) {
-  //     history.push("/admin");
-  //   }
-  // }, [registeredUser]);
+  useEffect(() => {
+    if (registeredUser === null) {
+      history.push("/admin");
+    }
+  }, [registeredUser]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
