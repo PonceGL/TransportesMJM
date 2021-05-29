@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
+import SEO from "@components/Seo";
 import AppContext from "../context/AppContext";
 import Loader from "@components/Loader";
 import FolioNumber from "@components/FolioNumber";
@@ -26,7 +27,13 @@ const Newtruck = () => {
   }, [registeredUser]);
 
   useEffect(() => {
-    allShippingQuery("envios", "envio.folioNumber", "asc");
+    allShippingQuery(
+      "envios",
+      "statusEnRuta",
+      false,
+      "statusRecibidoHora",
+      "desc"
+    );
   }, []);
 
   const selecShippingToTruck = (value) => {
@@ -58,6 +65,7 @@ const Newtruck = () => {
 
   return (
     <>
+      <SEO page="Nuevo viaje" />
       <main className="Newtruck">
         {ready ? (
           <div className="loader-container">

@@ -1,18 +1,74 @@
 Footer {
   width: 100%;
-  height: 4rem;
-  background-color: var(--primary);
-  position: relative;
-  overflow: hidden;
+  padding: 2rem;
+  color: var(--white);
+  background-color: var(--orange);
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.Footer-round {
-  width: 100vw;
-  height: 4rem;
-  position: absolute;
-  top: -2rem;
-  left: 0;
-  right: 0;
-  background-color: #fff;
-  border-radius: 2rem;
+.Footer-logo {
+  width: 40%;
+}
+
+footer h2 {
+  font-weight: 400;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+footer .Footer-info-office {
+  width: 100%;
+  text-align: center;
+}
+
+footer .office-xalapa {
+  margin: 4rem auto 2rem;
+}
+
+footer .Footer-info-office h4 {
+  font-size: 1.6rem;
+}
+
+footer .Footer-info-office p,
+footer .Footer-info-office a {
+  font-size: 1.4rem;
+  text-align: center;
+  color: var(--white);
+}
+
+footer .Footer-info-office a {
+  cursor: pointer;
+}
+
+footer .restrictions {
+  width: 100%;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 750px) {
+  Footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  footer .Footer-info-office {
+    width: 50%;
+  }
+
+  footer .office-xalapa {
+    margin: 0;
+  }
+
+  footer .restrictions {
+    margin-top: 4rem;
+  }
 }

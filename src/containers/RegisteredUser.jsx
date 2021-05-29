@@ -1,8 +1,8 @@
 import React, { useRef, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import SEO from "@components/Seo";
 import AppContext from "../context/AppContext";
 import Logo from "@images/MJM_logo.svg";
-import Loader from "@components/Loader";
 import "@styles/containers/AdminLogin.css";
 
 const RegisteredUser = () => {
@@ -29,6 +29,7 @@ const RegisteredUser = () => {
 
   return (
     <>
+      <SEO page="Registro" />
       <main className="Admin-login">
         <img
           src={Logo}

@@ -3,10 +3,12 @@ import "@styles/components/Loader.css";
 
 const Loader = () => {
   return (
-    <div className="lds-facebook">
-      <div></div>
-      <div></div>
-      <div></div>
+    <div className="loader-container">
+      <div className="lds-facebook">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import SEO from "@components/Seo";
 import AppContext from "../context/AppContext";
 import Amounts from "@components/Amounts";
 import TrackingNumber from "@components/TrackingNumber";
@@ -10,6 +11,7 @@ import "@styles/containers/NewShipping.css";
 const NewShipping = () => {
   const {
     registeredUser,
+    currentDate,
     newShipping,
     updateFolio,
     currentFolioCount,
@@ -30,6 +32,7 @@ const NewShipping = () => {
     const shipping = {
       trackingNumber: formShipping.get("trackingNumber"),
       folioNumber: formShipping.get("folioNumber"),
+      currentDate: currentDate,
 
       origin: formShipping.get("origin"),
       remitente: formShipping.get("remitente"),
@@ -67,6 +70,7 @@ const NewShipping = () => {
       heWillDriveFrom: formShipping.get("heWillDriveFrom"),
       heWillDriveTo: formShipping.get("heWillDriveTo"),
 
+      document: registeredUser.name,
       remarks: formShipping.get("remarks"),
       totalInLetters: formShipping.get("totalInLetters"),
 
@@ -80,6 +84,7 @@ const NewShipping = () => {
       total: formShipping.get("total"),
     };
 
+    console.log(shipping);
     newShipping(shipping);
     updateFolio("foliosNumbers", currentFolioCount.account + 1);
     setReady(true);
@@ -90,6 +95,7 @@ const NewShipping = () => {
 
   return (
     <>
+      <SEO page="Nuevo envío" />
       <main className="NewShipping">
         {ready ? (
           <div className="loader-container">

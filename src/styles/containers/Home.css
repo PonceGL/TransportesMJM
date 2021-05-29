@@ -6,21 +6,48 @@
   align-items: flex-start;
 }
 
+.Home h1,
+.Home .schema {
+  display: none;
+}
+
 .Tracking-secction {
   width: 100%;
+  padding: 3rem 2rem 2rem;
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("@images/Logistics-truck.svg");
+  background-image: url("@images/truck.svg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
 }
 
+.Tracking-secction-best_price {
+  padding: 0.2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+  position: relative;
+  background: rgba(255, 131, 3, 0.1);
+  border-radius: 0.5rem;
+  transform: translateY(-2rem);
+  z-index: 3;
+}
+
+.Tracking-secction-best_price .percent {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+.Tracking-secction-best_price .asterisk {
+  font-size: 1.2rem;
+}
+
 .Tracking-container {
-  width: 70%;
-  margin: 12rem auto;
+  width: 100%;
+  margin: 2rem auto;
   display: flex;
   color: var(--blue);
   flex-direction: column;
@@ -31,13 +58,13 @@
 }
 
 .Tracking-container h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   text-align: center;
 }
 
 .Tracking-container p {
   margin: 0.5rem auto 1rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   text-align: center;
 }
 
@@ -45,7 +72,7 @@
   width: 100%;
   height: 100%;
   background-image: linear-gradient(to bottom, #fff 0%, var(--orange) 100%);
-  opacity: 0.8;
+  opacity: 0.9;
   position: absolute;
   top: 0;
   left: 0;
@@ -65,7 +92,7 @@
 .Who-we-are-and-what-we-do {
   width: 95%;
   margin-top: 1rem;
-  padding: 3.5rem 2rem;
+  padding: 3.5rem;
   border-radius: 0 2rem 2rem 0;
   color: var(--white);
   background-color: var(--blue);
@@ -74,20 +101,37 @@
 .Who-we-are-and-what-we-do h4 {
   font-size: 1.6rem;
   font-weight: 400;
-  text-align: left;
 }
 
-.Who-we-are-and-what-we-do h4 span {
+.Who-we-are-and-what-we-do h4 em {
   font-weight: 600;
+  font-style: normal;
+  color: var(--orange);
 }
 
-.Who-we-are-and-what-we-do p {
-  margin-top: 1rem;
-  font-size: 1.4rem;
+/* ---------------------------routes--------------------------- */
+
+.routes {
+  width: 100%;
+  text-align: center;
+  margin: 1rem auto;
+  padding: 1rem;
 }
 
-.Who-we-are-and-what-we-do p span {
-  font-weight: 600;
+.routes ul {
+  width: 100%;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.routes ul li {
+  font-size: 1.6rem;
+  transition: ease-in-out 0.3s all;
+}
+
+.routes ul li:hover {
   color: var(--orange);
 }
 
@@ -168,9 +212,7 @@
   align-items: center;
 }
 
-.call,
-.message {
-  width: 50%;
+.call-or-message div {
   font-size: 1.4rem;
   display: flex;
   flex-direction: column;
@@ -179,7 +221,7 @@
   color: var(--blue);
 }
 
-.call a,
+.phone a,
 .message a {
   color: var(--blue);
   cursor: pointer;
@@ -193,6 +235,8 @@
   align-items: center;
 }
 
+.phone svg,
+.mail svg,
 .whatsapp-number svg {
   width: 2rem;
   height: 2rem;
@@ -202,12 +246,31 @@
   .Home {
     padding-bottom: 4rem;
   }
+
+  .Tracking-secction-best_price {
+    font-size: 2rem;
+    background: none;
+    transform: translateY(0);
+  }
+
+  .Tracking-secction-best_price .percent {
+    font-size: 2.5rem;
+  }
+  .Tracking-secction-best_price .asterisk {
+    font-size: 1.3rem;
+  }
+
   .Tracking-container {
-    margin: 18rem auto;
+    margin: 8rem auto;
+  }
+
+  .package-tracking-input {
+    width: 50%;
   }
 
   .Services {
-    grid-template-columns: repeat(3, minmax(75%, 1fr));
+    grid-template-columns: repeat(4, minmax(60%, 1fr));
+    grid-template-rows: minmax(20rem, 30rem);
   }
 
   .Service {
@@ -223,14 +286,16 @@
     color: var(--white);
     transform: translate(2rem, -5rem);
   }
+
+  .call-or-message {
+    width: 60%;
+    margin: 2rem auto 0;
+  }
 }
 
 @media screen and (min-width: 1000px) {
-  .Tracking-secction {
-    height: calc(100vh - 11rem);
-  }
-  .Tracking-container {
-    margin: 0;
+  .Tracking-secction-best_price {
+    margin: 0 0 4rem;
   }
 
   .Tracking-container h2 {
@@ -243,11 +308,24 @@
 
   .package-tracking-input,
   .package-tracking-button {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+  }
+
+  .package-tracking-input {
+    width: 35%;
   }
 
   .package-tracking-input::placeholder {
     font-size: 1.5rem;
+  }
+
+  .routes {
+    width: 50%;
+    font-size: 1.8rem;
+  }
+
+  .Who-we-are-and-what-we-do {
+    width: 70%;
   }
 
   .argument {
@@ -256,6 +334,34 @@
 
   .Services {
     width: 98%;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .Service-title {
+    transform: translate(2rem, -2.8rem);
+  }
+
+  .Service-description {
+    color: var(--blue);
+    transform: translate(0);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .Tracking-secction-best_price {
+    font-size: 3rem;
+    background: none;
+    transform: translateY(0);
+  }
+
+  .Tracking-secction-best_price .percent {
+    font-size: 3.5rem;
+  }
+  .Tracking-secction-best_price .asterisk {
+    font-size: 1.8rem;
+  }
+
+  .routes ul li {
+    font-size: 2rem;
   }
 }

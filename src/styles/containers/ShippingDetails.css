@@ -2,8 +2,9 @@
 .Details-totalInLetters,
 .Details-thanks,
 .Details-status-trackingNumber,
-.Details-document,
-.Details-accordance {
+.notReceived,
+.Details-reshipment-reembarkWith,
+.Condujo {
   display: none;
 }
 
@@ -102,11 +103,11 @@
   border: 0.1rem solid var(--blue);
 }
 
-.Details-reshipment-reembarkWith {
+/* .Details-reshipment-reembarkWith {
   padding: 1rem 0.5rem;
   width: 100%;
   margin: 1rem 0;
-}
+} */
 
 .Details-drive {
   width: 100%;
@@ -116,7 +117,7 @@
   align-items: flex-start;
 }
 
-.Details-drive div {
+.Details-drive .conduct {
   width: 100%;
   margin: 1rem 0;
   padding: 1rem 0.5rem;
@@ -173,6 +174,7 @@
   font-size: 2rem;
   font-weight: 600;
   text-align: center;
+  text-transform: initial;
 }
 
 .Details-status {
@@ -183,7 +185,6 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  border: 0.1rem solid var(--blue);
 }
 
 .Button-edit,
@@ -199,6 +200,7 @@
   background-color: var(--white);
   outline: none;
   cursor: pointer;
+  transition: ease-in-out 0.3s all;
 }
 
 .Button-delivered {
@@ -242,7 +244,6 @@
     padding: 0.5rem;
     margin: 0;
     border: 0.1rem solid var(--blue);
-    border-bottom: none;
   }
 
   .Details-PaymentTermsAndValue {
@@ -267,7 +268,7 @@
     margin: 0;
   }
 
-  .Details-reshipment-reembarkWith {
+  /* .Details-reshipment-reembarkWith {
     grid-column: 1 / span 4;
     grid-row: 3 / span 1;
     display: grid;
@@ -275,17 +276,17 @@
     margin: 0;
     border-right: 0.1rem solid var(--blue);
     border-left: 0.1rem solid var(--blue);
-  }
+  } */
 
   .Details-drive {
+    margin: 0;
     grid-column: 1 / span 4;
     grid-row: 4 / span 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 0;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
   }
 
-  .Details-drive div {
+  .Details-drive .conduct {
     margin: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -293,36 +294,62 @@
     grid-gap: 0.5rem;
   }
 
-  .Details-drive div p:first-child {
+  .Details-drive .conduct p:first-child {
     grid-column: 1 / span 2;
     grid-row: 1 / span 1;
   }
 
   .Details-status {
-    width: 30%;
-    margin: 0;
-    position: fixed;
-    right: 0;
+    margin: 22rem 0 0;
   }
 
-  .Details-status-trackingNumber {
-    width: 100%;
+  .Details-last-information {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .Details-last-information div:not(:last-child) {
+    width: auto;
+    max-width: 50%;
+    flex-grow: 1;
+  }
+
+  .Details-last-information div:not(:first-child) p {
     text-align: center;
-    display: block;
+    margin: auto;
   }
 
   .Details-freight {
-    width: 30%;
+    width: 29%;
     margin: 0;
-    position: fixed;
-    top: 50rem;
-    right: 0;
+    position: absolute;
+    top: 17rem;
+    right: 2rem;
   }
-}
 
-@media screen and (min-width: 1300px) {
-  .Details-freight {
-    top: 55rem;
+  .Details-freight div {
+    border: none;
+  }
+
+  .Details-freight div:first-child {
+    border-right: 0.1rem solid var(--blue);
+  }
+
+  .Details-freight p {
+    font-size: 1.8rem;
+  }
+
+  .Details-buttons-container .Button-edit:hover {
+    color: var(--orange);
+    border: 0.1rem solid var(--orange);
+  }
+
+  .Details-buttons-container .Button-print:hover {
+    color: var(--admin-blue);
+    border: 0.1rem solid var(--admin-blue);
   }
 }
 
@@ -336,7 +363,8 @@
 
   .Details {
     width: 97%;
-    margin: 2rem auto;
+    margin: 4rem auto;
+    padding: 1rem;
     display: block;
     border: 2px solid var(--blue);
     text-transform: uppercase;
@@ -349,8 +377,13 @@
     color: var(--blue);
     background-color: #fff;
 
-    display: flex;
-    justify-content: space-around;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center; */
+
+    display: grid;
+    grid-template-columns: 1fr 4fr 0.5fr;
+    justify-content: center;
     align-items: center;
   }
 
@@ -367,13 +400,11 @@
   }
 
   .Details-Print-header .Details-Print-logo {
-    width: 15%;
+    width: 100%;
     object-fit: cover;
   }
 
   .Details-Print-centerarea {
-    width: 60%;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -401,6 +432,11 @@
     align-items: center;
   }
 
+  .Details-Print-mail {
+    margin-top: 1rem;
+    text-transform: initial;
+  }
+
   .Details-Print-folio .Details-Print-folio-number {
     color: red;
   }
@@ -423,7 +459,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: stretch;
   }
 
   .Details-date-origin {
@@ -441,6 +477,10 @@
   .Details-destination {
     width: 50%;
     margin: 0;
+  }
+
+  .Details-destination {
+    border-left: none;
   }
 
   .Details-remitente h3,
@@ -536,7 +576,7 @@
     border-right: none;
   }
 
-  .Details-reshipment-reembarkWith {
+  /* .Details-reshipment-reembarkWith {
     width: 100%;
     margin: 0;
     display: flex;
@@ -544,12 +584,12 @@
     align-items: center;
     border-left: 0.1rem solid var(--blue);
     border-right: 0.1rem solid var(--blue);
-  }
+  } */
 
-  .Details-reshipment-reembarkWith p {
+  /* .Details-reshipment-reembarkWith p {
     width: 50%;
     text-align: left;
-  }
+  } */
 
   .Details-drive {
     flex-direction: row;
@@ -557,25 +597,26 @@
     align-items: center;
   }
 
-  .Details-drive div {
-    width: 50%;
+  .Details-drive .conduct {
+    width: 100%;
     margin: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
+    border-top: none;
   }
 
-  .Details-drive div:first-child {
+  .Details-drive .conduct:first-child {
     border-right: none;
   }
 
-  .Details-drive div p {
+  .Details-drive .conduct p {
     width: 50%;
     margin-top: 0.5rem;
   }
 
-  .Details-drive div p:first-child {
+  .Details-drive .conduct p:first-child {
     width: 100%;
   }
 
@@ -586,17 +627,19 @@
     text-align: right;
     border: 0.1rem solid var(--blue);
     border-top: none;
+    border-bottom: none;
   }
 
   .Details-freight {
     width: 30%;
-    height: 217px;
+    /* height: 217px; */
     margin: 0;
-    border-bottom: 0.1rem solid var(--blue);
+    /* border-bottom: 0.1rem solid var(--blue); */
     border-right: 0.1rem solid var(--blue);
   }
 
   .Details-freight div {
+    padding: 0rem 0.5rem;
     border-top: none;
     border-bottom: none;
   }
@@ -618,39 +661,60 @@
   .Details-last-information {
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr 2fr 2fr;
     justify-items: center;
     align-items: stretch;
+  }
+
+  .notReceived {
+    display: block;
   }
 
   .Details-last-information div {
     margin: 0;
     text-align: center;
-    border-top: none;
+  }
+
+  .Details-last-information div:nth-child(1) {
+    border-right: none;
   }
 
   .Details-last-information div:nth-child(2) {
-    border-left: none;
     border-right: none;
   }
+
   .Details-last-information div:last-child {
     border-left: none;
   }
 
+  .Details-trackingNumber p {
+    text-transform: initial;
+  }
+
   .Details-document,
-  .Details-accordance {
+  .Details-accordance,
+  .notReceived {
     display: block;
   }
 
-  .Details-accordance {
+  .Details-accordance,
+  .notReceived {
     position: relative;
   }
 
-  .Details-accordance .line {
-    width: 140px;
+  .line-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    bottom: 1rem;
-    left: calc(50% - 70px);
-    border-top: 0.1rem solid var(--blue);
+    bottom: 10px;
+    left: 0;
+  }
+
+  .line {
+    width: 80%;
+    height: 2pt;
+    border-top: 1pt solid var(--admin-deep-blue);
   }
 }

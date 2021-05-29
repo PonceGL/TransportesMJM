@@ -1,4 +1,2 @@
-User-agent: *
-Disallow: 
-Disallow: /
-Sitemap: https://mjmpaqueteria.com/
+User-Agent: *
+Allow: /

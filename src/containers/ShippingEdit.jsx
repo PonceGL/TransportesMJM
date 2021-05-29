@@ -1,9 +1,11 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
+import SEO from "@components/Seo";
 import AppContext from "../context/AppContext";
 import Amounts from "@components/Amounts";
 import Loader from "@components/Loader";
 import "@styles/containers/NewShipping.css";
+import "@styles/containers/ShippingEdit.css";
 
 const ShippingEdit = () => {
   const [originEdit, setOriginEdit] = useState("");
@@ -36,9 +38,8 @@ const ShippingEdit = () => {
   const [remarksEdit, setRemarksEdit] = useState("");
   const [totalInLettersEdit, setTotalInLettersEdit] = useState("");
 
-  const { registeredUser, query, shipping, updateShipping } = useContext(
-    AppContext
-  );
+  const { registeredUser, query, shipping, updateShipping } =
+    useContext(AppContext);
   const [ready, setReady] = useState(false);
   const location = useLocation().pathname;
   const details = query.envio;
@@ -46,11 +47,11 @@ const ShippingEdit = () => {
   const form = useRef(null);
   const history = useHistory();
 
-  useEffect(() => {
-    if (registeredUser === null) {
-      history.push("/admin");
-    }
-  }, [registeredUser]);
+  // useEffect(() => {
+  //   if (registeredUser === null) {
+  //     history.push("/admin");
+  //   }
+  // }, [registeredUser]);
 
   useEffect(() => {
     shipping("envios", "envio.trackingNumber", location.slice(20));
@@ -131,6 +132,7 @@ const ShippingEdit = () => {
 
   return (
     <>
+      <SEO page="Editar envío" />
       <main className="NewShipping">
         {!details ? (
           <div className="loader-container">
@@ -316,7 +318,7 @@ const ShippingEdit = () => {
               />
             </section>
             <section className="NewShipping-unit-value">
-              <p className="NewShipping-unit-value_description">
+              <p className="center-center">
                 Valor unitario, cuota convenida por tonelada o carga fraccionada
               </p>
               <input
@@ -373,7 +375,6 @@ const ShippingEdit = () => {
                 <input
                   type="text"
                   className="input-more-information"
-                  placeholder="Embalaje"
                   name="packaging"
                   value={packagingEdit ? packagingEdit : details.packaging}
                   onChange={(e) =>
@@ -387,7 +388,6 @@ const ShippingEdit = () => {
               </div>
               <textarea
                 name="claimsToContain"
-                placeholder="Que el remitende dice contiene"
                 value={
                   claimsToContainEdit
                     ? claimsToContainEdit
@@ -405,7 +405,6 @@ const ShippingEdit = () => {
                 <input
                   type="number"
                   className="input-peso"
-                  placeholder="Peso"
                   name="weight"
                   value={weightEdit ? weightEdit : details.weight}
                   onChange={(e) =>
@@ -415,7 +414,6 @@ const ShippingEdit = () => {
                 <input
                   type="text"
                   className="input-weightAndVolume"
-                  placeholder="M3"
                   name="m3"
                   value={m3Edit ? m3Edit : details.m3}
                   onChange={(e) =>
@@ -425,7 +423,6 @@ const ShippingEdit = () => {
                 <input
                   type="text"
                   className="input-weightAndVolume"
-                  placeholder="Peso estimado"
                   name="estimatedWeight"
                   value={
                     estimatedWeightEdit
@@ -442,11 +439,10 @@ const ShippingEdit = () => {
                 />
               </div>
             </section>
-            <section className="shipment">
+            <section className="shipment shipmentEdit">
               <input
                 type="text"
                 className="input-shipment"
-                placeholder="Reembarco"
                 name="reshipment"
                 value={reshipmentEdit ? reshipmentEdit : details.reshipment}
                 onChange={(e) =>
@@ -459,8 +455,7 @@ const ShippingEdit = () => {
               />
               <input
                 type="text"
-                className="input-shipment"
-                placeholder="Reembarcarse con"
+                className="input-shipment reembarkWith"
                 name="reembarkWith"
                 value={
                   reembarkWithEdit ? reembarkWithEdit : details.reembarkWith
@@ -477,7 +472,6 @@ const ShippingEdit = () => {
                 <input
                   type="text"
                   className="input-drove"
-                  placeholder="Condujo"
                   name="drove"
                   value={droveEdit ? droveEdit : details.drove}
                   onChange={(e) =>
@@ -487,7 +481,6 @@ const ShippingEdit = () => {
                 <input
                   type="text"
                   className="input-drove"
-                  placeholder="De"
                   name="droveFrom"
                   value={droveFromEdit ? droveFromEdit : details.droveFrom}
                   onChange={(e) =>
@@ -501,7 +494,6 @@ const ShippingEdit = () => {
                 <input
                   type="text"
                   className="input-drove"
-                  placeholder="A"
                   name="droveTo"
                   value={droveToEdit ? droveToEdit : details.droveTo}
                   onChange={(e) =>
@@ -517,8 +509,7 @@ const ShippingEdit = () => {
                 <input
                   type="text"
                   className="input-drove"
-                  placeholder="Conducirá"
-                  name="heWillDrive"
+                  name="heWillDriveFrom"
                   value={
                     heWillDriveEdit ? heWillDriveEdit : details.heWillDrive
                   }
@@ -533,7 +524,6 @@ const ShippingEdit = () => {
                 <input
                   type="text"
                   className="input-drove"
-                  placeholder="De"
                   name="heWillDriveFrom"
                   value={
                     heWillDriveFromEdit
@@ -569,7 +559,6 @@ const ShippingEdit = () => {
               </div>
               <textarea
                 name="remarks"
-                placeholder="Observaciones"
                 value={remarksEdit ? remarksEdit : details.remarks}
                 onChange={(e) =>
                   handleChange(e.target.value, setRemarksEdit, details.remarks)
@@ -578,7 +567,6 @@ const ShippingEdit = () => {
               <input
                 type="text"
                 className="input-totalInLetters"
-                placeholder="Importe total en letra"
                 name="totalInLetters"
                 value={
                   totalInLettersEdit
@@ -604,15 +592,17 @@ const ShippingEdit = () => {
               ivaRetainedEdit={details.ivaRetained}
               totalEdit={details.total}
             />
-            <button type="submit" className="Botton-guardar">
-              Guardar
-            </button>
-            <Link
-              to={`/admin/detalles-envio/${details.trackingNumber}`}
-              className="Botton-submit"
-            >
-              Cancelar
-            </Link>
+            <section className="shipmentEdit-butoons">
+              <button type="submit" className="Botton-guardar">
+                Guardar
+              </button>
+              <Link
+                to={`/admin/detalles-envio/${details.trackingNumber}`}
+                className="Botton-submit"
+              >
+                Cancelar
+              </Link>
+            </section>
           </form>
         )}
       </main>

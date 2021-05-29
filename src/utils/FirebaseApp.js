@@ -10,6 +10,12 @@ const FirebaseApp = () => {
   const [error, setError] = useState(null);
   const [allemployees, setAllemployees] = useState([]);
 
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const currentDate = day.toString() + month.toString() + year.toString();
+
   const firebaseConfig = {
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
@@ -61,7 +67,10 @@ const FirebaseApp = () => {
     firebase
       .firestore()
       .collection("employees")
-      .where("email", "!=", "poncianogl@hotmail.com")
+      .where("email", "not-in", [
+        "poncianogl@hotmail.com",
+        "transportesmjm1@gmail.com",
+      ])
       .get()
       .then((querySnapshot) => {
         setAllemployees([]);
@@ -221,12 +230,12 @@ const FirebaseApp = () => {
 
   //Todos los envios filtrados
 
-  const allShippingQuery = (collection, por, order) => {
+  const allShippingQuery = (collection, filter, FilterBy, order, orderBy) => {
     firebase
       .firestore()
       .collection(collection)
-      .where("statusEntregado", "==", false)
-      .orderBy(por, order)
+      .where(filter, "==", FilterBy)
+      .orderBy(order, orderBy)
       .get()
       .then((querySnapshot) => {
         if (collection === "envios") {
@@ -251,9 +260,10 @@ const FirebaseApp = () => {
   const newShipping = (shipping) => {
     firebase.firestore().collection("envios").add({
       envio: shipping,
-      statusRecibido: true,
-      statusRecibidoHora: firebase.firestore.FieldValue.serverTimestamp(),
       statusEntregado: false,
+      statusRecibido: true,
+      statusEnRuta: false,
+      statusRecibidoHora: firebase.firestore.FieldValue.serverTimestamp(),
     });
   };
 
@@ -279,7 +289,7 @@ const FirebaseApp = () => {
       });
   };
 
-  //obtener el numero de un envio
+  //Obtener el numero de un envio
 
   const checkIfUnique = (num) => {
     firebase
@@ -343,7 +353,7 @@ const FirebaseApp = () => {
   };
 
   //Actualizar el status de envio
-  const updateStatus = (num, status) => {
+  const updateStatus = (num, status, receiving) => {
     firebase
       .firestore()
       .collection("envios")
@@ -355,7 +365,8 @@ const FirebaseApp = () => {
             firebase.firestore().collection("envios").doc(doc.id).set(
               {
                 statusEnRuta: true,
-                statusEnRutaHora: firebase.firestore.FieldValue.serverTimestamp(),
+                statusEnRutaHora:
+                  firebase.firestore.FieldValue.serverTimestamp(),
               },
               { merge: true }
             );
@@ -364,7 +375,8 @@ const FirebaseApp = () => {
               firebase.firestore().collection("envios").doc(doc.id).set(
                 {
                   statusEnDomicilio: true,
-                  statusEnDomicilioHora: firebase.firestore.FieldValue.serverTimestamp(),
+                  statusEnDomicilioHora:
+                    firebase.firestore.FieldValue.serverTimestamp(),
                 },
                 { merge: true }
               );
@@ -373,8 +385,10 @@ const FirebaseApp = () => {
             querySnapshot.forEach((doc) => {
               firebase.firestore().collection("envios").doc(doc.id).set(
                 {
+                  nameOfPersonReceiving: receiving,
                   statusEntregado: true,
-                  statusEntregadoHora: firebase.firestore.FieldValue.serverTimestamp(),
+                  statusEntregadoHora:
+                    firebase.firestore.FieldValue.serverTimestamp(),
                 },
                 { merge: true }
               );
@@ -401,7 +415,8 @@ const FirebaseApp = () => {
             firebase.firestore().collection("trucks").doc(doc.id).set(
               {
                 statusEnRuta: true,
-                statusEnRutaHora: firebase.firestore.FieldValue.serverTimestamp(),
+                statusEnRutaHora:
+                  firebase.firestore.FieldValue.serverTimestamp(),
               },
               { merge: true }
             );
@@ -410,7 +425,8 @@ const FirebaseApp = () => {
               firebase.firestore().collection("trucks").doc(doc.id).set(
                 {
                   statusEnDomicilio: true,
-                  statusEnDomicilioHora: firebase.firestore.FieldValue.serverTimestamp(),
+                  statusEnDomicilioHora:
+                    firebase.firestore.FieldValue.serverTimestamp(),
                 },
                 { merge: true }
               );
@@ -420,7 +436,8 @@ const FirebaseApp = () => {
               firebase.firestore().collection("trucks").doc(doc.id).set(
                 {
                   statusEntregado: true,
-                  statusEntregadoHora: firebase.firestore.FieldValue.serverTimestamp(),
+                  statusEntregadoHora:
+                    firebase.firestore.FieldValue.serverTimestamp(),
                 },
                 { merge: true }
               );
@@ -447,6 +464,7 @@ const FirebaseApp = () => {
   };
 
   return {
+    currentDate,
     registeredUser,
     loginUser,
     registerNewUser,

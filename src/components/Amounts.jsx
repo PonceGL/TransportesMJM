@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "@styles/components/Amounts.css";
 
 const Amounts = ({
@@ -19,6 +19,8 @@ const Amounts = ({
   const [ivaTransfer, setIvaTransfer] = useState(0);
   const [ivaRetained, setIvaRetained] = useState(0);
   const [total, setTotal] = useState(0);
+  const [individual, setIndividual] = useState(false);
+  const checkboxIndividual = useRef(null);
 
   const formatter = new Intl.NumberFormat("es-MX", {
     style: "currency",
@@ -47,18 +49,29 @@ const Amounts = ({
 
   useEffect(() => {
     const sum =
-      parseInt(freight) +
-      parseInt(insurance) +
-      parseInt(shunting) +
-      parseInt(others);
-    const ivaTransfer = sum * 0.16;
-    const ivaRetained = parseInt(freight) * 0.04;
-    const totalFinish = sum + ivaTransfer - ivaRetained;
+      parseFloat(freight) +
+      parseFloat(insurance) +
+      parseFloat(shunting) +
+      parseFloat(others);
+
+    const ivaTransfer =
+      parseFloat(freight) * 0.16 +
+      parseFloat(insurance) * 0.16 +
+      parseFloat(shunting) * 0.16 +
+      parseFloat(others) * 0.16;
+
+    let retained = parseFloat(freight) * 0.04;
+
+    if (checkboxIndividual.current.checked) {
+      setIvaRetained(0);
+      setTotal(sum + ivaTransfer);
+    } else {
+      setIvaRetained(retained);
+      setTotal(sum + ivaTransfer - retained);
+    }
 
     setSubtotal(sum);
     setIvaTransfer(ivaTransfer);
-    setIvaRetained(ivaRetained);
-    setTotal(totalFinish);
   }, [freight, insurance, shunting, others]);
 
   return (
@@ -82,6 +95,7 @@ const Amounts = ({
           className="bolt"
           value={freight ? freight : freightEdit}
           onChange={(e) => onlyNumbers(e.target.value, setFreight)}
+          required
         />
         <input
           type="text"
@@ -131,8 +145,13 @@ const Amounts = ({
           className="bolt"
           readOnly
           value={total ? formatter.format(total) : totalEdit}
+          required
         />
       </div>
+      <label className="checkbox-individual">
+        <input type="checkbox" name="individual" ref={checkboxIndividual} />
+        Persona física
+      </label>
     </section>
   );
 };

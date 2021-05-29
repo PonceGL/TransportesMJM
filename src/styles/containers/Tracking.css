@@ -101,3 +101,30 @@
 .Tracking-info span {
   font-weight: 600;
 }
+
+.Tracking-logo-container {
+  display: none;
+}
+
+@media screen and (min-width: 750px) {
+  .Tracking {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .Tracking-container-status {
+    width: 25%;
+    margin: 0 auto;
+  }
+
+  .Tracking-logo-container {
+    width: 55%;
+    display: block;
+  }
+
+  .Tracking-logo-container img {
+    width: 100%;
+    opacity: 0.5;
+  }
+}

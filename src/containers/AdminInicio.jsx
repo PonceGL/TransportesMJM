@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import SEO from "@components/Seo";
 import AppContext from "../context/AppContext";
 import "@styles/containers/AdminInicio.css";
 
@@ -7,7 +8,7 @@ const AdminInicio = () => {
   const {
     registeredUser,
     allShippings,
-    allShippinsAllTime,
+    currentDate,
     allTrucks,
     allShippingQuery,
   } = useContext(AppContext);
@@ -16,10 +17,12 @@ const AdminInicio = () => {
   const [viewAllTrucks, setViewAllTrucks] = useState(false);
   const history = useHistory();
 
-  useEffect(() => {
-    allShippingQuery("envios", "statusRecibidoHora", "desc");
-    allShippingQuery("trucks", "truck.folioNumber", "desc");
-  }, []);
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
 
   useEffect(() => {
     if (registeredUser === null) {
@@ -32,28 +35,81 @@ const AdminInicio = () => {
     }
   }, [registeredUser]);
 
+  useEffect(() => {
+    allShippingQuery(
+      "envios",
+      "statusEntregado",
+      false,
+      "statusRecibidoHora",
+      "desc"
+    );
+    allShippingQuery(
+      "trucks",
+      "statusEntregado",
+      false,
+      "truck.folioNumber",
+      "desc"
+    );
+  }, []);
+
+  const handleShippingOfDay = () => {
+    allShippingQuery(
+      "envios",
+      "envio.currentDate",
+      currentDate,
+      "statusRecibidoHora",
+      "desc"
+    );
+    setViewAll(true);
+  };
+
   const handleAllShippings = () => {
-    allShippinsAllTime("envios", "statusRecibidoHora", "desc");
+    allShippingQuery(
+      "envios",
+      "statusEntregado",
+      true,
+      "statusRecibidoHora",
+      "desc"
+    );
     setViewAll(true);
   };
 
   const handleAllTrucks = () => {
-    allShippinsAllTime("trucks", "truck.folioNumber", "desc");
+    allShippingQuery(
+      "trucks",
+      "statusEntregado",
+      true,
+      "truck.folioNumber",
+      "desc"
+    );
     setViewAllTrucks(true);
   };
 
   const allCurrentShipments = () => {
-    allShippingQuery("envios", "statusRecibidoHora", "desc");
+    allShippingQuery(
+      "envios",
+      "statusEntregado",
+      false,
+      "statusRecibidoHora",
+      "desc"
+    );
     setViewAll(false);
   };
 
   const allCurrentTrucks = () => {
-    allShippingQuery("trucks", "truck.folioNumber", "desc");
+    allShippingQuery(
+      "trucks",
+      "statusEntregado",
+      false,
+      "truck.folioNumber",
+      "desc"
+    );
     setViewAllTrucks(false);
   };
 
   return (
     <>
+      <SEO page="Administración" />
       <main className="Admin-Inicio">
         <section
           className={
@@ -69,14 +125,21 @@ const AdminInicio = () => {
               Envíos pendientes
             </h3>
             <h3
-              className={viewAll ? "view" : undefined}
               onClick={() => {
                 handleAllShippings();
               }}
             >
-              Todos los envíos
+              Envíos entregados
+            </h3>
+            <h3
+              onClick={() => {
+                handleShippingOfDay();
+              }}
+            >
+              Envíos del día
             </h3>
           </div>
+          {viewAll && <p className="totalShippings">{allShippings.length}</p>}
           <div className="list-container">
             {allShippings.map((shipping) => (
               <Link
@@ -85,6 +148,11 @@ const AdminInicio = () => {
               >
                 <p>{shipping.envio.trackingNumber}</p>
                 <p>{shipping.envio.remitente}</p>
+                <p>
+                  {shipping.statusRecibidoHora
+                    .toDate()
+                    .toLocaleDateString("es-ES", options)}
+                </p>
               </Link>
             ))}
           </div>
@@ -94,7 +162,7 @@ const AdminInicio = () => {
             viewAllTrucks ? "list-allTrucks view-list" : "list-allTrucks"
           }
         >
-          <div className="list-allShippings-titles">
+          <div className="list-allTrucks-titles">
             <h3
               onClick={() => {
                 allCurrentTrucks();
@@ -108,7 +176,7 @@ const AdminInicio = () => {
                 handleAllTrucks();
               }}
             >
-              Todos los camiones
+              Viajes finalizados
             </h3>
           </div>
           <div className="list-trucks-concep">
@@ -136,9 +204,11 @@ const AdminInicio = () => {
           <Link to="/admin/crear-camion/">Crear uevo viaje</Link>
           {registeredUser != null && (
             <>
-              {registeredUser.email === "poncianogl@hotmail.com" && (
+              {registeredUser.email === "poncianogl@hotmail.com" ||
+              registeredUser.email === "transportesmjm1@gmail.com" ||
+              registeredUser.email === "recepcion.transportesmjm@gmail.com" ? (
                 <Link to="/admin/administrar-empleados">Empleados</Link>
-              )}
+              ) : undefined}
             </>
           )}
         </section>

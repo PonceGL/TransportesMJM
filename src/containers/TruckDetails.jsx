@@ -1,19 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
+import SEO from "@components/Seo";
 import AppContext from "../context/AppContext";
 import Logo from "@images/MJM_logo.svg";
+import Loader from "@components/Loader";
 import "@styles/containers/TruckDetails.css";
 
 const TruckDetails = () => {
-  const {
-    registeredUser,
-    shipping,
-    query,
-    updateStatus,
-    updateStatusTruck,
-  } = useContext(AppContext);
+  const { registeredUser, shipping, query, updateStatus, updateStatusTruck } =
+    useContext(AppContext);
   const location = useLocation().pathname;
   const history = useHistory();
+  const [ready, setReady] = useState(false);
   const details = query.truck;
   const shippings = query.shippings;
   let bultos = 0;
@@ -51,10 +49,16 @@ const TruckDetails = () => {
       updateStatus(shipping.trackingNumber, status);
     });
     updateStatusTruck(location.slice(23), status);
+    setReady(true);
+    setTimeout(() => {
+      setReady(false);
+    }, 2000);
   };
 
   return (
     <>
+      <SEO page="Detalles de viaje" />
+      {ready && <Loader />}
       {details && (
         <main className="TruckDetails">
           <section className="TruckDetails-actions">

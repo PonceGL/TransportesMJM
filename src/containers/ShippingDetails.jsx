@@ -1,17 +1,30 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
+import SEO from "@components/Seo";
 import AppContext from "../context/AppContext";
+import Modal from "@components/Modal";
 import Logo from "@images/MJM_logo.svg";
 import IconWhatsapp from "@components/IconWhatsapp";
+import Loader from "@components/Loader";
 import "@styles/containers/ShippingDetails.css";
 
 const ShippingDetails = () => {
-  const { registeredUser, shipping, query, updateStatus } = useContext(
-    AppContext
-  );
+  const { registeredUser, shipping, query, updateStatus } =
+    useContext(AppContext);
   const location = useLocation().pathname;
   const details = query.envio;
   const history = useHistory();
+  const formModal = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
   const options = {
     weekday: "long",
     year: "numeric",
@@ -19,11 +32,11 @@ const ShippingDetails = () => {
     day: "numeric",
   };
 
-  useEffect(() => {
-    if (registeredUser === null) {
-      history.push("/admin");
-    }
-  }, [registeredUser]);
+  // useEffect(() => {
+  //   if (registeredUser === null) {
+  //     history.push("/admin");
+  //   }
+  // }, [registeredUser]);
 
   useEffect(() => {
     shipping("envios", "envio.trackingNumber", location.slice(22));
@@ -33,12 +46,30 @@ const ShippingDetails = () => {
     window.print();
   };
 
-  const maintainShipmentStatus = (status) => {
-    updateStatus(details.trackingNumber, status);
+  const maintainShipmentStatus = (e) => {
+    e.preventDefault();
+    const personReceiving = new FormData(formModal.current);
+    const receiving = {
+      nameOfPersonReceiving: personReceiving.get("nameOfPersonReceiving"),
+    };
+
+    updateStatus(
+      details.trackingNumber,
+      "entregado",
+      receiving.nameOfPersonReceiving
+    );
+    handleClose();
+    setReady(true);
+    setTimeout(() => {
+      shipping("envios", "envio.trackingNumber", location.slice(22));
+      setReady(false);
+    }, 1500);
   };
 
   return (
     <>
+      <SEO page="Detalles de envío" />
+      {ready && <Loader />}
       {details && (
         <main className="Details">
           <section className="Details-Print-header">
@@ -61,7 +92,7 @@ const ShippingDetails = () => {
                 <div className="Details-Print-office mexicoOffice">
                   <h4>OFICINAS DE MEXICO</h4>
                   <p>CENTRAL DE CARGA ORIENTE TRANSPORTISTAS No. 15</p>
-                  <p>NAVE "F" BODEGAS 1 Y 2 COL. ALVARO OBREGON</p>
+                  <p>NAVE "F" BODEGAS 1 Y 2 COL. ALVARO OBREGÓN</p>
                   <p>C.P. 09230 ALC. IZTAPALAPA MEXICO, CDMX</p>
                   <p>TEL./FAX. 55 55 52 85 11</p>
                 </div>
@@ -78,6 +109,9 @@ const ShippingDetails = () => {
                   </p>
                 </div>
               </div>
+              <p className="Details-Print-mail">
+                Correo Electrónico: transportesmjm1@gmail.com
+              </p>
             </div>
             <div className="Details-Print-folio">
               <h4>CARTA PORTE</h4>
@@ -160,12 +194,12 @@ const ShippingDetails = () => {
                 </p>
               </div>
               <div className="Details-drive">
-                <div>
+                <div className="Condujo">
                   <p>Condujo: {details.drove}</p>
                   <p>De: {details.droveFrom}</p>
                   <p>A: {details.droveTo}</p>
                 </div>
-                <div>
+                <div className="conduct">
                   <p>Conducirá: {details.heWillDrive}</p>
                   <p>De: {details.heWillDriveFrom}</p>
                   <p>A: {details.heWillDriveTo}</p>
@@ -200,15 +234,26 @@ const ShippingDetails = () => {
             <div className="Details-last-information">
               <div className="Details-trackingNumber">
                 <span>Numero de rastreo</span>
-                <p>{details.trackingNumber}</p>
+                <p className="bolt">{details.trackingNumber}</p>
               </div>
               <div className="Details-document">
                 <span>Documentó</span>
-                <p>{details.document}</p>
+                <p className="bolt">{details.document}</p>
               </div>
-              <div className="Details-accordance">
+              <div
+                className={
+                  query.nameOfPersonReceiving
+                    ? "Details-accordance"
+                    : "notReceived"
+                }
+              >
                 <span>Recibí de Conformidad</span>
-                <i className="line"></i>
+                {query.nameOfPersonReceiving && (
+                  <p className="bolt">{query.nameOfPersonReceiving}</p>
+                )}
+                <ol className="line-container">
+                  <i className="line"></i>
+                </ol>
               </div>
               <div className="Details-observations">
                 <span>Observaciones</span>
@@ -220,9 +265,6 @@ const ShippingDetails = () => {
             </p>
           </section>
           <section className="Details-status">
-            <h3 className="Details-status-trackingNumber">
-              Numero de rastreo <span>{details.trackingNumber}</span>
-            </h3>
             <div className="Tracking-status-container">
               {query.statusEntregado && (
                 <div className="Tracking-status">
@@ -241,7 +283,7 @@ const ShippingDetails = () => {
               )}
               {query.statusEnDomicilio && (
                 <div className="Tracking-status">
-                  <h4>En Domicilio</h4>
+                  <h4>Llegó a base en la Ciudad de Xalapa</h4>
                   <p>
                     {query.statusEnDomicilioHora
                       .toDate()
@@ -271,7 +313,7 @@ const ShippingDetails = () => {
               )}
               {query.statusRecibido && (
                 <div className="Tracking-status">
-                  <h4>Se recibió en base CDMX</h4>
+                  <h4>Se recibió en base Ciudad de México</h4>
                   <p>
                     {query.statusRecibidoHora
                       .toDate()
@@ -301,18 +343,39 @@ const ShippingDetails = () => {
                 Imprimir
               </button>
             </div>
-            {query.statusEnDomicilio && (
+            {query.statusEnDomicilio && query.statusEntregado === false ? (
               <button
                 type="button"
                 className="Button-delivered"
-                onClick={() => {
-                  maintainShipmentStatus("entregado");
-                }}
+                onClick={handleOpen}
               >
-                Actualizar status de envio: Entregado
+                Actualizar status de envío a Entregado
               </button>
+            ) : (
+              <p className="Button-delivered">Entregado</p>
             )}
           </section>
+          <Modal
+            isOpen={isOpen}
+            handleClose={handleClose}
+            maintainShipmentStatus={maintainShipmentStatus}
+          >
+            <form ref={formModal} onSubmit={maintainShipmentStatus}>
+              <input
+                type="text"
+                className="Modal-input-form"
+                placeholder="Nombre de la persona que recibió"
+                name="nameOfPersonReceiving"
+                required
+              />
+              <button className="Modal-button-close" onClick={handleClose}>
+                Cancelar
+              </button>
+              <button type="submit" className="Modal-button-delivered">
+                Confirmar
+              </button>
+            </form>
+          </Modal>
         </main>
       )}
     </>

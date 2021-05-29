@@ -15,7 +15,7 @@ const TrackingElement = () => {
       <input
         className="package-tracking-input"
         type="text"
-        placeholder="Numero de rastreo"
+        placeholder="Número de rastreo"
         required
         minLength="10"
         maxLength="10"
