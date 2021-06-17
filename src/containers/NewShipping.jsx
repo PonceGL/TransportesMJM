@@ -84,7 +84,6 @@ const NewShipping = () => {
       total: formShipping.get("total"),
     };
 
-    console.log(shipping);
     newShipping(shipping);
     updateFolio("foliosNumbers", currentFolioCount.account + 1);
     setReady(true);

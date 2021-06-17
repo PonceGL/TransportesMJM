@@ -19,7 +19,6 @@ const Amounts = ({
   const [ivaTransfer, setIvaTransfer] = useState(0);
   const [ivaRetained, setIvaRetained] = useState(0);
   const [total, setTotal] = useState(0);
-  const [individual, setIndividual] = useState(false);
   const checkboxIndividual = useRef(null);
 
   const formatter = new Intl.NumberFormat("es-MX", {
@@ -43,7 +42,7 @@ const Amounts = ({
     ) {
       func(e);
     } else if (e.includes("")) {
-      func(0);
+      func("0");
     }
   };
 
@@ -63,15 +62,15 @@ const Amounts = ({
     let retained = parseFloat(freight) * 0.04;
 
     if (checkboxIndividual.current.checked) {
-      setIvaRetained(0);
-      setTotal(sum + ivaTransfer);
+      setIvaRetained("$0");
+      setTotal(formatter.format(sum + ivaTransfer));
     } else {
-      setIvaRetained(retained);
-      setTotal(sum + ivaTransfer - retained);
+      setIvaRetained(formatter.format(retained));
+      setTotal(formatter.format(sum + ivaTransfer - retained));
     }
 
-    setSubtotal(sum);
-    setIvaTransfer(ivaTransfer);
+    setSubtotal(formatter.format(sum));
+    setIvaTransfer(formatter.format(ivaTransfer));
   }, [freight, insurance, shunting, others]);
 
   return (
@@ -123,28 +122,28 @@ const Amounts = ({
           name="subtotal"
           className="bolt"
           readOnly
-          value={subtotal ? formatter.format(subtotal) : subtotalEdit}
+          value={subtotal ? subtotal : subtotalEdit}
         />
         <input
           type="text"
           name="ivaTransfer"
           className="bolt"
           readOnly
-          value={ivaTransfer ? formatter.format(ivaTransfer) : ivaTransferEdit}
+          value={ivaTransfer ? ivaTransfer : ivaTransferEdit}
         />
         <input
           type="text"
           name="ivaRetained"
           className="bolt"
           readOnly
-          value={ivaRetained ? formatter.format(ivaRetained) : ivaRetainedEdit}
+          value={ivaRetained ? ivaRetained : ivaRetainedEdit}
         />
         <input
           type="text"
           name="total"
           className="bolt"
           readOnly
-          value={total ? formatter.format(total) : totalEdit}
+          value={total ? total : totalEdit}
           required
         />
       </div>

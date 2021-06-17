@@ -28,6 +28,7 @@ const FirebaseApp = () => {
 
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
   }
   //Curent User
 

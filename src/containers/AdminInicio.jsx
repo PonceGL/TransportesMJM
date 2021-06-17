@@ -168,7 +168,7 @@ const AdminInicio = () => {
                 allCurrentTrucks();
               }}
             >
-              Camiones pendientes
+              Viajes pendientes
             </h3>
             <h3
               className={viewAllTrucks ? "view" : undefined}

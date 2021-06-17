@@ -343,7 +343,7 @@ const ShippingDetails = () => {
                 Imprimir
               </button>
             </div>
-            {query.statusEnDomicilio && query.statusEntregado === false ? (
+            {query.statusEnDomicilio && (
               <button
                 type="button"
                 className="Button-delivered"
@@ -351,7 +351,8 @@ const ShippingDetails = () => {
               >
                 Actualizar status de envío a Entregado
               </button>
-            ) : (
+            )}
+            {query.statusEntregado && (
               <p className="Button-delivered">Entregado</p>
             )}
           </section>

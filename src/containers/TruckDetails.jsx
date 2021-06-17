@@ -17,6 +17,7 @@ const TruckDetails = () => {
   let bultos = 0;
   let seguro = 0;
   let flete = 0;
+  let total = 0;
 
   const formatter = new Intl.NumberFormat("es-MX", {
     style: "currency",
@@ -167,17 +168,23 @@ const TruckDetails = () => {
               <p>Cobrar o Pagado</p>
             </div>
             {shippings.map((shipping) => {
-              if (shipping.num != "") {
+              if (shipping.num) {
                 bultos = bultos + parseInt(shipping.num);
               }
 
-              if (shipping.insurance != "") {
+              if (shipping.insurance) {
                 seguro = seguro + parseInt(shipping.insurance);
               }
 
-              if (shipping.freight != "") {
+              if (shipping.freight) {
                 flete = flete + parseInt(shipping.freight);
               }
+
+              if (shipping.total) {
+                let currentTotal = shipping.total.slice(1).replace(",", "");
+                total = total + parseInt(currentTotal);
+              }
+
               return (
                 <div
                   className="TruckDetails-shipping-container"
@@ -188,16 +195,24 @@ const TruckDetails = () => {
                   </Link>
                   <p>{shipping.remitente}</p>
                   <p>{shipping.addresseeRecipient}</p>
-                  <p>{shipping.num}</p>
+                  <p>{shipping.num ? shipping.num : 0}</p>
                   <p>{shipping.claimsToContain}</p>
                   <p>{shipping.weight}</p>
-                  <p>{formatter.format(shipping.insurance)}</p>
+                  <p>
+                    {shipping.insurance === "$" || shipping.insurance === ""
+                      ? 0
+                      : shipping.insurance}
+                  </p>
                   <p>
                     {shipping.declaredValue != "NO DECLARADO"
                       ? formatter.format(shipping.declaredValue)
                       : "NO DECLARADO"}
                   </p>
-                  <p>{formatter.format(shipping.freight)}</p>
+                  <p>
+                    {shipping.freight === "$" || shipping.freight === ""
+                      ? 0
+                      : shipping.freight}
+                  </p>
                   <p>{shipping.total}</p>
                   <p>{shipping.paymentTerms}</p>
                 </div>
@@ -208,6 +223,7 @@ const TruckDetails = () => {
               <p className="totals-bultos">{bultos}</p>
               <p className="totals-seguro">{formatter.format(seguro)}</p>
               <p className="totals-flete">{formatter.format(flete)}</p>
+              <p className="totals-total">{formatter.format(total)}</p>
             </div>
           </section>
         </main>
