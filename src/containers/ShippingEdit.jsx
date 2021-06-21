@@ -47,11 +47,11 @@ const ShippingEdit = () => {
   const form = useRef(null);
   const history = useHistory();
 
-  // useEffect(() => {
-  //   if (registeredUser === null) {
-  //     history.push("/admin");
-  //   }
-  // }, [registeredUser]);
+  useEffect(() => {
+    if (registeredUser === null) {
+      history.push("/admin");
+    }
+  }, [registeredUser]);
 
   useEffect(() => {
     shipping("envios", "envio.trackingNumber", location.slice(20));
@@ -72,8 +72,8 @@ const ShippingEdit = () => {
     e.preventDefault();
     const formShipping = new FormData(form.current);
     const shipping = {
-      trackingNumber: formShipping.get("trackingNumber"),
-      folioNumber: formShipping.get("folioNumber"),
+      trackingNumber: details.trackingNumber,
+      folioNumber: details.folioNumber,
 
       origin: formShipping.get("origin"),
       remitente: formShipping.get("remitente"),
@@ -123,10 +123,10 @@ const ShippingEdit = () => {
       ivaRetained: formShipping.get("ivaRetained"),
       total: formShipping.get("total"),
     };
-    updateShipping(shipping, shipping.trackingNumber);
+    updateShipping(shipping, location.slice(20));
     setReady(true);
     setTimeout(() => {
-      history.push(`/admin/detalles-envio/${shipping.trackingNumber}`);
+      history.push(`/admin/detalles-envio/${location.slice(20)}`);
     }, 1500);
   };
 
@@ -440,123 +440,6 @@ const ShippingEdit = () => {
               </div>
             </section>
             <section className="shipment shipmentEdit">
-              <input
-                type="text"
-                className="input-shipment"
-                name="reshipment"
-                value={reshipmentEdit ? reshipmentEdit : details.reshipment}
-                onChange={(e) =>
-                  handleChange(
-                    e.target.value,
-                    setReshipmentEdit,
-                    details.reshipment
-                  )
-                }
-              />
-              <input
-                type="text"
-                className="input-shipment reembarkWith"
-                name="reembarkWith"
-                value={
-                  reembarkWithEdit ? reembarkWithEdit : details.reembarkWith
-                }
-                onChange={(e) =>
-                  handleChange(
-                    e.target.value,
-                    setReembarkWithEdit,
-                    details.reembarkWith
-                  )
-                }
-              />
-              <div className="drove-container">
-                <input
-                  type="text"
-                  className="input-drove"
-                  name="drove"
-                  value={droveEdit ? droveEdit : details.drove}
-                  onChange={(e) =>
-                    handleChange(e.target.value, setDroveEdit, details.drove)
-                  }
-                />
-                <input
-                  type="text"
-                  className="input-drove"
-                  name="droveFrom"
-                  value={droveFromEdit ? droveFromEdit : details.droveFrom}
-                  onChange={(e) =>
-                    handleChange(
-                      e.target.value,
-                      setDroveFromEdit,
-                      details.droveFrom
-                    )
-                  }
-                />
-                <input
-                  type="text"
-                  className="input-drove"
-                  name="droveTo"
-                  value={droveToEdit ? droveToEdit : details.droveTo}
-                  onChange={(e) =>
-                    handleChange(
-                      e.target.value,
-                      setDroveToEdit,
-                      details.droveTo
-                    )
-                  }
-                />
-              </div>
-              <div className="drove-container">
-                <input
-                  type="text"
-                  className="input-drove"
-                  name="heWillDriveFrom"
-                  value={
-                    heWillDriveEdit ? heWillDriveEdit : details.heWillDrive
-                  }
-                  onChange={(e) =>
-                    handleChange(
-                      e.target.value,
-                      setHeWillDriveEdit,
-                      details.heWillDrive
-                    )
-                  }
-                />
-                <input
-                  type="text"
-                  className="input-drove"
-                  name="heWillDriveFrom"
-                  value={
-                    heWillDriveFromEdit
-                      ? heWillDriveFromEdit
-                      : details.heWillDriveFrom
-                  }
-                  onChange={(e) =>
-                    handleChange(
-                      e.target.value,
-                      setHeWillDriveFromEdit,
-                      details.heWillDriveFrom
-                    )
-                  }
-                />
-                <input
-                  type="text"
-                  className="input-drove"
-                  placeholder="A"
-                  name="heWillDriveTo"
-                  value={
-                    heWillDriveToEdit
-                      ? heWillDriveToEdit
-                      : details.heWillDriveTo
-                  }
-                  onChange={(e) =>
-                    handleChange(
-                      e.target.value,
-                      setHeWillDriveToEdit,
-                      details.heWillDriveTo
-                    )
-                  }
-                />
-              </div>
               <textarea
                 name="remarks"
                 value={remarksEdit ? remarksEdit : details.remarks}
@@ -591,6 +474,7 @@ const ShippingEdit = () => {
               ivaTransferEdit={details.ivaTransfer}
               ivaRetainedEdit={details.ivaRetained}
               totalEdit={details.total}
+              individualEdit={details.individual}
             />
             <section className="shipmentEdit-butoons">
               <button type="submit" className="Botton-guardar">

@@ -10,6 +10,7 @@ const Amounts = ({
   ivaTransferEdit = "",
   ivaRetainedEdit = "",
   totalEdit = "",
+  individualEdit,
 }) => {
   const [freight, setFreight] = useState(0);
   const [insurance, setInsurance] = useState(0);
@@ -92,7 +93,7 @@ const Amounts = ({
           type="text"
           name="freight"
           className="bolt"
-          value={freight ? freight : freightEdit}
+          value={freightEdit ? freightEdit : freight}
           onChange={(e) => onlyNumbers(e.target.value, setFreight)}
           required
         />
@@ -100,21 +101,21 @@ const Amounts = ({
           type="text"
           name="insurance"
           className="bolt"
-          value={insurance ? insurance : insuranceEdit}
+          value={insuranceEdit ? insuranceEdit : insurance}
           onChange={(e) => onlyNumbers(e.target.value, setInsurance)}
         />
         <input
           type="text"
           name="shunting"
           className="bolt"
-          value={shunting ? shunting : shuntingEdit}
+          value={shuntingEdit ? shuntingEdit : shunting}
           onChange={(e) => onlyNumbers(e.target.value, setShunting)}
         />
         <input
           type="text"
           name="others"
           className="bolt"
-          value={others ? others : othersEdit}
+          value={othersEdit ? othersEdit : others}
           onChange={(e) => onlyNumbers(e.target.value, setOthers)}
         />
         <input
@@ -122,33 +123,38 @@ const Amounts = ({
           name="subtotal"
           className="bolt"
           readOnly
-          value={subtotal ? subtotal : subtotalEdit}
+          value={subtotalEdit ? subtotalEdit : subtotal}
         />
         <input
           type="text"
           name="ivaTransfer"
           className="bolt"
           readOnly
-          value={ivaTransfer ? ivaTransfer : ivaTransferEdit}
+          value={ivaTransferEdit ? ivaTransferEdit : ivaTransfer}
         />
         <input
           type="text"
           name="ivaRetained"
           className="bolt"
           readOnly
-          value={ivaRetained ? ivaRetained : ivaRetainedEdit}
+          value={ivaRetainedEdit ? ivaRetainedEdit : ivaRetained}
         />
         <input
           type="text"
           name="total"
           className="bolt"
           readOnly
-          value={total ? total : totalEdit}
+          value={totalEdit ? totalEdit : total}
           required
         />
       </div>
       <label className="checkbox-individual">
-        <input type="checkbox" name="individual" ref={checkboxIndividual} />
+        <input
+          type="checkbox"
+          defaultChecked={individualEdit && "checked"}
+          name="individual"
+          ref={checkboxIndividual}
+        />
         Persona física
       </label>
     </section>

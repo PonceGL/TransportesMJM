@@ -75,7 +75,7 @@ const TruckDetails = () => {
                       updateStatusTruck(location.slice(23), "terminado");
                     }}
                   >
-                    Terminar
+                    Terminar viaje
                   </button>
                 )}
               </>

@@ -280,7 +280,9 @@ const FirebaseApp = () => {
         querySnapshot.forEach((doc) => {
           firebase.firestore().collection("envios").doc(doc.id).set({
             envio: shipping,
+            statusEntregado: false,
             statusRecibido: true,
+            statusEnRuta: false,
             statusRecibidoHora: firebase.firestore.FieldValue.serverTimestamp(),
           });
         });

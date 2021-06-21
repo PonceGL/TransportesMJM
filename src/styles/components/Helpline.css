@@ -10,3 +10,9 @@
   font-weight: 600;
   color: var(--blue);
 }
+
+.Helpline a {
+  font-weight: 600;
+  color: var(--blue);
+  cursor: pointer;
+}

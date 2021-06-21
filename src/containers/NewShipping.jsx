@@ -82,6 +82,7 @@ const NewShipping = () => {
       ivaTransfer: formShipping.get("ivaTransfer"),
       ivaRetained: formShipping.get("ivaRetained"),
       total: formShipping.get("total"),
+      individual: formShipping.get("individual") === "on" ? true : false,
     };
 
     newShipping(shipping);

@@ -32,11 +32,11 @@ const ShippingDetails = () => {
     day: "numeric",
   };
 
-  // useEffect(() => {
-  //   if (registeredUser === null) {
-  //     history.push("/admin");
-  //   }
-  // }, [registeredUser]);
+  useEffect(() => {
+    if (registeredUser === null) {
+      history.push("/admin");
+    }
+  }, [registeredUser]);
 
   useEffect(() => {
     shipping("envios", "envio.trackingNumber", location.slice(22));
@@ -84,8 +84,7 @@ const ShippingDetails = () => {
                 Servicio de autotransporte público federal de carga
               </p>
               <div className="Details-Print-data">
-                <p>R.F.C GOSJ-791012-217</p>
-                <p>CURP. GOSJ791012HVZMRN06</p>
+                <p>R.F.C TMJ 210106 R84</p>
                 <p>AUTOTRANSPORTE FORANEO DE CARGA ESPECIALIZADA</p>
               </div>
               <div className="Details-Print-addresses">
@@ -283,7 +282,7 @@ const ShippingDetails = () => {
               )}
               {query.statusEnDomicilio && (
                 <div className="Tracking-status">
-                  <h4>Llegó a base en la Ciudad de Xalapa</h4>
+                  <h4>{`Llegó a base en la Ciudad de ${details.destination}`}</h4>
                   <p>
                     {query.statusEnDomicilioHora
                       .toDate()
@@ -313,7 +312,7 @@ const ShippingDetails = () => {
               )}
               {query.statusRecibido && (
                 <div className="Tracking-status">
-                  <h4>Se recibió en base Ciudad de México</h4>
+                  <h4>{`Se recibió en base ${details.origin}`}</h4>
                   <p>
                     {query.statusRecibidoHora
                       .toDate()
@@ -343,7 +342,7 @@ const ShippingDetails = () => {
                 Imprimir
               </button>
             </div>
-            {query.statusEnDomicilio && (
+            {query.statusEnDomicilio && query.statusEntregado === false ? (
               <button
                 type="button"
                 className="Button-delivered"
@@ -351,10 +350,7 @@ const ShippingDetails = () => {
               >
                 Actualizar status de envío a Entregado
               </button>
-            )}
-            {query.statusEntregado && (
-              <p className="Button-delivered">Entregado</p>
-            )}
+            ) : null}
           </section>
           <Modal
             isOpen={isOpen}

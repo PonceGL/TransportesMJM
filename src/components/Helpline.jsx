@@ -6,8 +6,8 @@ const Helpline = () => {
     <section className="Helpline">
       <p>¿Necesitas ayuda?</p>
       <p>Puedes llamarnos</p>
-      <a href="tel:+520455528501" className="Helpline-number">
-        5 52 85 01
+      <a href="tel:5555528511" className="call-number">
+        555 552 85 11
       </a>
     </section>
   );

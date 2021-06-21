@@ -108,23 +108,39 @@
 
 @media screen and (min-width: 750px) {
   .Tracking {
-    flex-direction: row;
+    /* flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-between; */
+    width: 90%;
+    min-height: initial;
+    margin: 2rem auto 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, min-content);
+    grid-gap: 2rem;
+  }
+
+  .Tracking-title {
+    grid-column: 1 / span 2;
   }
 
   .Tracking-container-status {
-    width: 25%;
-    margin: 0 auto;
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+  }
+
+  .Tracking-info {
+    grid-column: 1 / span 1;
+    grid-row: 3 / span 1;
   }
 
   .Tracking-logo-container {
-    width: 55%;
+    grid-column: 2 / span 1;
     display: block;
   }
 
   .Tracking-logo-container img {
     width: 100%;
-    opacity: 0.5;
+    opacity: 0.1;
   }
 }

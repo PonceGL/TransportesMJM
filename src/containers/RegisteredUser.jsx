@@ -71,7 +71,7 @@ const RegisteredUser = () => {
             Password
           </label>
           <button type="submit" className="Botton-submit">
-            Entrar
+            Registrarse
           </button>
         </form>
       </main>

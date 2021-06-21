@@ -11,6 +11,7 @@ const Tracking = () => {
   const { shipping, query } = useContext(AppContext);
   const track = useLocation().pathname.slice(10);
   const details = query.envio;
+  const trackedShipment = query.envio;
 
   const options = {
     weekday: "long",
@@ -73,7 +74,7 @@ const Tracking = () => {
             )}
             {query.statusEnDomicilio && (
               <div className="Tracking-status">
-                <h4>Llegó a base en la Ciudad de Xalapa</h4>
+                <h4>{`Llegó a base en la Ciudad de ${trackedShipment.destination}`}</h4>
                 <p>
                   {query.statusEnDomicilioHora
                     .toDate()
@@ -101,7 +102,7 @@ const Tracking = () => {
             )}
             {query.statusRecibido && (
               <div className="Tracking-status">
-                <h4>Se recibió en base Ciudad de México</h4>
+                <h4>{`Se recibió en base ${trackedShipment.origin}`}</h4>
                 <p>
                   {query.statusRecibidoHora
                     .toDate()
@@ -115,6 +116,7 @@ const Tracking = () => {
               </div>
             )}
           </div>
+          <p>No comparta su número de rastreo</p>
         </section>
         {query != "" && (
           <section className="Tracking-logo-container">
@@ -123,14 +125,20 @@ const Tracking = () => {
         )}
         <section className="Tracking-info">
           {details && (
-            <p>
-              Remitente <span>{details.remitente}</span>
-            </p>
-          )}
-          {details && (
-            <p>
-              Destinatario <span>{details.addresseeRecipient}</span>
-            </p>
+            <>
+              <p>
+                Remitente <span>{details.remitente}</span>
+              </p>
+              <p>
+                Origen <span>{details.origin}</span>
+              </p>
+              <p>
+                Destinatario <span>{details.addresseeRecipient}</span>
+              </p>
+              <p>
+                Destino <span>{details.destination}</span>
+              </p>
+            </>
           )}
         </section>
         <Helpline />
