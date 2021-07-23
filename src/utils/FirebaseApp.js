@@ -68,10 +68,6 @@ const FirebaseApp = () => {
     firebase
       .firestore()
       .collection("employees")
-      .where("email", "not-in", [
-        "poncianogl@hotmail.com",
-        "transportesmjm1@gmail.com",
-      ])
       .get()
       .then((querySnapshot) => {
         setAllemployees([]);
@@ -355,6 +351,28 @@ const FirebaseApp = () => {
     });
   };
 
+  //Actualizar datos de viaje (camión)
+
+  const updateTruck = (num, truck, shippings) => {
+    firebase
+      .firestore()
+      .collection("trucks")
+      .where("truck.folioNumber", "==", num)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          firebase.firestore().collection("trucks").doc(doc.id).set({
+            truck: truck,
+            shippings: shippings,
+            statusEntregado: false,
+          });
+        });
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  };
+
   //Actualizar el status de envio
   const updateStatus = (num, status, receiving) => {
     firebase
@@ -487,6 +505,7 @@ const FirebaseApp = () => {
     updateFolio,
     updateShipping,
     newTruck,
+    updateTruck,
     updateStatus,
     updateStatusTruck,
     allemployees,

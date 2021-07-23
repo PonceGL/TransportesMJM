@@ -27,14 +27,6 @@ const ShippingEdit = () => {
   const [weightEdit, setWeightEdit] = useState("");
   const [m3Edit, setM3Edit] = useState("");
   const [estimatedWeightEdit, setEstimatedWeightEdit] = useState("");
-  const [reshipmentEdit, setReshipmentEdit] = useState("");
-  const [reembarkWithEdit, setReembarkWithEdit] = useState("");
-  const [droveEdit, setDroveEdit] = useState("");
-  const [droveFromEdit, setDroveFromEdit] = useState("");
-  const [droveToEdit, setDroveToEdit] = useState("");
-  const [heWillDriveEdit, setHeWillDriveEdit] = useState("");
-  const [heWillDriveFromEdit, setHeWillDriveFromEdit] = useState("");
-  const [heWillDriveToEdit, setHeWillDriveToEdit] = useState("");
   const [remarksEdit, setRemarksEdit] = useState("");
   const [totalInLettersEdit, setTotalInLettersEdit] = useState("");
 

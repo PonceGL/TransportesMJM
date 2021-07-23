@@ -22,7 +22,6 @@ const ManageEmployees = () => {
   useEffect(() => {
     if (registeredUser != null) {
       if (
-        registeredUser.email === "poncianogl@hotmail.com" ||
         registeredUser.email === "transportesmjm1@gmail.com" ||
         registeredUser.email === "recepcion.transportesmjm@gmail.com"
       ) {

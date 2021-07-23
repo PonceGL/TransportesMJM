@@ -83,6 +83,7 @@
   color: red;
   background-color: var(--white);
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .Newtruck .Botton-submit {
@@ -95,8 +96,15 @@
   color: var(--orange);
   border: 0.1rem solid var(--orange);
   background-color: var(--white);
+  transition: ease-in-out 0.3s all;
   outline: none;
   cursor: pointer;
+}
+
+.Newtruck .Botton-submit:hover {
+  color: var(--white);
+  border: 0.1rem solid var(--orange);
+  background-color: var(--orange);
 }
 
 .list-allShippings-for-truck div,
@@ -127,6 +135,53 @@
   border: 0.1rem solid var(--orange);
   background-color: var(--orange);
   cursor: pointer;
+}
+
+.Buttons-Container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Save-Button {
+  width: 45%;
+  margin: 2rem 0;
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  color: red;
+  border: 0.1rem solid red;
+  background-color: var(--white);
+  transition: ease-in-out 0.3s all;
+  outline: none;
+  cursor: pointer;
+}
+
+.Save-Button:hover {
+  color: var(--white);
+  background-color: red;
+}
+
+.Botton-Cancel {
+  width: 45%;
+  margin: 2rem 0;
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--white);
+  border: 0.1rem solid var(--blue);
+  background-color: var(--blue);
+  transition: ease-in-out 0.3s all;
+  outline: none;
+  cursor: pointer;
+}
+
+.Botton-Cancel:hover {
+  color: var(--blue);
+  background-color: var(--white);
 }
 
 @media screen and (min-width: 1000px) {

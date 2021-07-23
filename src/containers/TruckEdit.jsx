@@ -1,30 +1,49 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import SEO from "@components/Seo";
 import AppContext from "../context/AppContext";
 import Loader from "@components/Loader";
-import FolioNumber from "@components/FolioNumber";
-import "@styles/containers/Newtruck.css";
+import "@styles/containers/TruckEdit.css";
 
-const Newtruck = () => {
+const TruckEdit = () => {
   const {
     registeredUser,
+    shipping,
+    query,
     allShippings,
     allShippingQuery,
-    newTruck,
-    updateFolio,
-    currentFolioCount,
+    updateTruck,
   } = useContext(AppContext);
-  const [ready, setReady] = useState(false);
-  const [shippings, setShippings] = useState([]);
-  const form = useRef(null);
+  //__________
+
+  const [driverEdit, setDriverEdit] = useState("");
+  const [carNumberEdit, setCarNumberEdit] = useState("");
+  const [originEdit, setOriginEdit] = useState("");
+  const [destinyEdit, setDestinyEdit] = useState("");
+
+  //__________
+  const location = useLocation().pathname;
   const history = useHistory();
+  const [ready, setReady] = useState(false);
+  const [details, setDetails] = useState({});
+  const form = useRef(null);
+  const [shippings, setShippings] = useState([]);
 
   useEffect(() => {
     if (registeredUser === null) {
       history.push("/admin");
     }
   }, [registeredUser]);
+
+  useEffect(() => {
+    if (query) {
+      setDetails(query.truck);
+      setShippings(query.shippings);
+      setReady(false);
+    } else {
+      setReady(true);
+    }
+  }, [query]);
 
   useEffect(() => {
     allShippingQuery(
@@ -36,6 +55,26 @@ const Newtruck = () => {
     );
   }, []);
 
+  useEffect(() => {
+    shipping("trucks", "truck.folioNumber", location.slice(21));
+  }, []);
+
+  const handleChange = (value, func, lengthy) => {
+    if (value.length <= lengthy.length) {
+      func(value);
+      if (value === "") {
+        func(" ");
+      }
+    } else {
+      func(value);
+    }
+  };
+
+  const handleDelete = (e) => {
+    const name = e.target.getAttribute("name");
+    setShippings(shippings.filter((item) => item.trackingNumber !== name));
+  };
+
   const selecShippingToTruck = (value) => {
     if (!shippings.includes(value)) {
       setShippings((shippings) => [...shippings, value]);
@@ -44,25 +83,20 @@ const Newtruck = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const formTruck = new FormData(form.current);
     const truck = {
-      folioNumber: formTruck.get("folioNumber"),
+      folioNumber: details.folioNumber,
       driver: formTruck.get("driver"),
       carNumber: formTruck.get("carNumber"),
       origin: formTruck.get("origin"),
       destiny: formTruck.get("destiny"),
     };
-    newTruck(truck, shippings);
+    updateTruck(details.folioNumber, truck, shippings);
     setReady(true);
-    updateFolio("trucksFolios", currentFolioCount.account + 1);
     setTimeout(() => {
-      history.push("/admin/inicio");
+      history.push(`/admin/detalles-camion/${details.folioNumber}`);
     }, 500);
-  };
-
-  const handleDelete = (e) => {
-    const name = e.target.getAttribute("name");
-    setShippings(shippings.filter((item) => item.trackingNumber !== name));
   };
 
   return (
@@ -95,7 +129,7 @@ const Newtruck = () => {
               ))}
             </section>
             <form ref={form} onSubmit={handleSubmit}>
-              <h3>Nº{<FolioNumber folioType="trucksFolios" />}</h3>
+              <h3>Nº{details.folioNumber}</h3>
               <section className="Newtruck-info-container">
                 <input
                   type="text"
@@ -103,6 +137,10 @@ const Newtruck = () => {
                   placeholder="Conductor"
                   name="driver"
                   required
+                  value={driverEdit ? driverEdit : details.driver}
+                  onChange={(e) =>
+                    handleChange(e.target.value, setDriverEdit, details.driver)
+                  }
                 />
                 <input
                   type="text"
@@ -110,6 +148,14 @@ const Newtruck = () => {
                   placeholder="Carro Nº"
                   name="carNumber"
                   required
+                  value={carNumberEdit ? carNumberEdit : details.carNumber}
+                  onChange={(e) =>
+                    handleChange(
+                      e.target.value,
+                      setCarNumberEdit,
+                      details.carNumber
+                    )
+                  }
                 />
                 <input
                   type="text"
@@ -117,6 +163,10 @@ const Newtruck = () => {
                   placeholder="Origen"
                   name="origin"
                   required
+                  value={originEdit ? originEdit : details.origin}
+                  onChange={(e) =>
+                    handleChange(e.target.value, setOriginEdit, details.origin)
+                  }
                 />
                 <input
                   type="text"
@@ -124,6 +174,14 @@ const Newtruck = () => {
                   placeholder="Destino"
                   name="destiny"
                   required
+                  value={destinyEdit ? destinyEdit : details.destiny}
+                  onChange={(e) =>
+                    handleChange(
+                      e.target.value,
+                      setDestinyEdit,
+                      details.destiny
+                    )
+                  }
                 />
                 <input
                   type="text"
@@ -183,9 +241,17 @@ const Newtruck = () => {
                   </div>
                 ))}
               </section>
-              <button type="submit" className="Botton-submit">
-                Guardar
-              </button>
+              <div className="Buttons-Container">
+                <button type="submit" className="Save-Button">
+                  Guardar
+                </button>
+                <Link
+                  to={`/admin/detalles-camion/${details.folioNumber}`}
+                  className="Botton-Cancel"
+                >
+                  Cancelar
+                </Link>
+              </div>
             </form>
           </>
         )}
@@ -194,4 +260,4 @@ const Newtruck = () => {
   );
 };
 
-export default Newtruck;
+export default TruckEdit;

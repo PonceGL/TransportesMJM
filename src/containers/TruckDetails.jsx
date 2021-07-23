@@ -45,7 +45,7 @@ const TruckDetails = () => {
     window.print();
   };
 
-  const maintainShipmentStatus = (status) => {
+  const mainShipmentStatus = (status) => {
     shippings.forEach((shipping) => {
       updateStatus(shipping.trackingNumber, status);
     });
@@ -99,7 +99,7 @@ const TruckDetails = () => {
                     type="button"
                     className="Details-buttons Details-buttons-Domicilio"
                     onClick={() => {
-                      maintainShipmentStatus("domicilio");
+                      mainShipmentStatus("domicilio");
                     }}
                   >
                     Actualizar status de envios: En Domicilio
@@ -118,15 +118,23 @@ const TruckDetails = () => {
                 </div>
               </>
             ) : (
-              <button
-                type="button"
-                className="Details-buttons Details-buttons-ruta"
-                onClick={() => {
-                  maintainShipmentStatus("rute");
-                }}
-              >
-                Actualizar status de envios: En Ruta
-              </button>
+              <>
+                <button
+                  type="button"
+                  className="Details-buttons Details-buttons-ruta"
+                  onClick={() => {
+                    mainShipmentStatus("rute");
+                  }}
+                >
+                  Actualizar status de envios: En Ruta
+                </button>
+                <Link
+                  to={`/admin/editar-camion/${details.folioNumber}`}
+                  className="Details-buttons Button-edit"
+                >
+                  Editar
+                </Link>
+              </>
             )}
             <button
               type="button"

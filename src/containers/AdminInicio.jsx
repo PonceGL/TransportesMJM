@@ -204,8 +204,7 @@ const AdminInicio = () => {
           <Link to="/admin/crear-camion/">Crear uevo viaje</Link>
           {registeredUser != null && (
             <>
-              {registeredUser.email === "poncianogl@hotmail.com" ||
-              registeredUser.email === "transportesmjm1@gmail.com" ||
+              {registeredUser.email === "transportesmjm1@gmail.com" ||
               registeredUser.email === "recepcion.transportesmjm@gmail.com" ? (
                 <Link to="/admin/administrar-empleados">Empleados</Link>
               ) : undefined}

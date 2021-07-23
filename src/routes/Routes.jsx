@@ -14,6 +14,7 @@ import ManageEmployees from "@containers/ManageEmployees";
 import LayoutAdmin from "@components/LayoutAdmin";
 import ShippingEdit from "@containers/ShippingEdit";
 import TruckDetails from "@containers/TruckDetails";
+import TruckEdit from "@containers/TruckEdit";
 import Newtruck from "@containers/Newtruck";
 
 import AppContext from "../context/AppContext";
@@ -36,6 +37,7 @@ const Routes = () => {
               "/admin/detalles-camion/:id",
               "/admin/editar-envio/:id",
               "/admin/crear-camion",
+              "/admin/editar-camion/:id",
               "/admin/administrar-empleados",
               "/usuario-no-verificado",
             ]}
@@ -59,6 +61,11 @@ const Routes = () => {
                 component={ShippingEdit}
               />
               <Route exact path="/admin/crear-camion" component={Newtruck} />
+              <Route
+                exact
+                path="/admin/editar-camion/:id"
+                component={TruckEdit}
+              />
               <Route
                 exact
                 path="/admin/administrar-empleados"
